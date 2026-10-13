@@ -1,0 +1,182 @@
+.bread_bg {
+    background-image: url("../img/banner/banner_bg.png");
+}
+.logo.logo_footer a img {
+    /* padding: 15px 15px 5px 15px;
+    background: #f5f5f5;
+    border-radius: 10px; */
+}
+.tgmenu__navbar-wrap.tgmenu__navbar-wrap-my {
+    justify-content: center;
+  }
+  .contact-map.contact-map-my iframe {
+    width: 100%;
+    height: 100%;
+    filter: none;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -o-border-radius: 12px;
+    -ms-border-radius: 12px;
+    border-radius: 12px;
+}
+.contact-map.contact-map-my2 iframe {
+  width: 100%;
+  height: 100%;
+  filter: none;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -o-border-radius: 12px;
+  -ms-border-radius: 12px;
+  border-radius: 12px;
+}
+.contact-map.contact-map-my2{
+  height: 50%;
+}
+
+.QR_parent_my img{
+  background: linear-gradient(90deg, rgba(255, 194, 36, 1) 0%, rgba(11, 102, 195, 1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 5px 5px 5px;
+}
+
+.nav-tabs-my li {
+  padding: 10px;
+}
+
+.brand-area.brand-area-two .marquee_mode.lang_stripe{
+  height: 50px;
+}
+.brand-area.brand-area-two .marquee_mode.lang_stripe .brand__item a img.lang_st{
+  height: 40px;
+}
+
+.courses__curriculum-wrap .course-item .item-name.item-name1::before {
+  content: "";
+  display: block;
+  background-image: none !important; 
+  width: 0px !important;
+  height: 30px;
+  flex: 0 0 auto;
+}
+
+
+
+  @media (max-width: 1500px) {
+    .tgmenu__navbar-wrap.tgmenu__navbar-wrap-my ul {
+      margin: 0 15px  0 40px;
+    }
+  }
+@media (min-width: 350px) and (max-width: 768px) {
+  /* CSS styles here */
+h3 span.skilled_block {
+    display: block;
+    width: max-content;
+    margin: auto;
+}
+}
+@media (min-width: 769px) and (max-width: 1350px) {
+  /* CSS styles here */
+h3 span.skilled_block {
+    display: block;
+    width: max-content;
+}
+}
+p.achievw-card {
+  text-transform: none !important;
+}
+
+/* certificate form  */
+#certification-form {
+  background-color: #f9f9f9;
+  padding: 50px 0;
+}
+
+#certification-form .form-group {
+  margin-bottom: 25px;
+}
+
+#certification-form label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+#certification-form .form-control {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+#certification-form .form-control:focus {
+  border-color: #0b66c3;
+  box-shadow: 0 0 10px #0b66c350;
+}
+
+#certification-form textarea {
+  resize: vertical;
+}
+
+#certification-form button {
+  background-color: #ffc224;
+  color: #161439;
+  padding: 15px 30px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#certification-form button:hover {
+  background-color: #0b66c3;
+  color: #ffffff;
+}
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* ai section image  */
+.about__images.ai_section img.main-img{
+border-radius: 15px;
+}
+.about__images.ai_section {
+    margin: auto !important;
+}
+
+
+/*@media (max-width: 1500px) {*/
+/*  .login__shape-wrap  {*/
+/*   width: 90%;*/
+/*   height: 80%;*/
+/*}*/
+/*.login__shape-wrap img:nth-child(1) {*/
+/*  position: absolute;*/
+/*  top: 100px;*/
+/*  left: 250px;*/
+/*}*/
+/*  .login__shape-wrap img:nth-child(2) {*/
+/*      position: absolute;*/
+/*      right: 300px;*/
+/*      top: 150px;*/
+/*  }*/
+/*.login__shape-wrap img:nth-child(3) {*/
+/*  position: absolute;*/
+/*  right: 200px;*/
+/*  bottom: 100px;*/
+/*}*/
+/*.login__shape-wrap img:nth-child(4) {*/
+/*  position: absolute;*/
+/*  left: 100px;*/
+/*  bottom: 200px;*/
+/*}*/
+/*.login__shape-wrap img:nth-child(5) {*/
+/*  display: none;*/
+/*}*/
+/*}*/
