@@ -56,6 +56,122 @@
       /*    color: red !important;*/
       /*}*/
     </style>
+
+    <!-- Curriculum accordion styles (scoped to .curriculum-custom only) -->
+    <style>
+      .courses__curriculum-wrap.curriculum-custom {
+        --cur-cream: #fff8e7;
+        --cur-gold: #f2a900;
+        --cur-navy: #11133f;
+        --cur-border: #f0ddaf;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item {
+        background: #ffffff;
+        border: 1px solid var(--cur-border);
+        border-radius: 8px;
+        box-shadow: none;
+        overflow: hidden;
+        margin-bottom: 16px;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item:last-child {
+        margin-bottom: 0;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-header {
+        margin: 0;
+      }
+      /* Collapsed: #FFF8E7 */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        width: 100%;
+        padding: 20px 24px;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.4;
+        text-align: left;
+        color: var(--cur-navy) !important;
+        background: var(--cur-cream) !important;
+        border: 0;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        transition: background-color 0.2s ease;
+      }
+      /* Hover (collapsed): #FFF8E7, no blue */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button.collapsed:hover {
+        color: var(--cur-navy) !important;
+        background: var(--cur-cream) !important;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:focus {
+        color: var(--cur-navy) !important;
+        box-shadow: none !important;
+        outline: 0;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:focus-visible {
+        outline: 2px solid var(--cur-navy);
+        outline-offset: -4px;
+      }
+      /* Expanded: #F2A900 (stays golden on hover) */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:not(.collapsed),
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:not(.collapsed):hover {
+        color: var(--cur-navy) !important;
+        background: var(--cur-gold) !important;
+        box-shadow: none !important;
+      }
+      /* Standard chevron on the right; rotates upward when opened */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button::after {
+        content: "" !important;
+        font-family: inherit;
+        position: static;
+        flex-shrink: 0;
+        margin-left: auto;
+        width: 18px;
+        height: 18px;
+        border: 0;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 18px 18px;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%2311133f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+        transform: rotate(0deg);
+        transition: transform 0.25s ease;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:not(.collapsed)::after {
+        transform: rotate(-180deg);
+      }
+      /* Expanded content area: white */
+      .courses__curriculum-wrap.curriculum-custom .accordion-body {
+        padding: 18px 24px 20px;
+        background: #ffffff;
+      }
+      .courses__curriculum-wrap.curriculum-custom .curriculum-list {
+        list-style: disc;
+        margin: 0;
+        padding: 0 0 0 20px;
+      }
+      .courses__curriculum-wrap.curriculum-custom .curriculum-list li {
+        margin-bottom: 6px;
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--cur-navy);
+      }
+      .courses__curriculum-wrap.curriculum-custom .curriculum-list li:last-child {
+        margin-bottom: 0;
+      }
+      @media (max-width: 575.98px) {
+        .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button {
+          padding: 16px 16px;
+          font-size: 16px;
+        }
+        .courses__curriculum-wrap.curriculum-custom .accordion-body {
+          padding: 14px 16px 16px;
+        }
+      }
+    </style>
+    <style>
+      @import url("assets/css/course-sections.css");
+    </style>
   </head>
 
   <body>
@@ -273,7 +389,7 @@
           <div class="row">
             <div class="col-xl-9 col-lg-8">
               <div class="courses__details-thumb">
-                <img src="assets/img/course-det/java.jpg" alt="img" />
+                <img src="assets/img/course-details/full java image.png" alt="img" />
               </div>
               <div class="courses__details-content">
                 <ul class="courses__item-meta list-wrap">
@@ -337,53 +453,39 @@
                     <div class="courses__overview-wrap">
                       <h3 class="title">Course Description</h3>
                       <p>
-                        Skilled.u's Java course covers Core Java fundamentals,
-                        MVC architecture with Maven and Gradle, JDBC and ODBC
-                        for database connectivity with Oracle, MySQL and Spring
-                        Boot for developing scalable web applications. Ideal for
-                        beginners and aspiring Java developers, this course
-                        provides a structured approach to mastering essential
-                        Java technologies.
+                        Build a strong foundation in Java programming with
+                        Skilled.U’s Java Development course. Learn Core Java,
+                        object-oriented programming, MVC architecture, and
+                        project management using Maven and Gradle. Explore
+                        database connectivity with JDBC and ODBC, work with
+                        Oracle and MySQL, and develop backend applications
+                        using Spring Boot. Gain practical experience through
+                        hands-on exercises and projects to strengthen your Java
+                        development skills.
                       </p>
-                      <h3 class="title">What you'll learn in this course?</h3>
-                      <p>
-                        You'll learn Core Java programming, MVC structure with
-                        Maven, Gradle, database connectivity using JDBC, ODBC
-                        with Oracle, MySQL and Spring Boot for web application
-                        development. Practical projects simulate real-world
-                        scenarios, ensuring hands-on experience and industry
-                        readiness.
-                      </p>
+                      <h3 class="title">What You’ll Learn in This Course?</h3>
                       <ul class="about__info-list list-wrap">
                         <li class="about__info-list-item">
                           <i class="flaticon-angle-right"></i>
-                          <p class="content">Core Java</p>
+                          <p class="content"><strong>Core Java</strong> — Learn programming fundamentals and OOP concepts.</p>
                         </li>
                         <li class="about__info-list-item">
                           <i class="flaticon-angle-right"></i>
-                          <p class="content">MVC + Maven + Gradle</p>
+                          <p class="content"><strong>MVC, Maven &amp; Gradle</strong> — Organize applications and manage dependencies.</p>
                         </li>
                         <li class="about__info-list-item">
                           <i class="flaticon-angle-right"></i>
-                          <p class="content">JDBC + ODBC</p>
+                          <p class="content"><strong>JDBC &amp; ODBC</strong> — Connect Java applications with databases.</p>
                         </li>
                         <li class="about__info-list-item">
                           <i class="flaticon-angle-right"></i>
-                          <p class="content">Spring Boot</p>
+                          <p class="content"><strong>Spring Boot</strong> — Develop structured backend applications.</p>
                         </li>
                         <li class="about__info-list-item">
                           <i class="flaticon-angle-right"></i>
-                          <p class="content">DB (ORACLE + MYSQL)</p>
+                          <p class="content"><strong>Oracle &amp; MySQL</strong> — Store, retrieve, and manage data.</p>
                         </li>
                       </ul>
-                      <p class="last-info">
-                        Upon completion, students will master Core Java
-                        concepts, MVC design with Maven and Gradle, JDBC, ODBC
-                        for database integration, and Spring Boot for building
-                        robust web applications. Graduates will be equipped to
-                        design, develop, and deploy Java applications, ready to
-                        excel in software engineering roles.
-                      </p>
                     </div>
                   </div>
                   <div
@@ -393,467 +495,162 @@
                     aria-labelledby="curriculum-tab"
                     tabindex="0"
                   >
-                    <div class="courses__curriculum-wrap">
-                      <h3 class="title">Course Outline</h3>
+                    <div class="courses__curriculum-wrap curriculum-custom">
+                      <h3 class="title">Course Curriculum</h3>
                       <p>
-                        Skilled.u's Java course covers Core Java, MVC with
-                        Maven, Gradle, JDBC, ODBC for Oracle and MySQL and
-                        Spring Boot. Ideal for beginners, it offers structured
-                        learning in essential Java technologies. Students gain
-                        hands-on experience in Core Java, MVC, database
-                        integration and Spring Boot through projects. Graduates
-                        are prepared for software engineering roles, proficient
-                        in designing, developing and deploying Java
-                        applications.
+                        This course follows a structured learning path from
+                        Core Java fundamentals to application architecture,
+                        database connectivity, and Spring Boot development.
+                        Practical exercises help you apply concepts and build a
+                        foundation for developing Java applications.
                       </p>
-                      <div class="accordion" id="accordionExample">
+                      <div class="accordion" id="curriculumAccordion">
+
                         <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingOne">
+                          <h2 class="accordion-header" id="curriculumHeading1">
                             <button
                               class="accordion-button"
                               type="button"
                               data-bs-toggle="collapse"
-                              data-bs-target="#collapseOne"
+                              data-bs-target="#curriculumCollapse1"
                               aria-expanded="true"
-                              aria-controls="collapseOne"
+                              aria-controls="curriculumCollapse1"
                             >
                               Core Java Fundamentals
                             </button>
                           </h2>
                           <div
-                            id="collapseOne"
+                            id="curriculumCollapse1"
                             class="accordion-collapse collapse show"
-                            aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample"
+                            aria-labelledby="curriculumHeading1"
+                            data-bs-parent="#curriculumAccordion"
                           >
                             <div class="accordion-body">
-                              <ul class="list-wrap">
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Introduction to Java programming</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Data types, operators, and control
-                                      structures</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Object-oriented programming: classes,
-                                      objects, inheritance, polymorphism</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Exception handling and file I/O
-                                      operations</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
+                              <ul class="curriculum-list">
+                                <li>Learn variables, data types, operators, and control statements.</li>
+                                <li>Understand classes, objects, inheritance, and polymorphism.</li>
+                                <li>Work with exception handling, collections, and file handling.</li>
                               </ul>
                             </div>
                           </div>
                         </div>
+
                         <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingTwo">
+                          <h2 class="accordion-header" id="curriculumHeading2">
                             <button
                               class="accordion-button collapsed"
                               type="button"
                               data-bs-toggle="collapse"
-                              data-bs-target="#collapseTwo"
+                              data-bs-target="#curriculumCollapse2"
                               aria-expanded="false"
-                              aria-controls="collapseTwo"
+                              aria-controls="curriculumCollapse2"
                             >
                               MVC Architecture with Maven and Gradle
                             </button>
                           </h2>
                           <div
-                            id="collapseTwo"
+                            id="curriculumCollapse2"
                             class="accordion-collapse collapse"
-                            aria-labelledby="headingTwo"
-                            data-bs-parent="#accordionExample"
+                            aria-labelledby="curriculumHeading2"
+                            data-bs-parent="#curriculumAccordion"
                           >
                             <div class="accordion-body">
-                              <ul class="list-wrap">
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Overview of MVC (Model-View-Controller)
-                                      architecture</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Introduction to Maven and Gradle build
-                                      tools</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Project structuring and dependency
-                                      management</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Building and deploying Java applications
-                                      using Maven and Gradle</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
+                              <ul class="curriculum-list">
+                                <li>Understand the Model-View-Controller (MVC) architecture.</li>
+                                <li>Manage dependencies and project builds using Maven and Gradle.</li>
+                                <li>Organize Java applications into maintainable components.</li>
                               </ul>
                             </div>
                           </div>
                         </div>
+
                         <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingThree">
+                          <h2 class="accordion-header" id="curriculumHeading3">
                             <button
                               class="accordion-button collapsed"
                               type="button"
                               data-bs-toggle="collapse"
-                              data-bs-target="#collapseThree"
+                              data-bs-target="#curriculumCollapse3"
                               aria-expanded="false"
-                              aria-controls="collapseThree"
+                              aria-controls="curriculumCollapse3"
                             >
-                              Database Connectivity with JDBC and ORM
+                              Database Connectivity with JDBC and ODBC
                             </button>
                           </h2>
                           <div
-                            id="collapseThree"
+                            id="curriculumCollapse3"
                             class="accordion-collapse collapse"
-                            aria-labelledby="headingThree"
-                            data-bs-parent="#accordionExample"
+                            aria-labelledby="curriculumHeading3"
+                            data-bs-parent="#curriculumAccordion"
                           >
                             <div class="accordion-body">
-                              <ul class="list-wrap">
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Introduction to JDBC (Java Database
-                                      Connectivity)</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Connecting Java applications to Oracle
-                                      and MySQL databases</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Executing SQL queries, handling
-                                      transactions, and managing result
-                                      sets</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Overview of ODBC (Open Database
-                                      Connectivity) for broader database
-                                      integration</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
+                              <ul class="curriculum-list">
+                                <li>Understand database connectivity concepts.</li>
+                                <li>Connect Java applications to databases and execute queries.</li>
+                                <li>Perform CRUD operations and manage database records.</li>
                               </ul>
                             </div>
                           </div>
                         </div>
+
                         <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingFour">
+                          <h2 class="accordion-header" id="curriculumHeading4">
                             <button
                               class="accordion-button collapsed"
                               type="button"
                               data-bs-toggle="collapse"
-                              data-bs-target="#collapseFour"
+                              data-bs-target="#curriculumCollapse4"
                               aria-expanded="false"
-                              aria-controls="collapseThree"
+                              aria-controls="curriculumCollapse4"
                             >
                               Spring Boot Development
                             </button>
                           </h2>
                           <div
-                            id="collapseFour"
+                            id="curriculumCollapse4"
                             class="accordion-collapse collapse"
-                            aria-labelledby="headingFour"
-                            data-bs-parent="#accordionExample"
+                            aria-labelledby="curriculumHeading4"
+                            data-bs-parent="#curriculumAccordion"
                           >
                             <div class="accordion-body">
-                              <ul class="list-wrap">
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Introduction to Spring Boot
-                                      framework</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Building RESTful web services and
-                                      microservices</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Dependency Injection and Beans in Spring
-                                      Boot</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Implementing MVC pattern with Spring Boot
-                                      for web applications
-                                    </span>
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
+                              <ul class="curriculum-list">
+                                <li>Understand Spring Boot project structure and configuration.</li>
+                                <li>Build REST APIs using controllers and service components.</li>
+                                <li>Handle requests and connect backend services with databases.</li>
                               </ul>
                             </div>
                           </div>
                         </div>
+
                         <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingFive">
+                          <h2 class="accordion-header" id="curriculumHeading5">
                             <button
                               class="accordion-button collapsed"
                               type="button"
                               data-bs-toggle="collapse"
-                              data-bs-target="#collapseFive"
+                              data-bs-target="#curriculumCollapse5"
                               aria-expanded="false"
-                              aria-controls="collapseFive"
+                              aria-controls="curriculumCollapse5"
                             >
-                              DB Integration (Oracle + MySQL)
+                              Database Integration with Oracle and MySQL
                             </button>
                           </h2>
                           <div
-                            id="collapseFive"
+                            id="curriculumCollapse5"
                             class="accordion-collapse collapse"
-                            aria-labelledby="headingFive"
-                            data-bs-parent="#accordionExample"
+                            aria-labelledby="curriculumHeading5"
+                            data-bs-parent="#curriculumAccordion"
                           >
                             <div class="accordion-body">
-                              <ul class="list-wrap">
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Understanding database integration with
-                                      Oracle and MySQL</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Performing CRUD operations (Create, Read,
-                                      Update, Delete) using Java and SQL</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Utilizing Hibernate ORM
-                                      (Object-Relational Mapping) for data
-                                      persistence</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Handling database transactions and
-                                      optimizing performance</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
+                              <ul class="curriculum-list">
+                                <li>Understand relational database concepts and SQL queries.</li>
+                                <li>Create tables and manage application data.</li>
+                                <li>Integrate Oracle and MySQL databases with Java applications.</li>
                               </ul>
                             </div>
                           </div>
                         </div>
+
                       </div>
                     </div>
                   </div>

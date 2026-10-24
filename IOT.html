@@ -57,6 +57,174 @@
       /*    color: red !important;*/
       /*}*/
     </style>
+
+    <!-- Curriculum accordion styles (scoped to .curriculum-custom only) -->
+    <style>
+      /* ===== Curriculum accordion (scoped ONLY to .curriculum-custom) ===== */
+      .courses__curriculum-wrap.curriculum-custom {
+        --cur-gold: #F0A900;
+        --cur-cream: #FFF8E8;
+        --cur-border: #F0DDB5;
+        --cur-navy: #171717;
+        --cur-body: #171717;
+      }
+
+      /* Spacing between items */
+      .courses__curriculum-wrap.curriculum-custom .accordion {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      /* Item: border + rounded corners */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item {
+        margin: 0 !important;
+        background: #fff !important;
+        border: 1px solid var(--cur-border) !important;
+        border-radius: 8px !important;
+        overflow: hidden;
+        box-shadow: none !important;
+      }
+
+      /* Heading button (collapsed / inactive) */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        width: 100%;
+        padding: 20px 24px;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.3;
+        text-align: left;
+        color: var(--cur-navy) !important;
+        background: var(--cur-cream) !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        transition: background 0.25s ease;
+      }
+
+      /* Heading button (expanded / active) */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:not(.collapsed) {
+        color: var(--cur-navy) !important;
+        background: var(--cur-gold) !important;
+      }
+
+      /* Hover (collapsed): same golden color as expanded */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button.collapsed:hover {
+        color: var(--cur-navy) !important;
+        background: var(--cur-gold) !important;
+      }
+
+      /* Hover / focus / active (expanded): stay golden, no blue */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:not(.collapsed):hover,
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:focus,
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:active {
+        color: var(--cur-navy) !important;
+        box-shadow: none !important;
+        outline: none;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:not(.collapsed):hover,
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:not(.collapsed):focus {
+        background: var(--cur-gold) !important;
+      }
+
+      /* Keyboard focus: visible dark outline (no blue) */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:focus-visible {
+        outline: 2px solid var(--cur-navy);
+        outline-offset: -2px;
+      }
+
+      /* Chevron (right side): down when collapsed, up when expanded */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button::before {
+        display: none !important;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button::after {
+        content: "" !important;
+        position: static !important;
+        flex-shrink: 0;
+        width: 10px;
+        height: 10px;
+        margin-left: auto;
+        background: none !important;
+        border-right: 2px solid var(--cur-navy);
+        border-bottom: 2px solid var(--cur-navy);
+        transform: translateY(-3px) rotate(45deg) !important; /* down */
+        transition: transform 0.25s ease;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:not(.collapsed)::after {
+        transform: translateY(3px) rotate(-135deg) !important; /* up */
+      }
+
+      /* Expanded content area */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body {
+        padding: 20px 24px;
+        background: #fff;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body ul.list-wrap,
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body ul.curriculum-list {
+        margin: 0;
+        padding-left: 20px;
+        list-style: disc !important;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body li.course-item,
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body ul.curriculum-list li {
+        display: list-item !important;
+        list-style: disc !important;
+        position: static;
+        margin: 0 0 6px;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--cur-body) !important;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body ul.curriculum-list li::before {
+        display: none !important;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body li.course-item:last-child,
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body ul.curriculum-list li:last-child {
+        margin-bottom: 0;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body .item-name {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.6;
+        color: var(--cur-body) !important;
+      }
+
+      /* Tablet */
+      @media (max-width: 991px) {
+        .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button {
+          padding: 18px 20px;
+          font-size: 17px;
+        }
+      }
+
+      /* Mobile */
+      @media (max-width: 575px) {
+        .courses__curriculum-wrap.curriculum-custom .accordion {
+          gap: 12px;
+        }
+        .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button {
+          padding: 14px 16px;
+          font-size: 16px;
+        }
+        .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body {
+          padding: 16px;
+        }
+        .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body .item-name,
+        .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body ul.curriculum-list li {
+          font-size: 15px;
+        }
+      }
+    </style>
+    <style>
+      @import url("assets/css/course-sections.css");
+    </style>
   </head>
 
   <body>
@@ -274,7 +442,7 @@
           <div class="row">
             <div class="col-xl-9 col-lg-8">
               <div class="courses__details-thumb">
-                <img src="assets/img/course-det/iot.jpg" alt="img" />
+                <img src="assets/img/course-details/full iot image.png" alt="img" />
               </div>
               <div class="courses__details-content">
                 <ul class="courses__item-meta list-wrap">
@@ -343,51 +511,60 @@
                     <div class="courses__overview-wrap">
                       <h3 class="title">Course Description</h3>
                       <p>
-                        At Skilled.u, our IoT course covers Embedded C, Arduino,
-                        and Raspberry Pi, offering a foundation in building
-                        interconnected devices. Through projects and hands-on
-                        learning, you'll program microcontrollers with Embedded
-                        C, create Arduino prototypes, and develop advanced IoT
-                        solutions with Raspberry Pi. Ideal for beginners and
-                        those seeking to deepen their skills, this course
-                        provides a structured path to mastering essential IoT
-                        technologies.
+                        Explore the fundamentals of Internet of Things (IoT)
+                        development with Skilled.U. Learn Embedded C
+                        programming for microcontrollers, build hardware
+                        prototypes using Arduino, and develop IoT applications
+                        with Raspberry Pi. Understand sensor integration, GPIO
+                        programming, communication protocols, MQTT, and cloud
+                        connectivity. Gain practical experience through
+                        hands-on projects and learn how connected devices
+                        collect, exchange, and process data.
                       </p>
-                      <h3 class="title">What you'll learn in this course?</h3>
+                      <p><strong>Course Level:</strong> Advanced Beginner to Intermediate</p>
+                      <h3 class="title">Start Building Modern Web Applications!</h3>
                       <p>
-                        You'll learn Embedded C for microcontrollers, Arduino
-                        for circuit building and sensor integration, and
-                        Raspberry Pi for IoT projects with Python and GPIO.
-                        Emphasis on MQTT protocols, cloud integration, and
-                        project-based learning for practical IoT skills.
+                        Strengthen your frontend skills and learn to create
+                        responsive, interactive web experiences with Skilled.U.
                       </p>
+                      <h3 class="title">What You’ll Learn in This Course?</h3>
                       <ul class="about__info-list list-wrap">
                         <li class="about__info-list-item">
                           <i class="flaticon-angle-right"></i>
-                          <p class="content">Embedded C</p>
+                          <p class="content">
+                            <strong>Embedded C</strong> — Program
+                            microcontrollers and interface with hardware.
+                          </p>
                         </li>
                         <li class="about__info-list-item">
                           <i class="flaticon-angle-right"></i>
-                          <p class="content">Arduino</p>
+                          <p class="content">
+                            <strong>Arduino</strong> — Build prototypes using
+                            sensors and electronic components.
+                          </p>
                         </li>
                         <li class="about__info-list-item">
                           <i class="flaticon-angle-right"></i>
-                          <p class="content">Raspberry Pi</p>
+                          <p class="content">
+                            <strong>Raspberry Pi</strong> — Develop IoT
+                            applications using Python and GPIO.
+                          </p>
+                        </li>
+                        <li class="about__info-list-item">
+                          <i class="flaticon-angle-right"></i>
+                          <p class="content">
+                            <strong>MQTT &amp; Connectivity</strong> —
+                            Understand device communication and messaging.
+                          </p>
+                        </li>
+                        <li class="about__info-list-item">
+                          <i class="flaticon-angle-right"></i>
+                          <p class="content">
+                            <strong>Cloud Integration</strong> — Connect IoT
+                            devices to cloud-based services.
+                          </p>
                         </li>
                       </ul>
-                      <p class="last-info">
-                        By the end of the IoT course at Skilled.u, students will
-                        gain proficiency in Embedded C programming for
-                        microcontrollers, enabling efficient code writing and
-                        hardware interfacing. They will design and build IoT
-                        prototypes with Arduino, integrating sensors and
-                        communication modules for data acquisition.
-                        Additionally, students will develop advanced IoT
-                        applications using Raspberry Pi, leveraging its
-                        capabilities for data analytics, networking, and cloud
-                        interfacing, preparing them to innovate in diverse IoT
-                        domains.
-                      </p>
                     </div>
                   </div>
                   <div
@@ -397,260 +574,180 @@
                     aria-labelledby="curriculum-tab"
                     tabindex="0"
                   >
-                    <div class="courses__curriculum-wrap">
-                      <h3 class="title">Course Outline</h3>
+                    <div class="courses__curriculum-wrap curriculum-custom">
+                      <h3 class="title">Course Curriculum</h3>
                       <p>
-                        The course covers Embedded C programming for
-                        microcontrollers, Arduino development including sensor
-                        integration, Raspberry Pi applications for IoT projects
-                        with Python, and emphasizes project-based learning for
-                        practical skills in building and deploying IoT
-                        solutions.
+                        This course follows a structured learning path covering
+                        embedded programming, hardware prototyping, sensor
+                        integration, device communication, and IoT application
+                        development. Practical exercises help you apply
+                        concepts and build connected-device projects.
                       </p>
-                      <div class="accordion" id="accordionExample">
+                      <div class="accordion" id="curriculumAccordion">
                         <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingOne">
+                          <h2 class="accordion-header" id="curriculumHeading1">
                             <button
-                              class="accordion-button"
+                              class="accordion-button collapsed"
                               type="button"
                               data-bs-toggle="collapse"
-                              data-bs-target="#collapseOne"
-                              aria-expanded="true"
-                              aria-controls="collapseOne"
+                              data-bs-target="#curriculumCollapse1"
+                              aria-expanded="false"
+                              aria-controls="curriculumCollapse1"
                             >
                               Embedded C Programming for IoT
                             </button>
                           </h2>
                           <div
-                            id="collapseOne"
-                            class="accordion-collapse collapse show"
-                            aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample"
+                            id="curriculumCollapse1"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="curriculumHeading1"
+                            data-bs-parent="#curriculumAccordion"
                           >
                             <div class="accordion-body">
-                              <ul class="list-wrap">
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Basics of Embedded C programming
-                                    </span>
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Memory management and optimization</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Interfacing with microcontrollers and
-                                      peripherals</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Control Structures in Embedded C</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
+                              <ul class="curriculum-list">
+                                <li>Learn variables, data types, loops, and functions in Embedded C.</li>
+                                <li>Understand microcontrollers and hardware interfacing.</li>
+                                <li>Work with input/output pins and basic embedded programming tasks.</li>
                               </ul>
                             </div>
                           </div>
                         </div>
                         <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingTwo">
+                          <h2 class="accordion-header" id="curriculumHeading2">
                             <button
                               class="accordion-button collapsed"
                               type="button"
                               data-bs-toggle="collapse"
-                              data-bs-target="#collapseTwo"
+                              data-bs-target="#curriculumCollapse2"
                               aria-expanded="false"
-                              aria-controls="collapseTwo"
+                              aria-controls="curriculumCollapse2"
                             >
                               Arduino Development
                             </button>
                           </h2>
                           <div
-                            id="collapseTwo"
+                            id="curriculumCollapse2"
                             class="accordion-collapse collapse"
-                            aria-labelledby="headingTwo"
-                            data-bs-parent="#accordionExample"
+                            aria-labelledby="curriculumHeading2"
+                            data-bs-parent="#curriculumAccordion"
                           >
                             <div class="accordion-body">
-                              <ul class="list-wrap">
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Circuit design and assembly</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Sensor integration and data
-                                      acquisition</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >IPrototyping interactive IoT
-                                      devices</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Working with Sensors and Communication
-                                      Protocols
-                                    </span>
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
+                              <ul class="curriculum-list">
+                                <li>Understand Arduino boards and the development environment.</li>
+                                <li>Connect sensors, actuators, and electronic components.</li>
+                                <li>Build prototypes and collect sensor data.</li>
                               </ul>
                             </div>
                           </div>
                         </div>
                         <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingThree">
+                          <h2 class="accordion-header" id="curriculumHeading3">
                             <button
                               class="accordion-button collapsed"
                               type="button"
                               data-bs-toggle="collapse"
-                              data-bs-target="#collapseThree"
+                              data-bs-target="#curriculumCollapse3"
                               aria-expanded="false"
-                              aria-controls="collapseThree"
+                              aria-controls="curriculumCollapse3"
                             >
                               Raspberry Pi Applications in IoT
                             </button>
                           </h2>
                           <div
-                            id="collapseThree"
+                            id="curriculumCollapse3"
                             class="accordion-collapse collapse"
-                            aria-labelledby="headingThree"
-                            data-bs-parent="#accordionExample"
+                            aria-labelledby="curriculumHeading3"
+                            data-bs-parent="#curriculumAccordion"
                           >
                             <div class="accordion-body">
-                              <ul class="list-wrap">
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Setting up Raspberry Pi for IoT
-                                      projects</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Programming with Python for IoT
-                                      applications</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >GPIO interfacing for hardware
-                                      control</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
+                              <ul class="curriculum-list">
+                                <li>Understand Raspberry Pi setup, GPIO, and Python basics.</li>
+                                <li>Connect hardware components and process sensor data.</li>
+                                <li>Develop IoT applications with networking and device connectivity.</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="curriculumHeading4">
+                            <button
+                              class="accordion-button collapsed"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#curriculumCollapse4"
+                              aria-expanded="false"
+                              aria-controls="curriculumCollapse4"
+                            >
+                              IoT Communication Protocols
+                            </button>
+                          </h2>
+                          <div
+                            id="curriculumCollapse4"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="curriculumHeading4"
+                            data-bs-parent="#curriculumAccordion"
+                          >
+                            <div class="accordion-body">
+                              <ul class="curriculum-list">
+                                <li>Understand the fundamentals of device-to-device communication.</li>
+                                <li>Explore MQTT messaging and publish-subscribe concepts.</li>
+                                <li>Exchange data between connected IoT devices.</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="curriculumHeading5">
+                            <button
+                              class="accordion-button collapsed"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#curriculumCollapse5"
+                              aria-expanded="false"
+                              aria-controls="curriculumCollapse5"
+                            >
+                              Cloud Integration for IoT
+                            </button>
+                          </h2>
+                          <div
+                            id="curriculumCollapse5"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="curriculumHeading5"
+                            data-bs-parent="#curriculumAccordion"
+                          >
+                            <div class="accordion-body">
+                              <ul class="curriculum-list">
+                                <li>Understand how IoT devices communicate with cloud services.</li>
+                                <li>Send and monitor device data using supported platforms.</li>
+                                <li>Explore remote monitoring and connected-device management.</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="curriculumHeading6">
+                            <button
+                              class="accordion-button collapsed"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#curriculumCollapse6"
+                              aria-expanded="false"
+                              aria-controls="curriculumCollapse6"
+                            >
+                              IoT Projects and Practical Applications
+                            </button>
+                          </h2>
+                          <div
+                            id="curriculumCollapse6"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="curriculumHeading6"
+                            data-bs-parent="#curriculumAccordion"
+                          >
+                            <div class="accordion-body">
+                              <ul class="curriculum-list">
+                                <li>Design an IoT solution based on a real-world problem.</li>
+                                <li>Integrate sensors, controllers, and communication features.</li>
+                                <li>Test the prototype and evaluate its functionality.</li>
                               </ul>
                             </div>
                           </div>

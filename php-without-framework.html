@@ -56,6 +56,154 @@
       /*    color: red !important;*/
       /*}*/
     </style>
+
+    <!-- Curriculum accordion custom styling (scoped only to .curriculum-custom) -->
+    <style>
+      .courses__curriculum-wrap.curriculum-custom {
+        --cur-gold: #e6a200;
+        --cur-cream: #fff7e0;
+        --cur-border: #f1dba0;
+        --cur-navy: #0f1235;
+      }
+
+      /* Spacing between items */
+      .courses__curriculum-wrap.curriculum-custom .accordion {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      /* Item: border + radius */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item {
+        margin: 0 !important;
+        background: #fff !important;
+        border: 1px solid var(--cur-border) !important;
+        border-radius: 8px !important;
+        overflow: hidden;
+        box-shadow: none !important;
+      }
+
+      /* Heading button (collapsed) */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        width: 100%;
+        padding: 18px 24px;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.3;
+        text-align: left;
+        color: var(--cur-navy) !important;
+        background: var(--cur-cream) !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        transition: background 0.25s ease;
+      }
+
+      /* Heading button (expanded) */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:not(.collapsed) {
+        color: var(--cur-navy) !important;
+        background: var(--cur-gold) !important;
+      }
+
+      /* Hover (collapsed): same golden color as expanded */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button.collapsed:hover {
+        color: var(--cur-navy) !important;
+        background: var(--cur-gold) !important;
+      }
+
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:focus {
+        box-shadow: none !important;
+        outline: none;
+      }
+
+      /* Chevron arrow (right side) */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button::before {
+        display: none !important;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button::after {
+        content: "" !important;
+        position: static !important;
+        flex-shrink: 0;
+        width: 10px;
+        height: 10px;
+        margin-left: auto;
+        background: none !important;
+        border-right: 2px solid var(--cur-navy);
+        border-bottom: 2px solid var(--cur-navy);
+        transform: translateY(-3px) rotate(45deg) !important; /* down */
+        transition: transform 0.25s ease;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:not(.collapsed)::after {
+        transform: translateY(3px) rotate(-135deg) !important; /* up */
+      }
+
+      /* Expanded content area */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body {
+        padding: 20px 24px;
+        background: #fff;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body ul.list-wrap {
+        margin: 0;
+        padding-left: 20px;
+        list-style: disc !important;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body li.course-item {
+        list-style: disc !important;
+        margin: 0 0 6px;
+        padding: 0;
+        border: 0;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body li.course-item:last-child {
+        margin-bottom: 0;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body .course-item-link {
+        display: block;
+        padding: 0 !important;
+        color: var(--cur-navy);
+        background: transparent;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body .item-name {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.6;
+        color: var(--cur-navy);
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body .course-item-meta {
+        display: none;
+      }
+
+      /* Tablet */
+      @media (max-width: 991px) {
+        .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button {
+          padding: 16px 20px;
+          font-size: 17px;
+        }
+      }
+
+      /* Mobile */
+      @media (max-width: 575px) {
+        .courses__curriculum-wrap.curriculum-custom .accordion {
+          gap: 12px;
+        }
+        .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button {
+          padding: 14px 16px;
+          font-size: 16px;
+        }
+        .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body {
+          padding: 16px;
+        }
+        .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body .item-name {
+          font-size: 15px;
+        }
+      }
+    </style>
+    <style>
+      @import url("assets/css/course-sections.css");
+    </style>
   </head>
 
   <body>
@@ -275,7 +423,7 @@
           <div class="row">
             <div class="col-xl-9 col-lg-8">
               <div class="courses__details-thumb">
-                <img src="assets/img/course-det/phpwithoutfw.png" alt="img" />
+                <img src="assets/img/course-details/FULL PHP WITHOUT FRMAEWORK.png" alt="img" />
               </div>
               <div class="courses__details-content">
                 <ul class="courses__item-meta list-wrap">
@@ -400,7 +548,7 @@
                     aria-labelledby="curriculum-tab"
                     tabindex="0"
                   >
-                    <div class="courses__curriculum-wrap">
+                    <div class="courses__curriculum-wrap curriculum-custom">
                       <h3 class="title">Course Outline</h3>
                       <p>
                         Skilled.u's PHP without Framework course covers HTML,

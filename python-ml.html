@@ -56,6 +56,177 @@
       /*    color: red !important;*/
       /*}*/
     </style>
+
+    <!-- Curriculum accordion styles (scoped to .curriculum-custom only) -->
+    <style>
+      /* ===== Curriculum accordion (scoped ONLY to .curriculum-custom) ===== */
+      .courses__curriculum-wrap.curriculum-custom {
+        --cur-gold: #F0A900;
+        --cur-cream: #FFF8E8;
+        --cur-border: #F0DDB5;
+        --cur-navy: #171717;
+        --cur-body: #171717;
+      }
+
+      /* Spacing between items */
+      .courses__curriculum-wrap.curriculum-custom .accordion {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      /* Item: border + rounded corners */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item {
+        margin: 0 !important;
+        background: #fff !important;
+        border: 1px solid var(--cur-border) !important;
+        border-radius: 8px !important;
+        overflow: hidden;
+        box-shadow: none !important;
+      }
+
+      /* Heading button (collapsed / inactive) */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        width: 100%;
+        padding: 20px 24px;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.3;
+        text-align: left;
+        color: var(--cur-navy) !important;
+        background: var(--cur-cream) !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        transition: background 0.25s ease;
+      }
+
+      /* Heading button (expanded / active) */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:not(.collapsed) {
+        color: var(--cur-navy) !important;
+        background: var(--cur-gold) !important;
+      }
+
+      /* Hover (collapsed): same golden color as expanded */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button.collapsed:hover {
+        color: var(--cur-navy) !important;
+        background: var(--cur-gold) !important;
+      }
+
+      /* Hover / focus / active (expanded): stay golden, no blue */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:not(.collapsed):hover,
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:focus,
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:active {
+        color: var(--cur-navy) !important;
+        box-shadow: none !important;
+        outline: none;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:not(.collapsed):hover,
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:not(.collapsed):focus {
+        background: var(--cur-gold) !important;
+      }
+
+      /* Keyboard focus: visible dark outline (no blue) */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:focus-visible {
+        outline: 2px solid var(--cur-navy);
+        outline-offset: -2px;
+      }
+
+      /* Chevron (right side): down when collapsed, up when expanded */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button::before {
+        display: none !important;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button::after {
+        content: "" !important;
+        position: static !important;
+        flex-shrink: 0;
+        width: 10px;
+        height: 10px;
+        margin-left: auto;
+        background: none !important;
+        border-right: 2px solid var(--cur-navy);
+        border-bottom: 2px solid var(--cur-navy);
+        transform: translateY(-3px) rotate(45deg) !important; /* down */
+        transition: transform 0.25s ease;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:not(.collapsed)::after {
+        transform: translateY(3px) rotate(-135deg) !important; /* up */
+      }
+
+      /* Expanded content area */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body {
+        padding: 20px 24px;
+        background: #fff;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body ul.list-wrap,
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body ul.curriculum-list {
+        margin: 0;
+        padding-left: 20px;
+        list-style: disc !important;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body li.course-item,
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body ul.curriculum-list li {
+        display: list-item !important;
+        list-style: disc !important;
+        position: static;
+        margin: 0 0 6px;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.6;
+        color: var(--cur-body) !important;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body li.course-item:last-child,
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body ul.curriculum-list li:last-child {
+        margin-bottom: 0;
+      }
+      /* Remove any old custom dot so only the disc bullet shows */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body ul.curriculum-list li::before {
+        display: none !important;
+        content: none !important;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body .item-name {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.6;
+        color: var(--cur-body) !important;
+      }
+
+      /* Tablet */
+      @media (max-width: 991px) {
+        .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button {
+          padding: 18px 20px;
+          font-size: 17px;
+        }
+      }
+
+      /* Mobile */
+      @media (max-width: 575px) {
+        .courses__curriculum-wrap.curriculum-custom .accordion {
+          gap: 12px;
+        }
+        .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button {
+          padding: 14px 16px;
+          font-size: 16px;
+        }
+        .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body {
+          padding: 16px;
+        }
+        .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body .item-name,
+        .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-body ul.curriculum-list li {
+          font-size: 15px;
+        }
+      }
+    </style>
+    <style>
+      @import url("assets/css/course-sections.css");
+    </style>
   </head>
 
   <body>
@@ -275,7 +446,7 @@
           <div class="row">
             <div class="col-xl-9 col-lg-8">
               <div class="courses__details-thumb">
-                <img src="assets/img/course-det/python-with-ml.jpeg" alt="img" />
+                <img src="assets/img/course-details/full python ml and ds image.png" alt="img" />
               </div>
               <div class="courses__details-content">
                 <ul class="courses__item-meta list-wrap">
@@ -344,42 +515,69 @@
                     <div class="courses__overview-wrap">
                       <h3 class="title">Course Description</h3>
                       <p>
-                       Master Python Programming, Data Science, and Machine Learning with our industry-focused 2026 curriculum. Learn Python from scratch, analyze data using NumPy & Pandas, create visualizations with Matplotlib & Seaborn, build ML models with Scikit-learn, and explore Deep Learning using TensorFlow & Keras. Gain hands-on experience through real-world projects, practical assignments, and expert guidance to become job-ready for careers in Python Development, Data Analytics, Machine Learning, and AI.
+                        Master Python Programming, Data Science, Machine
+                        Learning, and Advanced AI with Skilled.U's
+                        industry-focused 2026 curriculum. Learn Python from
+                        scratch, analyze data using NumPy and Pandas, create
+                        visualizations with Matplotlib and Seaborn, build ML
+                        models with Scikit-learn, and explore Deep Learning
+                        using TensorFlow and Keras. Advance your skills in Web
+                        Integration, REST APIs, Generative AI, Large Language
+                        Models (LLMs), RAG, Vector Databases, and AI Agents.
+                        Gain hands-on experience through real-world projects,
+                        practical assignments, and deployment techniques to
+                        prepare for careers in Python Development, Data
+                        Analytics, Machine Learning, and AI Development.
                       </p>
-                      <h3 class="title">What you'll learn in this course?</h3>
+                      <p><strong>Course Level:</strong> Advanced Beginner to Intermediate</p>
+                      <h3 class="title">Start Building Modern Web Applications!</h3>
                       <p>
-                       Master Python, Data Science, and Machine Learning through an industry-focused curriculum. Learn data analysis with NumPy & Pandas, create visualizations using Matplotlib & Seaborn, build ML models with Scikit-learn, develop deep learning applications using TensorFlow & Keras, and gain hands-on experience through real-world projects, portfolio development, and deployment techniques.
+                        Strengthen your frontend skills and learn to create
+                        responsive, interactive web experiences with Skilled.U.
                       </p>
+                      <h3 class="title">What You'll Learn in This Course?</h3>
                       <ul class="about__info-list list-wrap">
                         <li class="about__info-list-item">
                           <i class="flaticon-angle-right"></i>
-                          <p class="content">NumPy + Pandas</p>
+                          <p class="content"><strong>Python</strong> — Programming Fundamentals</p>
                         </li>
                         <li class="about__info-list-item">
                           <i class="flaticon-angle-right"></i>
-                          <p class="content">Matplotlib + Seaborn</p>
+                          <p class="content"><strong>NumPy &amp; Pandas</strong> — Data Analysis</p>
                         </li>
                         <li class="about__info-list-item">
                           <i class="flaticon-angle-right"></i>
-                          <p class="content">Scikit Learn</p>
+                          <p class="content"><strong>Matplotlib &amp; Seaborn</strong> — Data Visualization</p>
                         </li>
                         <li class="about__info-list-item">
                           <i class="flaticon-angle-right"></i>
-                          <p class="content">TensorFlow + Keras</p>
+                          <p class="content"><strong>Scikit-learn</strong> — Machine Learning</p>
                         </li>
                         <li class="about__info-list-item">
                           <i class="flaticon-angle-right"></i>
-                          <p class="content">ML & Data Analytics</p>
+                          <p class="content"><strong>TensorFlow &amp; Keras</strong> — Deep Learning</p>
+                        </li>
+                        <li class="about__info-list-item">
+                          <i class="flaticon-angle-right"></i>
+                          <p class="content"><strong>Web Integration</strong> — HTML, CSS, JavaScript, REST APIs &amp; JSON</p>
+                        </li>
+                        <li class="about__info-list-item">
+                          <i class="flaticon-angle-right"></i>
+                          <p class="content"><strong>Django</strong> — Python Web Development</p>
+                        </li>
+                        <li class="about__info-list-item">
+                          <i class="flaticon-angle-right"></i>
+                          <p class="content"><strong>LangChain &amp; LangFlow</strong> — AI Workflow Development</p>
+                        </li>
+                        <li class="about__info-list-item">
+                          <i class="flaticon-angle-right"></i>
+                          <p class="content"><strong>Vector Databases &amp; RAG</strong> — Document-Based AI Applications</p>
+                        </li>
+                        <li class="about__info-list-item">
+                          <i class="flaticon-angle-right"></i>
+                          <p class="content"><strong>MCP &amp; AI Agents</strong> — Tool Integration and Automation</p>
                         </li>
                       </ul>
-                      <p class="last-info">
-                        By completing this course, gain expertise in Python for
-                        ML: utilize NumPy, Pandas for data manipulation,
-                        Matplotlib, Seaborn for visualization, Scikit-learn for
-                        algorithms, and TensorFlow, Keras for deep learning.
-                        Develop skills to tackle real-world data challenges
-                        effectively.
-                      </p>
                     </div>
                   </div>
                   <div
@@ -389,451 +587,240 @@
                     aria-labelledby="curriculum-tab"
                     tabindex="0"
                   >
-                    <div class="courses__curriculum-wrap">
-                      <h3 class="title">Course Outline</h3>
+                    <div class="courses__curriculum-wrap curriculum-custom">
+                      <h3 class="title">Course Curriculum</h3>
                       <p>
-                       This Python Data Science & AI Course at Skilled.U offers a comprehensive learning path from Python programming to Data Science, Machine Learning, and Deep Learning. Through hands-on projects, real-world datasets, and industry-standard tools, you'll gain the practical skills needed to build intelligent applications and launch a successful career in Python, Data Science, and AI.
+                        Follow a structured learning path from Python
+                        fundamentals to advanced AI development. Build
+                        practical skills in Machine Learning, Generative AI,
+                        RAG, and AI Agents through hands-on projects.
                       </p>
-                      <div class="accordion" id="accordionExample">
+                      <div class="accordion" id="curriculumAccordion">
+
                         <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingOne">
-                            <button
-                              class="accordion-button"
-                              type="button"
-                              data-bs-toggle="collapse"
-                              data-bs-target="#collapseOne"
-                              aria-expanded="true"
-                              aria-controls="collapseOne"
-                            >
-                              Introduction to Python for Machine Learning
-                            </button>
-                          </h2>
-                          <div
-                            id="collapseOne"
-                            class="accordion-collapse collapse show"
-                            aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample"
-                          >
-                            <div class="accordion-body">
-                              <ul class="list-wrap">
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Overview of Python programming
-                                      basics</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Introduction to Python libraries for data
-                                      science (NumPy, Pandas)</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Hands-on exercises in data manipulation
-                                      with NumPy and Pandas</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Practical examples of Python syntax and
-                                      coding best practices</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingTwo">
+                          <h2 class="accordion-header" id="curriculumHeading1">
                             <button
                               class="accordion-button collapsed"
                               type="button"
                               data-bs-toggle="collapse"
-                              data-bs-target="#collapseTwo"
+                              data-bs-target="#curriculumCollapse1"
                               aria-expanded="false"
-                              aria-controls="collapseTwo"
+                              aria-controls="curriculumCollapse1"
                             >
-                              Data Visualization with Matplotlib and Seaborn
+                              1. Introduction to Python &amp; Data Analysis
                             </button>
                           </h2>
                           <div
-                            id="collapseTwo"
+                            id="curriculumCollapse1"
                             class="accordion-collapse collapse"
-                            aria-labelledby="headingTwo"
-                            data-bs-parent="#accordionExample"
+                            aria-labelledby="curriculumHeading1"
+                            data-bs-parent="#curriculumAccordion"
                           >
                             <div class="accordion-body">
-                              <ul class="list-wrap">
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Understanding data visualization
-                                      principles</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Creating plots, charts, and graphs using
-                                      Matplotlib</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Enhancing visualizations with Seaborn's
-                                      statistical graphics</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Case studies and real-world applications
-                                      of data visualization</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
+                              <ul class="curriculum-list">
+                                <li>Learn Python fundamentals, data types, functions, and control statements.</li>
+                                <li>Explore NumPy and Pandas for data manipulation and analysis.</li>
                               </ul>
                             </div>
                           </div>
                         </div>
+
                         <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingThree">
+                          <h2 class="accordion-header" id="curriculumHeading2">
                             <button
                               class="accordion-button collapsed"
                               type="button"
                               data-bs-toggle="collapse"
-                              data-bs-target="#collapseThree"
+                              data-bs-target="#curriculumCollapse2"
                               aria-expanded="false"
-                              aria-controls="collapseThree"
+                              aria-controls="curriculumCollapse2"
                             >
-                              Machine Learning Algorithms with Scikit-learn
+                              2. Data Visualization &amp; Machine Learning
                             </button>
                           </h2>
                           <div
-                            id="collapseThree"
+                            id="curriculumCollapse2"
                             class="accordion-collapse collapse"
-                            aria-labelledby="headingThree"
-                            data-bs-parent="#accordionExample"
+                            aria-labelledby="curriculumHeading2"
+                            data-bs-parent="#curriculumAccordion"
                           >
                             <div class="accordion-body">
-                              <ul class="list-wrap">
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Introduction to machine learning concepts
-                                      and terminology</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Overview of supervised and unsupervised
-                                      learning algorithms</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Implementing classification and
-                                      regression algorithms in
-                                      Scikit-learn</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Anomaly detection basics</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
+                              <ul class="curriculum-list">
+                                <li>Create charts and visualizations using Matplotlib and Seaborn.</li>
+                                <li>Build predictive models using Scikit-learn and Machine Learning algorithms.</li>
                               </ul>
                             </div>
                           </div>
                         </div>
+
                         <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingFour">
+                          <h2 class="accordion-header" id="curriculumHeading3">
                             <button
                               class="accordion-button collapsed"
                               type="button"
                               data-bs-toggle="collapse"
-                              data-bs-target="#collapseFour"
+                              data-bs-target="#curriculumCollapse3"
                               aria-expanded="false"
-                              aria-controls="collapseThree"
+                              aria-controls="curriculumCollapse3"
                             >
-                              Deep Learning with TensorFlow and Keras
+                              3. Deep Learning with TensorFlow and Keras
                             </button>
                           </h2>
                           <div
-                            id="collapseFour"
+                            id="curriculumCollapse3"
                             class="accordion-collapse collapse"
-                            aria-labelledby="headingFour"
-                            data-bs-parent="#accordionExample"
+                            aria-labelledby="curriculumHeading3"
+                            data-bs-parent="#curriculumAccordion"
                           >
                             <div class="accordion-body">
-                              <ul class="list-wrap">
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Introduction to Deep Learning</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Building Convolutional Neural Networks
-                                      (CNNs)</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Recurrent Neural Networks (RNNs) for
-                                      Sequence Data</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Project: Deep Learning Applications</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
+                              <ul class="curriculum-list">
+                                <li>Understand neural networks and Deep Learning concepts.</li>
+                                <li>Build and train Deep Learning models using TensorFlow and Keras.</li>
                               </ul>
                             </div>
                           </div>
                         </div>
+
                         <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingFive">
+                          <h2 class="accordion-header" id="curriculumHeading4">
                             <button
                               class="accordion-button collapsed"
                               type="button"
                               data-bs-toggle="collapse"
-                              data-bs-target="#collapseFive"
+                              data-bs-target="#curriculumCollapse4"
                               aria-expanded="false"
-                              aria-controls="collapseFive"
+                              aria-controls="curriculumCollapse4"
                             >
-                              Django and Deployment
+                              4. Web Integration &amp; REST APIs
                             </button>
                           </h2>
                           <div
-                            id="collapseFive"
+                            id="curriculumCollapse4"
                             class="accordion-collapse collapse"
-                            aria-labelledby="headingFive"
-                            data-bs-parent="#accordionExample"
+                            aria-labelledby="curriculumHeading4"
+                            data-bs-parent="#curriculumAccordion"
                           >
                             <div class="accordion-body">
-                              <ul class="list-wrap">
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Django Fundamentals
-                                    </span>
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Django Advanced Concepts
-                                    </span>
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Deployment Basics
-                                    </span>
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1">
-                                      Capstone Django Project</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">10:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
+                              <ul class="curriculum-list">
+                                <li>Learn how REST APIs and JSON enable communication between applications.</li>
+                                <li>Integrate AI models with web applications using frontend technologies.</li>
                               </ul>
                             </div>
                           </div>
                         </div>
+
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="curriculumHeading5">
+                            <button
+                              class="accordion-button collapsed"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#curriculumCollapse5"
+                              aria-expanded="false"
+                              aria-controls="curriculumCollapse5"
+                            >
+                              5. Generative AI &amp; Large Language Models
+                            </button>
+                          </h2>
+                          <div
+                            id="curriculumCollapse5"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="curriculumHeading5"
+                            data-bs-parent="#curriculumAccordion"
+                          >
+                            <div class="accordion-body">
+                              <ul class="curriculum-list">
+                                <li>Understand Generative AI, LLMs, and prompt engineering.</li>
+                                <li>Develop AI-powered applications using Large Language Models.</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="curriculumHeading6">
+                            <button
+                              class="accordion-button collapsed"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#curriculumCollapse6"
+                              aria-expanded="false"
+                              aria-controls="curriculumCollapse6"
+                            >
+                              6. RAG &amp; Vector Databases
+                            </button>
+                          </h2>
+                          <div
+                            id="curriculumCollapse6"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="curriculumHeading6"
+                            data-bs-parent="#curriculumAccordion"
+                          >
+                            <div class="accordion-body">
+                              <ul class="curriculum-list">
+                                <li>Understand Retrieval-Augmented Generation (RAG) and vector database concepts.</li>
+                                <li>Build document-based AI applications that retrieve relevant information.</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="curriculumHeading7">
+                            <button
+                              class="accordion-button collapsed"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#curriculumCollapse7"
+                              aria-expanded="false"
+                              aria-controls="curriculumCollapse7"
+                            >
+                              7. AI Agents &amp; Tool Integration
+                            </button>
+                          </h2>
+                          <div
+                            id="curriculumCollapse7"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="curriculumHeading7"
+                            data-bs-parent="#curriculumAccordion"
+                          >
+                            <div class="accordion-body">
+                              <ul class="curriculum-list">
+                                <li>Learn how AI agents use tools to perform tasks and automate workflows.</li>
+                                <li>Explore LangChain, LangFlow, and Model Context Protocol (MCP).</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="curriculumHeading8">
+                            <button
+                              class="accordion-button collapsed"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#curriculumCollapse8"
+                              aria-expanded="false"
+                              aria-controls="curriculumCollapse8"
+                            >
+                              8. Django, Deployment &amp; Portfolio Projects
+                            </button>
+                          </h2>
+                          <div
+                            id="curriculumCollapse8"
+                            class="accordion-collapse collapse"
+                            aria-labelledby="curriculumHeading8"
+                            data-bs-parent="#curriculumAccordion"
+                          >
+                            <div class="accordion-body">
+                              <ul class="curriculum-list">
+                                <li>Learn Django fundamentals and application deployment.</li>
+                                <li>Build practical projects and create a portfolio to showcase your skills.</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
                       </div>
                     </div>
                   </div>

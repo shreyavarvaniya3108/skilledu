@@ -47,6 +47,186 @@
 
     </style>
 
+    <!-- Curriculum accordion styles (CSS updated only; course content unchanged) -->
+    <style>
+/* =====================================================================
+           CURRICULUM DROPDOWNS (NEW) - every rule is scoped to
+           #curriculum-tab-pane .accordion so nothing else on the
+           site is affected.
+           ===================================================================== */
+        #curriculum-tab-pane .accordion {
+            margin-top: 20px;
+        }
+
+        /* Card for each dropdown */
+        #curriculum-tab-pane .accordion .accordion-item {
+            background-color: #ffffff;
+            border: 1px solid #eadfbf;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 14px;
+        }
+
+        #curriculum-tab-pane .accordion .accordion-header {
+            margin: 0;
+        }
+
+        /* Clickable heading */
+        #curriculum-tab-pane .accordion .accordion-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.4;
+            text-align: left;
+            color: #292929;
+            background-color: #fff8e6;
+            border: 0;
+            border-radius: 0;
+            box-shadow: none;
+            outline: 0;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            transition: background-color .25s ease, color .25s ease;
+        }
+
+        /* Chevron arrow (replaces any +/- or default Bootstrap icon) */
+        #curriculum-tab-pane .accordion .accordion-button::after {
+            content: "";
+            flex-shrink: 0;
+            width: 10px;
+            height: 10px;
+            margin-left: 16px;
+            margin-top: -5px;
+            background-image: none !important;
+            border-right: 2px solid currentColor;
+            border-bottom: 2px solid currentColor;
+            transform: rotate(45deg) !important;
+            transition: transform .25s ease, margin .25s ease;
+        }
+
+        /* Hover */
+        #curriculum-tab-pane .accordion .accordion-button:hover {
+            color: #222222;
+            background-color: #e6a200;
+        }
+
+        /* Expanded (open) state: arrow points up */
+        #curriculum-tab-pane .accordion .accordion-button:not(.collapsed) {
+            color: #222222;
+            background-color: #e6a200;
+            box-shadow: none;
+        }
+
+        #curriculum-tab-pane .accordion .accordion-button:not(.collapsed)::after {
+            margin-top: 5px;
+            transform: rotate(-135deg) !important;
+        }
+
+        /* Hover while open */
+        #curriculum-tab-pane .accordion .accordion-button:not(.collapsed):hover {
+            color: #222222;
+            background-color: #d99700;
+        }
+
+        /* Focus / pressed: no blue ring or border */
+        #curriculum-tab-pane .accordion .accordion-button:focus,
+        #curriculum-tab-pane .accordion .accordion-button:active {
+            color: #222222;
+            border-color: transparent;
+            box-shadow: none;
+            outline: 0;
+        }
+
+        /* Keyboard focus indicator */
+        #curriculum-tab-pane .accordion .accordion-button:focus-visible {
+            box-shadow: inset 0 0 0 3px #7a5600;
+        }
+
+        /* Content area */
+        #curriculum-tab-pane .accordion .accordion-body {
+            padding: 18px 20px;
+            background-color: #ffffff;
+        }
+
+        #curriculum-tab-pane .accordion .accordion-body ul {
+            margin-bottom: 0;
+        }
+
+        /* ---------------------------------------------------------------------
+           FIX: remove the theme's BLUE text / light-blue background on the
+           curriculum list items (.course-item-link / .item-name).
+           --------------------------------------------------------------------- */
+        #curriculum-tab-pane .accordion .accordion-body .course-item-link,
+        #curriculum-tab-pane .accordion .accordion-body .course-item-link:link,
+        #curriculum-tab-pane .accordion .accordion-body .course-item-link:visited {
+            color: #292929 !important;
+            background-color: #fffcf2 !important;
+            text-decoration: none;
+        }
+
+        #curriculum-tab-pane .accordion .accordion-body .course-item-link .item-name {
+            color: #292929 !important;
+        }
+
+        /* Hover / focus / pressed on list items: warm cream, dark readable text */
+        #curriculum-tab-pane .accordion .accordion-body .course-item-link:hover,
+        #curriculum-tab-pane .accordion .accordion-body .course-item-link:focus,
+        #curriculum-tab-pane .accordion .accordion-body .course-item-link:active {
+            color: #222222 !important;
+            background-color: #fff8e6 !important;
+            outline: 0;
+            box-shadow: none;
+        }
+
+        #curriculum-tab-pane .accordion .accordion-body .course-item-link:hover .item-name,
+        #curriculum-tab-pane .accordion .accordion-body .course-item-link:focus .item-name,
+        #curriculum-tab-pane .accordion .accordion-body .course-item-link:active .item-name {
+            color: #222222 !important;
+        }
+
+        /* Keyboard focus indicator on list items */
+        #curriculum-tab-pane .accordion .accordion-body .course-item-link:focus-visible {
+            outline: 2px solid #7a5600;
+            outline-offset: -2px;
+        }
+
+        /* Mobile */
+        @media (max-width: 575px) {
+            #curriculum-tab-pane .accordion .accordion-button {
+                padding: 14px 16px;
+                font-size: 16px;
+            }
+
+            #curriculum-tab-pane .accordion .accordion-body {
+                padding: 14px 16px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            #curriculum-tab-pane .accordion .accordion-button,
+            #curriculum-tab-pane .accordion .accordion-button::after {
+                transition: none;
+            }
+        }
+        /* ============================ END CURRICULUM CSS ==================== */
+
+        /* =====================================================================
+           SIDEBAR (UPDATED) - scoped to the course sidebar only
+           Layout: image -> blue box -> Course includes -> share -> buttons
+           ===================================================================== */
+
+        /* Top image */
+        
+    </style>
+
+<style>
+  @import url("assets/css/course-sections.css");
+</style>
 </head>
 
 <body>
@@ -243,7 +423,7 @@
                 <div class="row">
                     <div class="col-xl-9 col-lg-8">
                         <div class="courses__details-thumb">
-                            <img src="assets/img/course-det/frontend adva.jpg" alt="img">
+                            <img src="assets/img/course-details/full frontend advance image.png" alt="img">
                         </div>
                         <div class="courses__details-content">
                             <ul class="courses__item-meta list-wrap">
@@ -276,114 +456,54 @@
                                 </li> -->
                             </ul>
                             <div class="tab-content" id="myTabContent">
+                                <!-- ========== OVERVIEW (updated content) ========== -->
                                 <div class="tab-pane fade show active" id="overview-tab-pane" role="tabpanel" aria-labelledby="overview-tab" tabindex="0">
                                     <div class="courses__overview-wrap">
                                         <h3 class="title">Course Description</h3>
-                                        <p>"Frontend Advance" enhances your frontend development skills covering HTML, CSS
-                                             and JavaScript for web pages, Bootstrap and Tailwind for responsive design, jQuery 
-                                             and Fetch API for data handling, React JS for dynamic interfaces and advanced DOM 
-                                             manipulation. Theoretical lessons and practical projects prepare students to develop
-                                              high-performance web applications.
-                                            </p>
-                                        <h3 class="title">What you'll learn in this course?</h3>
-                                        <p>In the "Frontend Advance" course you'll master HTML, CSS and JavaScript for advanced web page 
-                                            creation and styling. Learn responsive design with Bootstrap and Tailwind, efficient data handling
-                                             with jQuery and Fetch API, build dynamic interfaces with React JS and enhance web pages using
-                                              advanced DOM manipulation techniques.</p>
+                                        <p>The Frontend Advance course by Skilled.U helps learners strengthen web development skills using HTML, CSS, JavaScript, Bootstrap, Tailwind CSS, jQuery, Fetch API, and React JS. Learn to build responsive layouts, work with API data, and create dynamic user interfaces through practical exercises and projects.</p>
+                                        <h3 class="title">What You'll Learn in This Course?</h3>
                                         <ul class="about__info-list list-wrap">
                                             <li class="about__info-list-item">
                                                 <i class="flaticon-angle-right"></i>
-                                                <p class="content">HTML + CSS + JS</p>
+                                                <p class="content">HTML + CSS + JavaScript – Advanced Web Development Fundamentals</p>
                                             </li>
                                             <li class="about__info-list-item">
                                                 <i class="flaticon-angle-right"></i>
-                                                <p class="content">Bootstrap + Tailwind</p>
+                                                <p class="content">Bootstrap + Tailwind CSS – Responsive UI Design</p>
                                             </li>
                                             <li class="about__info-list-item">
                                                 <i class="flaticon-angle-right"></i>
-                                                <p class="content">JQuery + Fetch API</p>
+                                                <p class="content">jQuery + Fetch API – Data Handling and API Integration</p>
                                             </li>
                                             <li class="about__info-list-item">
                                                 <i class="flaticon-angle-right"></i>
-                                                <p class="content">React JS</p>
+                                                <p class="content">React JS – Dynamic User Interface Development</p>
                                             </li>
                                             <li class="about__info-list-item">
                                                 <i class="flaticon-angle-right"></i>
-                                                <p class="content">DOM</p>
+                                                <p class="content">DOM Manipulation – Interactive Web Page Functionality</p>
                                             </li>
                                         </ul>
-                                        <p class="last-info">By mastering these skills, you'll be prepared to create sophisticated,
-                                             high-performance web applications, ready for advanced roles in web development and equipped 
-                                             for continued learning in cutting-edge frontend technologies.</p>
                                     </div>
                                 </div>
+                                <!-- ========== CURRICULUM (updated content + accordion) ========== -->
                                 <div class="tab-pane fade" id="curriculum-tab-pane" role="tabpanel" aria-labelledby="curriculum-tab" tabindex="0">
                                     <div class="courses__curriculum-wrap">
-                                        <h3 class="title">Course Outline</h3>
-                                        <p>This course covers covers HTML, CSS, JavaScript, Bootstrap, Tailwind, jQuery, Fetch API, React JS
-                                             and advanced DOM manipulation through practical projects.</p>
+                                        <h3 class="title">Course Curriculum</h3>
+                                        <p>This curriculum follows a structured learning path covering advanced web design, API integration, React JS, and DOM manipulation. Each module includes practical exercises to help you apply concepts and build real-world frontend projects.</p>
                                         <div class="accordion" id="accordionExample">
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingOne">
-                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"  aria-expanded="true" aria-controls="collapseOne">
-                                                        HTML, CSS and JavaScript
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                        Module 1: HTML, CSS and JavaScript
                                                     </button>
                                                 </h2>
-                                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <ul class="list-wrap">
-                                                            <li class="course-item open-item">
-                                                                <a href="https://www.youtube.com/watch?v=b2Az7_lLh3g" class="course-item-link popup-video">
-                                                                    <span class="item-name item-name1">Advanced HTML structuring</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">03:03</span> -->
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Complex CSS styling techniques</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">07:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Responsive web design principles</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">JavaScript for dynamic content</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Advanced scripting for enhanced functionality</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
+                                                        <ul class="cur-list">
+                                                            <li>Build structured web pages using HTML and semantic elements.</li>
+                                                            <li>Create advanced layouts and styling with CSS.</li>
+                                                            <li>Use JavaScript functions, events, and modern language features.</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -391,67 +511,15 @@
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingTwo">
                                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                        Responsive Design with Bootstrap and Tailwind
+                                                        Module 2: Responsive Design with Bootstrap and Tailwind
                                                     </button>
                                                 </h2>
                                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <ul class="list-wrap">
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Setting up and integrating Bootstrap</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">07:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Building responsive layouts with Bootstrap's grid system</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">07:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Customizing Bootstrap components</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Utilizing Tailwind CSS for utility-first design</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Optimizing layouts for various devices</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
+                                                        <ul class="cur-list">
+                                                            <li>Build responsive layouts using Bootstrap's grid system.</li>
+                                                            <li>Style web interfaces using Tailwind CSS utility classes.</li>
+                                                            <li>Create mobile-friendly designs for different screen sizes.</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -459,137 +527,31 @@
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingThree">
                                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                        Efficient Data Handling with jQuery and Fetch API
+                                                        Module 3: Efficient Data Handling with jQuery and Fetch API
                                                     </button>
                                                 </h2>
-                                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                                                    data-bs-parent="#accordionExample">
+                                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <ul class="list-wrap">
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">DOM manipulation with jQuery</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">07:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Making AJAX calls with jQuery</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">07:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Fetching data with Fetch API</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Handling asynchronous operations</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Integrating data into web pages</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
+                                                        <ul class="cur-list">
+                                                            <li>Use jQuery to simplify DOM interactions and event handling.</li>
+                                                            <li>Fetch data from REST APIs using the Fetch API.</li>
+                                                            <li>Handle JSON responses and display dynamic data on web pages.</li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingFour">
-                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-                                                        React JS for Dynamic User Interfaces
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                        Module 4: React JS for Dynamic User Interfaces
                                                     </button>
                                                 </h2>
-                                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                                                    data-bs-parent="#accordionExample">
+                                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <ul class="list-wrap">
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Understanding React components</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">07:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Using hooks for state management</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">07:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Building dynamic, state-driven applications</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Handling events in React</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Managing component lifecycle</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
+                                                        <ul class="cur-list">
+                                                            <li>Understand React components, JSX, props, and state.</li>
+                                                            <li>Build reusable UI components and interactive pages.</li>
+                                                            <li>Handle user interactions and render dynamic content.</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -597,68 +559,15 @@
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingFive">
                                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                                        Advanced DOM Manipulation
+                                                        Module 5: Advanced DOM Manipulation
                                                     </button>
                                                 </h2>
-                                                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
-                                                    data-bs-parent="#accordionExample">
+                                                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <ul class="list-wrap">
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Selecting and modifying DOM elements</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">07:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Handling events efficiently</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">07:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Implementing complex DOM manipulation techniques</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Enhancing user interaction</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Debugging and optimizing DOM operations</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
+                                                        <ul class="cur-list">
+                                                            <li>Select and update HTML elements dynamically using JavaScript.</li>
+                                                            <li>Handle events to create interactive web experiences.</li>
+                                                            <li>Modify page content and styles based on user actions.</li>
                                                         </ul>
                                                     </div>
                                                 </div>

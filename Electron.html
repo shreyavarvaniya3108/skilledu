@@ -47,6 +47,161 @@
 
     </style>
 
+    <!-- Curriculum accordion styles (scoped to #curriculum-tab-pane only) -->
+    <style>
+        #curriculum-tab-pane {
+            --cur-gold: #FFB900;        /* active heading */
+            --cur-gold-soft: #FFE3A0;   /* collapsed hover (subtle golden) */
+            --cur-cream: #FFF8E6;       /* collapsed background */
+            --cur-border: #EADFBF;      /* light golden border */
+            --cur-text: #171717;        /* dark text */
+            --cur-chevron: #B8860B;     /* chevron (collapsed) */
+        }
+
+        /* Heading + intro paragraph spacing */
+        #curriculum-tab-pane .courses__curriculum-wrap > .title:first-child {
+            margin-bottom: 12px;
+        }
+        #curriculum-tab-pane .courses__curriculum-wrap > p {
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        /* Each module = rounded card with golden border */
+        #curriculum-tab-pane .accordion-item {
+            background: var(--cur-cream);
+            border: 1px solid var(--cur-border) !important;
+            border-radius: 10px !important;
+            margin-bottom: 16px;
+            overflow: hidden;
+            box-shadow: none;
+        }
+
+        #curriculum-tab-pane .accordion-header {
+            margin: 0;
+        }
+
+        /* Module title (collapsed) */
+        #curriculum-tab-pane .accordion-button {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            gap: 12px;
+            padding: 18px 22px;
+            text-align: left;
+            font-weight: 700;
+            line-height: 1.4;
+            color: var(--cur-text) !important;
+            background-color: var(--cur-cream) !important;
+            border: 0 !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            transition: background-color .3s ease, color .3s ease;
+        }
+
+        /* Hover (collapsed): subtle golden, no blue */
+        #curriculum-tab-pane .accordion-button.collapsed:hover {
+            background-color: var(--cur-gold-soft) !important;
+            color: var(--cur-text) !important;
+        }
+
+        /* Expanded: golden heading (also on hover) */
+        #curriculum-tab-pane .accordion-button:not(.collapsed),
+        #curriculum-tab-pane .accordion-button:not(.collapsed):hover,
+        #curriculum-tab-pane .accordion-button:not(.collapsed):focus {
+            background-color: var(--cur-gold) !important;
+            color: var(--cur-text) !important;
+            box-shadow: none !important;
+        }
+
+        /* Focus / pressed: no blue ring */
+        #curriculum-tab-pane .accordion-button:focus,
+        #curriculum-tab-pane .accordion-button:active {
+            border-color: transparent !important;
+            box-shadow: none !important;
+        }
+
+        /* Keyboard focus in golden accent */
+        #curriculum-tab-pane .accordion-button:focus-visible {
+            outline: 3px solid #B8860B;
+            outline-offset: -3px;
+        }
+
+        /* Chevron: down (closed) -> up (open), right aligned */
+        #curriculum-tab-pane .accordion-button::before {
+            content: none !important;
+        }
+        #curriculum-tab-pane .accordion-button::after {
+            content: "" !important;
+            background-image: none !important;
+            flex-shrink: 0;
+            width: 10px;
+            height: 10px;
+            margin-left: auto;
+            margin-top: -5px;
+            border-right: 2px solid var(--cur-chevron);
+            border-bottom: 2px solid var(--cur-chevron);
+            transform: rotate(45deg);
+            transition: transform .3s ease, margin .3s ease, border-color .3s ease;
+        }
+        #curriculum-tab-pane .accordion-button:not(.collapsed)::after {
+            transform: rotate(-135deg);
+            margin-top: 5px;
+            border-color: var(--cur-text);
+            background-image: none !important;
+        }
+
+        /* Expanded content area: white */
+        #curriculum-tab-pane .accordion-collapse {
+            background: #FFFFFF;
+        }
+        #curriculum-tab-pane .accordion-body {
+            background: #FFFFFF;
+            padding: 18px 24px;
+        }
+        #curriculum-tab-pane .cur-list {
+            list-style: disc;
+            margin: 0;
+            padding-left: 24px;
+            color: var(--cur-text);
+        }
+        #curriculum-tab-pane .cur-list li {
+            line-height: 1.7;
+            margin-bottom: 6px;
+            overflow-wrap: anywhere;
+        }
+        #curriculum-tab-pane .cur-list li:last-child {
+            margin-bottom: 0;
+        }
+        #curriculum-tab-pane .cur-list li::marker {
+            color: var(--cur-chevron);
+        }
+
+        /* Tablet / Mobile */
+        @media (max-width: 767px) {
+            #curriculum-tab-pane .accordion-button {
+                padding: 15px 16px;
+                font-size: 16px;
+            }
+            #curriculum-tab-pane .accordion-body {
+                padding: 14px 16px;
+            }
+            #curriculum-tab-pane .accordion-item {
+                margin-bottom: 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #curriculum-tab-pane .accordion-button,
+            #curriculum-tab-pane .accordion-button::after {
+                transition: none;
+            }
+        }
+    </style>
+
+<style>
+  @import url("assets/css/course-sections.css");
+</style>
 </head>
 
 <body>
@@ -243,7 +398,7 @@
                 <div class="row">
                     <div class="col-xl-9 col-lg-8">
                         <div class="courses__details-thumb">
-                            <img src="assets/img/course-det/electron.jpg" alt="img">
+                            <img src="assets/img/course-details/full electron image.png" alt="img">
                         </div>
                         <div class="courses__details-content">
                             <ul class="courses__item-meta list-wrap">
@@ -274,116 +429,62 @@
                                 
                             </ul>
                             <div class="tab-content" id="myTabContent">
+                                <!-- ========== OVERVIEW (updated content) ========== -->
                                 <div class="tab-pane fade show active" id="overview-tab-pane" role="tabpanel" aria-labelledby="overview-tab" tabindex="0">
                                     <div class="courses__overview-wrap">
                                         <h3 class="title">Course Description</h3>
-                                        <p>Unlock the power of modern desktop application development with Skilled.u's 
-                                            Electron Development course. Learn to create cross-platform desktop applications using web technologies.
-                                             Dive into HTML, CSS, JavaScript, Bootstrap and jQuery for responsive design. Master Node.js for backend 
-                                             development and manage databases with SQLite and NeDB. Gain proficiency in WebSockets for real-time 
-                                             communication within your applications.
-                                            </p>
-                                        <h3 class="title">What you'll learn in this course?</h3>
-                                        <p>
-                                            In the Electron Development course at Skilled.u, you will master the essentials of modern desktop application development. Learn HTML, CSS and JavaScript to create dynamic web pages
-                                             and use Bootstrap and jQuery for responsive designs. Dive into Node.js for backend development 
-                                             and explore database management with SQLite and NeDB. Gain proficiency in WebSockets for real-time 
-                                             communication and focus on the Electron framework to build cross-platform desktop applications.
-                                              Engage in hands-on projects to apply your skills to real-world scenarios, preparing you to create
-                                               robust and dynamic applications.</p>
+                                        <p>Build modern cross-platform desktop applications with Skilled.U’s Electron Development course. Learn HTML, CSS, JavaScript, Bootstrap, jQuery, Node.js, SQLite, NeDB, WebSockets, and TypeScript to create desktop applications for Windows, macOS, and Linux. Gain practical experience in application development, database integration, and real-time communication using Electron.</p>
+                                        <h3 class="title">What You’ll Learn in This Course?</h3>
                                         <ul class="about__info-list list-wrap">
                                             <li class="about__info-list-item">
                                                 <i class="flaticon-angle-right"></i>
-                                                <p class="content">HTML + CSS + JS</p>
+                                                <p class="content">HTML, CSS &amp; JavaScript — Build interactive interfaces.</p>
                                             </li>
                                             <li class="about__info-list-item">
                                                 <i class="flaticon-angle-right"></i>
-                                                <p class="content">Bootstrap + JQuery</p>
+                                                <p class="content">Bootstrap &amp; jQuery — Create responsive designs.</p>
                                             </li>
                                             <li class="about__info-list-item">
                                                 <i class="flaticon-angle-right"></i>
-                                                <p class="content">Node.js (Backend Adv.)</p>
+                                                <p class="content">Node.js — Develop backend functionality.</p>
                                             </li>
                                             <li class="about__info-list-item">
                                                 <i class="flaticon-angle-right"></i>
-                                                <p class="content">DB : SQLITE, NEDB</p>
+                                                <p class="content">SQLite &amp; NeDB — Manage application data.</p>
                                             </li>
                                             <li class="about__info-list-item">
                                                 <i class="flaticon-angle-right"></i>
-                                                <p class="content">WebSocket</p>
+                                                <p class="content">WebSockets — Enable real-time communication.</p>
+                                            </li>
+                                            <li class="about__info-list-item">
+                                                <i class="flaticon-angle-right"></i>
+                                                <p class="content">TypeScript — Write structured, maintainable code.</p>
+                                            </li>
+                                            <li class="about__info-list-item">
+                                                <i class="flaticon-angle-right"></i>
+                                                <p class="content">Electron — Build cross-platform desktop applications.</p>
                                             </li>
                                         </ul>
-                                        <p class="last-info">By the end of this course at Skilled.u, you will 
-                                            have gained comprehensive skills in modern desktop application development.
-                                             You will be proficient in HTML, CSS, and JavaScript for creating dynamic web pages and 
-                                             responsive designs using Bootstrap and jQuery. Additionally, you will have mastered
-                                              backend development with Node.js and learned database management with SQLite and NeDB.
-                                               You will also be adept at using WebSockets for real-time communication and will have
-                                                practical experience building cross-platform desktop applications with the Electron
-                                                 framework.</p>
                                     </div>
                                 </div>
+                                <!-- ========== CURRICULUM (updated content + 7 accordion modules) ========== -->
                                 <div class="tab-pane fade" id="curriculum-tab-pane" role="tabpanel" aria-labelledby="curriculum-tab" tabindex="0">
                                     <div class="courses__curriculum-wrap">
-                                        <h3 class="title">Course Outline</h3>
-                                        <p>
-                                            The Electron Development course at Skilled.u covers HTML, CSS, and JavaScript fundamentals 
-                                            for web development. It delves into advanced topics like responsive design with Bootstrap and jQuery.
-                                             Participants learn backend development using Node.js, database management with SQLite and NeDB, 
-                                             and real-time communication via WebSockets, culminating in creating cross-platform desktop 
-                                             applications with Electron.</p>
+                                        <h3 class="title">Course Curriculum</h3>
+                                        <p>The Electron Development course follows a structured learning path covering web technologies, backend development, database management, real-time communication, and desktop application development. Learn through practical exercises and build a foundation for creating cross-platform desktop applications.</p>
                                         <div class="accordion" id="accordionExample">
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingOne">
-                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"  aria-expanded="true" aria-controls="collapseOne">
-                                                        HTML, CSS & JavaScript Fundamentals
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                        MODULE 1: HTML, CSS &amp; JavaScript Fundamentals
                                                     </button>
                                                 </h2>
-                                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <ul class="list-wrap">
-                                                            <li class="course-item open-item">
-                                                                <a href="https://www.youtube.com/watch?v=b2Az7_lLh3g" class="course-item-link popup-video">
-                                                                    <span class="item-name item-name1">Basics of HTML: Tags, elements, attributes.</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">03:03</span> -->
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">CSS Styling: Selectors, properties, cascading.</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">07:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">JavaScript Essentials: Variables, functions, DOM manipulation.</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Responsive Design Principles: Media queries, flexible grids.</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            
+                                                        <ul class="cur-list">
+                                                            <li>Create web page structures using HTML.</li>
+                                                            <li>Style layouts with CSS.</li>
+                                                            <li>Add interactivity using JavaScript.</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -391,56 +492,15 @@
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingTwo">
                                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                        Responsive Design with Bootstrap and jQuery
+                                                        MODULE 2: Responsive Design with Bootstrap and jQuery
                                                     </button>
                                                 </h2>
                                                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <ul class="list-wrap">
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Bootstrap Framework: Grid system, components.</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">07:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Customizing Bootstrap: SASS variables, overrides.</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">07:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">jQuery Basics: DOM traversal, event handling.</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Interactivity with jQuery: Animations, AJAX.</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
+                                                        <ul class="cur-list">
+                                                            <li>Build responsive layouts using Bootstrap.</li>
+                                                            <li>Handle DOM elements and events with jQuery.</li>
+                                                            <li>Create interactive user interfaces.</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -448,115 +508,31 @@
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingThree">
                                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                        Backend Development with Node.js
+                                                        MODULE 3: Backend Development with Node.js
                                                     </button>
                                                 </h2>
-                                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                                                    data-bs-parent="#accordionExample">
+                                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <ul class="list-wrap">
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Node.js Fundamentals: Event-driven architecture, npm.</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">07:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Working with APIs: Fetching data, integrating third-party services.</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">07:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Authentication and Authorization: JWT, sessions.</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Middleware: Custom middleware functions, error handling.</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
+                                                        <ul class="cur-list">
+                                                            <li>Understand Node.js modules and asynchronous programming.</li>
+                                                            <li>Work with file systems and application logic.</li>
+                                                            <li>Connect frontend interfaces with backend functionality.</li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingFour">
-                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-                                                        Database Management
+                                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                        MODULE 4: Database Management with SQLite and NeDB
                                                     </button>
                                                 </h2>
-                                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                                                    data-bs-parent="#accordionExample">
+                                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <ul class="list-wrap">
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Introduction to SQLite: Setup, querying.</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">07:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Using SQLite with Node.js: CRUD operations.</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">07:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Introduction to NeDB: Embedded database, querying.</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Middleware: Custom middleware functions, error handling.</span>
-                                                                    <div class="course-item-meta">
-                                                                        <!-- <span class="item-meta duration">10:48</span> -->
-                                                                        <span class="item-meta course-item-status">
-                                                                            <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                                                        </span>
-                                                                    </div>
-                                                                </a>
-                                                            </li>
+                                                        <ul class="cur-list">
+                                                            <li>Understand database fundamentals and local storage.</li>
+                                                            <li>Perform basic CRUD operations.</li>
+                                                            <li>Integrate database functionality into applications.</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -564,110 +540,51 @@
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingFive">
                                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                                        Real-time Communication with WebSockets
+                                                        MODULE 5: Real-Time Communication with WebSockets
                                                     </button>
                                                 </h2>
                                                 <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <ul class="list-wrap">
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Understanding WebSockets: Client-server communication.</span>
-                                                                    <div class="course-item-meta">
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Socket.io Library: Event-driven communication.</span>
-                                                                    <div class="course-item-meta">
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Collaborative Editing: Enabling multiple users to edit shared documents simultaneously.</span>
-                                                                    <div class="course-item-meta">
-                                                                    </div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Real-time Analytics: Using WebSockets to stream and visualize real-time data updates.</span>
-                                                                    <div class="course-item-meta">
-                                                                    </div>
-                                                                </a>
-                                                            </li>
+                                                        <ul class="cur-list">
+                                                            <li>Understand WebSocket connections.</li>
+                                                            <li>Exchange data in real time.</li>
+                                                            <li>Implement live updates and notifications.</li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
-                                            
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingSix">
                                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                                        TypeScript Fundamentals
+                                                        MODULE 6: TypeScript Fundamentals
                                                     </button>
                                                 </h2>
                                                 <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <ul class="list-wrap">
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">TypeScript Core Features</span>
-                                                                    <div class="course-item-meta"></div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Classes and Object-Oriented Programming</span>
-                                                                    <div class="course-item-meta"></div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Asynchronous Programming in TypeScript</span>
-                                                                    <div class="course-item-meta"></div>
-                                                                </a>
-                                                            </li>
+                                                        <ul class="cur-list">
+                                                            <li>Learn types, interfaces, and basic syntax.</li>
+                                                            <li>Use type checking to identify common errors.</li>
+                                                            <li>Write organized and maintainable code.</li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
-                                            
                                             <div class="accordion-item">
                                                 <h2 class="accordion-header" id="headingSeven">
                                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                                        Electron Application Development
+                                                        MODULE 7: Electron Application Development
                                                     </button>
                                                 </h2>
                                                 <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
                                                     <div class="accordion-body">
-                                                        <ul class="list-wrap">
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Introduction to Electron APIs</span>
-                                                                    <div class="course-item-meta"></div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Advanced Electron Features</span>
-                                                                    <div class="course-item-meta"></div>
-                                                                </a>
-                                                            </li>
-                                                            <li class="course-item">
-                                                                <a href="#" class="course-item-link">
-                                                                    <span class="item-name item-name1">Packaging for Deployment</span>
-                                                                    <div class="course-item-meta"></div>
-                                                                </a>
-                                                            </li>
+                                                        <ul class="cur-list">
+                                                            <li>Understand Electron's main and renderer processes.</li>
+                                                            <li>Create desktop windows using web technologies.</li>
+                                                            <li>Build, test, and package cross-platform applications.</li>
                                                         </ul>
                                                     </div>
                                                 </div>
                                             </div>
-                                            
-                                            
                                         </div>
                                     </div>
                                 </div>

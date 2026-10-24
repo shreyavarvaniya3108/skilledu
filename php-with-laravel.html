@@ -56,6 +56,135 @@
       /*    color: red !important;*/
       /*}*/
     </style>
+
+    <!-- Curriculum accordion styles (scoped to .curriculum-custom only) -->
+    <style>
+      .courses__curriculum-wrap.curriculum-custom {
+        --cur-cream: #fff8e7;
+        --cur-cream-hover: #fff0c9;
+        --cur-gold: #f2a900;
+        --cur-navy: #11133f;
+        --cur-border: #f0ddaf;
+        --cur-text: #4d4e6b;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item {
+        background: #ffffff;
+        border: 1px solid var(--cur-border);
+        border-radius: 10px;
+        box-shadow: none;
+        overflow: hidden;
+        margin-bottom: 14px;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item:last-child {
+        margin-bottom: 0;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-header {
+        margin: 0;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        width: 100%;
+        padding: 20px 24px;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.4;
+        text-align: left;
+        color: var(--cur-navy) !important;
+        background: var(--cur-cream) !important;
+        border: 0;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        transition: background-color 0.2s ease;
+      }
+      /* Hover (collapsed): same golden color as expanded */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button.collapsed:hover {
+        color: var(--cur-navy) !important;
+        background: var(--cur-gold) !important;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:focus {
+        color: var(--cur-navy) !important;
+        box-shadow: none !important;
+        outline: 0;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:focus-visible {
+        outline: 2px solid var(--cur-navy);
+        outline-offset: -4px;
+      }
+      /* Expanded: golden yellow (stays golden on hover) */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:not(.collapsed),
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:not(.collapsed):hover {
+        color: var(--cur-navy) !important;
+        background: var(--cur-gold) !important;
+        box-shadow: none !important;
+      }
+      /* Standard chevron on the right; rotates upward when opened */
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button::after {
+        content: "" !important;
+        font-family: inherit;
+        position: static;
+        flex-shrink: 0;
+        margin-left: auto;
+        width: 18px;
+        height: 18px;
+        border: 0;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 18px 18px;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%2311133f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+        transform: rotate(0deg);
+        transition: transform 0.25s ease;
+      }
+      .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button:not(.collapsed)::after {
+        transform: rotate(-180deg);
+      }
+      /* Expanded content area: white */
+      .courses__curriculum-wrap.curriculum-custom .accordion-body {
+        padding: 18px 24px 22px;
+        background: #ffffff;
+      }
+      .courses__curriculum-wrap.curriculum-custom .curriculum-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .courses__curriculum-wrap.curriculum-custom .curriculum-list li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--cur-text);
+      }
+      .courses__curriculum-wrap.curriculum-custom .curriculum-list li:last-child {
+        margin-bottom: 0;
+      }
+      .courses__curriculum-wrap.curriculum-custom .curriculum-list li::before {
+        content: "";
+        position: absolute;
+        left: 2px;
+        top: 0.7em;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--cur-gold);
+      }
+      @media (max-width: 575.98px) {
+        .courses__curriculum-wrap.curriculum-custom .accordion-item .accordion-button {
+          padding: 16px 16px;
+          font-size: 16px;
+        }
+        .courses__curriculum-wrap.curriculum-custom .accordion-body {
+          padding: 14px 16px 18px;
+        }
+      }
+    </style>
+    <style>
+      @import url("assets/css/course-sections.css");
+    </style>
   </head>
 
   <body>
@@ -279,7 +408,7 @@
           <div class="row">
             <div class="col-xl-9 col-lg-8">
               <div class="courses__details-thumb">
-                <img src="assets/img/course-det/phpwithlaravel.jpg" alt="img" />
+                <img src="assets/img/course-details/full php laravel image.png" alt="img" />
               </div>
               <div class="courses__details-content">
                 <ul class="courses__item-meta list-wrap">
@@ -346,50 +475,39 @@
                     <div class="courses__overview-wrap">
                       <h3 class="title">Course Description</h3>
                       <p>
-                        Explore modern web development with Skilled.u's PHP with
-                        Laravel course. Learn HTML, CSS, JavaScript, Bootstrap,
-                        jQuery for front-end, PHP with MVC, Laravel for web apps
-                        and MySQL, SQLite for databases. Gain hands-on
-                        experience for building dynamic web applications.
+                        Build dynamic and database-driven web applications with
+                        Skilled.U’s PHP with Laravel course. Learn HTML, CSS,
+                        JavaScript, Bootstrap, and jQuery for frontend
+                        development, along with PHP and the MVC architecture
+                        for backend programming. Explore Laravel features such
+                        as routing, controllers, models, migrations, and
+                        database integration using MySQL and SQLite. Gain
+                        practical experience in developing structured,
+                        maintainable web applications.
                       </p>
-                      <h3 class="title">What you'll learn in this course?</h3>
-                      <p>
-                        You'll learn HTML, CSS, JavaScript, Bootstrap, jQuery
-                        for front-end, PHP with MVC for server-side, Laravel for
-                        efficient web apps and MySQL, SQLite for database
-                        management, with hands-on projects for practical
-                        experience.
-                      </p>
+                      <h3 class="title">What You’ll Learn in This Course?</h3>
                       <ul class="about__info-list list-wrap">
                         <li class="about__info-list-item">
                           <i class="flaticon-angle-right"></i>
-                          <p class="content">HTML + CSS + JS</p>
+                          <p class="content"><strong>HTML, CSS &amp; JavaScript</strong> — Build interactive web pages.</p>
                         </li>
                         <li class="about__info-list-item">
                           <i class="flaticon-angle-right"></i>
-                          <p class="content">Bootstrap + JQuery</p>
+                          <p class="content"><strong>Bootstrap &amp; jQuery</strong> — Create responsive user interfaces.</p>
                         </li>
                         <li class="about__info-list-item">
                           <i class="flaticon-angle-right"></i>
-                          <p class="content">PHP + MVC</p>
+                          <p class="content"><strong>PHP &amp; MVC</strong> — Understand structured backend development.</p>
                         </li>
                         <li class="about__info-list-item">
                           <i class="flaticon-angle-right"></i>
-                          <p class="content">Laravel</p>
+                          <p class="content"><strong>Laravel Framework</strong> — Build dynamic web applications efficiently.</p>
                         </li>
                         <li class="about__info-list-item">
                           <i class="flaticon-angle-right"></i>
-                          <p class="content">MYSQL + SQLITE</p>
+                          <p class="content"><strong>MySQL &amp; SQLite</strong> — Store and manage application data.</p>
                         </li>
                       </ul>
-                      <p class="last-info">
-                        Upon completion, students will master HTML, CSS,
-                        JavaScript, Bootstrap, jQuery for front-end, PHP with
-                        MVC for server-side scripting, Laravel for web
-                        application development and MySQL, SQLite for database
-                        management, preparing them for PHP/Laravel development
-                        roles.
-                      </p>
                     </div>
                   </div>
                   <div
@@ -399,459 +517,162 @@
                     aria-labelledby="curriculum-tab"
                     tabindex="0"
                   >
-                    <div class="courses__curriculum-wrap">
-                      <h3 class="title">Course Outline</h3>
+                    <div class="courses__curriculum-wrap curriculum-custom">
+                      <h3 class="title">Course Curriculum</h3>
                       <p>
-                        Our PHP with Laravel course covers HTML, CSS,
-                        JavaScript, PHP with MVC, Laravel framework, MySQL,
-                        SQLite for database management and practical projects
-                        for industry-ready skills in web development.
+                        This course follows a structured learning path from
+                        frontend fundamentals to PHP programming, MVC
+                        architecture, Laravel development, and database
+                        integration. Practical exercises help you understand
+                        how to develop and manage modern web applications.
                       </p>
-                      <div class="accordion" id="accordionExample">
+                      <div class="accordion" id="curriculumAccordion">
+
                         <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingOne">
+                          <h2 class="accordion-header" id="curriculumHeading1">
                             <button
                               class="accordion-button"
                               type="button"
                               data-bs-toggle="collapse"
-                              data-bs-target="#collapseOne"
+                              data-bs-target="#curriculumCollapse1"
                               aria-expanded="true"
-                              aria-controls="collapseOne"
+                              aria-controls="curriculumCollapse1"
                             >
-                              Refresher on HTML, CSS, and JavaScript
+                              HTML, CSS &amp; JavaScript Fundamentals
                             </button>
                           </h2>
                           <div
-                            id="collapseOne"
+                            id="curriculumCollapse1"
                             class="accordion-collapse collapse show"
-                            aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample"
+                            aria-labelledby="curriculumHeading1"
+                            data-bs-parent="#curriculumAccordion"
                           >
                             <div class="accordion-body">
-                              <ul class="list-wrap">
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Introduction to front-end web
-                                      development</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Basics of HTML for structuring web
-                                      pages</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >CSS fundamentals for styling and layout
-                                      design</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >JavaScript essentials for interactive web
-                                      elements</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
+                              <ul class="curriculum-list">
+                                <li>Create structured web pages using HTML.</li>
+                                <li>Style layouts with CSS.</li>
+                                <li>Add interactivity using JavaScript.</li>
                               </ul>
                             </div>
                           </div>
                         </div>
+
                         <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingTwo">
+                          <h2 class="accordion-header" id="curriculumHeading2">
                             <button
                               class="accordion-button collapsed"
                               type="button"
                               data-bs-toggle="collapse"
-                              data-bs-target="#collapseTwo"
+                              data-bs-target="#curriculumCollapse2"
                               aria-expanded="false"
-                              aria-controls="collapseTwo"
+                              aria-controls="curriculumCollapse2"
                             >
-                              Bootstrap + jQuery
+                              Responsive Design with Bootstrap and jQuery
                             </button>
                           </h2>
                           <div
-                            id="collapseTwo"
+                            id="curriculumCollapse2"
                             class="accordion-collapse collapse"
-                            aria-labelledby="headingTwo"
-                            data-bs-parent="#accordionExample"
+                            aria-labelledby="curriculumHeading2"
+                            data-bs-parent="#curriculumAccordion"
                           >
                             <div class="accordion-body">
-                              <ul class="list-wrap">
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Using Bootstrap for responsive and
-                                      mobile-first design</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Incorporating jQuery for dynamic
-                                      front-end interactions</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Enhancing user experience with Bootstrap
-                                      components</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Practical applications in modern web
-                                      design</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
+                              <ul class="curriculum-list">
+                                <li>Build responsive layouts using Bootstrap.</li>
+                                <li>Handle DOM elements and events with jQuery.</li>
+                                <li>Create interactive and user-friendly interfaces.</li>
                               </ul>
                             </div>
                           </div>
                         </div>
+
                         <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingThree">
+                          <h2 class="accordion-header" id="curriculumHeading3">
                             <button
                               class="accordion-button collapsed"
                               type="button"
                               data-bs-toggle="collapse"
-                              data-bs-target="#collapseThree"
+                              data-bs-target="#curriculumCollapse3"
                               aria-expanded="false"
-                              aria-controls="collapseThree"
+                              aria-controls="curriculumCollapse3"
                             >
-                              PHP + MVC
+                              PHP Programming and MVC Architecture
                             </button>
                           </h2>
                           <div
-                            id="collapseThree"
+                            id="curriculumCollapse3"
                             class="accordion-collapse collapse"
-                            aria-labelledby="headingThree"
-                            data-bs-parent="#accordionExample"
+                            aria-labelledby="curriculumHeading3"
+                            data-bs-parent="#curriculumAccordion"
                           >
                             <div class="accordion-body">
-                              <ul class="list-wrap">
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Introduction to PHP scripting
-                                      language</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Understanding the MVC
-                                      (Model-View-Controller) architecture</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Implementing PHP for server-side
-                                      scripting</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Organizing code with MVC principles for
-                                      maintainable applications</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
+                              <ul class="curriculum-list">
+                                <li>Learn PHP syntax, functions, arrays, and form handling.</li>
+                                <li>Understand the Model-View-Controller (MVC) architecture.</li>
+                                <li>Organize server-side code into reusable components.</li>
                               </ul>
                             </div>
                           </div>
                         </div>
+
                         <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingFour">
+                          <h2 class="accordion-header" id="curriculumHeading4">
                             <button
                               class="accordion-button collapsed"
                               type="button"
                               data-bs-toggle="collapse"
-                              data-bs-target="#collapseFour"
+                              data-bs-target="#curriculumCollapse4"
                               aria-expanded="false"
-                              aria-controls="collapseThree"
+                              aria-controls="curriculumCollapse4"
                             >
-                              Laravel Framework
+                              Laravel Framework Development
                             </button>
                           </h2>
                           <div
-                            id="collapseFour"
+                            id="curriculumCollapse4"
                             class="accordion-collapse collapse"
-                            aria-labelledby="headingFour"
-                            data-bs-parent="#accordionExample"
+                            aria-labelledby="curriculumHeading4"
+                            data-bs-parent="#curriculumAccordion"
                           >
                             <div class="accordion-body">
-                              <ul class="list-wrap">
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Overview of Laravel as a PHP
-                                      framework</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Routing and middleware in Laravel
-                                      applications</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Database integration using Laravel's
-                                      Eloquent ORM</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Building efficient and scalable web
-                                      applications with Laravel</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
+                              <ul class="curriculum-list">
+                                <li>Understand Laravel project structure, routing, and controllers.</li>
+                                <li>Work with Blade templates, models, and migrations.</li>
+                                <li>Build web application features using Laravel tools.</li>
                               </ul>
                             </div>
                           </div>
                         </div>
+
                         <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingFive">
+                          <h2 class="accordion-header" id="curriculumHeading5">
                             <button
                               class="accordion-button collapsed"
                               type="button"
                               data-bs-toggle="collapse"
-                              data-bs-target="#collapseFive"
+                              data-bs-target="#curriculumCollapse5"
                               aria-expanded="false"
-                              aria-controls="collapseFive"
+                              aria-controls="curriculumCollapse5"
                             >
-                              MySQL + SQLite
+                              Database Management with MySQL and SQLite
                             </button>
                           </h2>
                           <div
-                            id="collapseFive"
+                            id="curriculumCollapse5"
                             class="accordion-collapse collapse"
-                            aria-labelledby="headingFive"
-                            data-bs-parent="#accordionExample"
+                            aria-labelledby="curriculumHeading5"
+                            data-bs-parent="#curriculumAccordion"
                           >
                             <div class="accordion-body">
-                              <ul class="list-wrap">
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Database management with MySQL and
-                                      SQLite</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Setting up databases and tables</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Performing CRUD operations (Create, Read,
-                                      Update, Delete) with PHP and Laravel</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
-                                <li class="course-item">
-                                  <a href="#" class="course-item-link">
-                                    <span class="item-name item-name1"
-                                      >Securing and optimizing database
-                                      interactions</span
-                                    >
-                                    <div class="course-item-meta">
-                                      <!-- <span class="item-meta duration">07:48</span> -->
-                                      <span
-                                        class="item-meta course-item-status"
-                                      >
-                                        <!-- <img src="assets/img/icons/lock.svg" alt="icon"> -->
-                                      </span>
-                                    </div>
-                                  </a>
-                                </li>
+                              <ul class="curriculum-list">
+                                <li>Understand relational databases and SQL fundamentals.</li>
+                                <li>Perform CRUD operations and manage records.</li>
+                                <li>Connect databases with PHP and Laravel applications.</li>
                               </ul>
                             </div>
                           </div>
                         </div>
+
                       </div>
                     </div>
                   </div>
