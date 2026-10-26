@@ -150,19 +150,119 @@
       }
     }
 
-    /* .btn-00{
-  background-color:#0b66c3; 
-  border-radius:18px; 
-  color:#ffffffde;
-   padding:8px 30px; 
-  box-shadow:6px 6px #969a9b;
-}
-.btn-00:hover {
-  background-color: #ffc224;
-  color: black;
-  cursor: pointer;
- box-shadow: none;
-} */
+    /* =========================================================
+       BUTTON HOVER UNIFICATION (Matching "See What Will Be The Next Topic")
+       Excludes header buttons. Preserves all layouts & alignments.
+       ========================================================= */
+
+    /* 1. Base transition smoothness for buttons & their arrows/icons */
+    .hero-btn-pill,
+    .mern-cta-btn,
+    .docker__btn,
+    main .btn,
+    main .arrow-btn {
+      transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+    }
+
+    .hero-btn-pill .hero-arrow-icon,
+    .hero-btn-pill svg,
+    .mern-cta-btn .mern-cta-arrow,
+    .docker__btn svg,
+    .docker__btn i,
+    main .arrow-btn img,
+    main .arrow-btn svg,
+    main .btn img,
+    main .btn svg {
+      transition: transform 0.3s ease, stroke 0.3s ease, color 0.3s ease, filter 0.3s ease !important;
+    }
+
+    /* 2. Unified Hover & Focus States (Excluding Header Buttons) */
+    .hero-btn-pill:hover,
+    .hero-btn-pill:focus-visible,
+    .mern-cta-btn:hover,
+    .mern-cta-btn:focus-visible,
+    .docker__btn:hover,
+    .docker__btn:focus-visible,
+    .find-courses .btn:hover,
+    .find-courses .btn:focus-visible,
+    .find-courses .btn-two:hover,
+    .find-courses .btn-two:focus-visible,
+    main .btn:not(.header-btn *):not(.login-btn *):hover,
+    main .btn:not(.header-btn *):not(.login-btn *):focus-visible,
+    main .arrow-btn:not(.header-btn *):not(.login-btn *):hover,
+    main .arrow-btn:not(.header-btn *):not(.login-btn *):focus-visible {
+      background: var(--tg-theme-secondary, #ffc224) !important;
+      background-color: var(--tg-theme-secondary, #ffc224) !important;
+      color: var(--tg-heading-color, #161439) !important;
+      box-shadow: 0 0 0 0 var(--tg-common-color-blue, #050071) !important;
+      border-color: transparent !important;
+      transform: none !important;
+    }
+
+    /* Ensure text inside spans/links turns heading dark color on hover */
+    .hero-btn-pill:hover span,
+    .hero-btn-pill:focus-visible span,
+    .docker__btn:hover span,
+    .docker__btn:focus-visible span,
+    main .btn:not(.header-btn *):not(.login-btn *):hover span,
+    main .arrow-btn:not(.header-btn *):not(.login-btn *):hover span {
+      color: var(--tg-heading-color, #161439) !important;
+    }
+
+    /* 3. Arrow & Icon Hover Effects (Shift & Color Match) */
+    .hero-btn-pill:hover .hero-arrow-icon,
+    .hero-btn-pill:hover svg,
+    .hero-btn-pill:focus-visible .hero-arrow-icon,
+    .hero-btn-pill:focus-visible svg,
+    .docker__btn:hover svg,
+    .docker__btn:hover i,
+    .docker__btn:focus-visible svg,
+    .docker__btn:focus-visible i {
+      color: var(--tg-heading-color, #161439) !important;
+      stroke: var(--tg-heading-color, #161439) !important;
+      transform: translateX(4px) !important;
+    }
+
+    .mern-cta-btn:hover .mern-cta-arrow,
+    .mern-cta-btn:focus-visible .mern-cta-arrow {
+      color: var(--tg-heading-color, #161439) !important;
+      transform: translateX(4px) !important;
+    }
+
+    main .arrow-btn:not(.header-btn *):not(.login-btn *):hover img,
+    main .arrow-btn:not(.header-btn *):not(.login-btn *):focus-visible img,
+    main .btn:not(.header-btn *):not(.login-btn *):hover img,
+    main .btn:not(.header-btn *):not(.login-btn *):focus-visible img {
+      transform: translateX(4px) !important;
+      filter: brightness(0) !important;
+    }
+
+    main .arrow-btn:not(.header-btn *):not(.login-btn *):hover svg,
+    main .arrow-btn:not(.header-btn *):not(.login-btn *):focus-visible svg,
+    main .btn:not(.header-btn *):not(.login-btn *):hover svg,
+    main .btn:not(.header-btn *):not(.login-btn *):focus-visible svg {
+      color: var(--tg-heading-color, #161439) !important;
+    }
+
+    main .arrow-btn:not(.header-btn *):not(.login-btn *):hover svg path,
+    main .btn:not(.header-btn *):not(.login-btn *):hover svg path {
+      stroke: var(--tg-heading-color, #161439) !important;
+    }
+
+    /* 4. Strict Protection for Header Buttons (Unchanged) */
+    .tg-header__area .header-btn .btn,
+    .tgmenu__action .header-btn .btn,
+    .header-btn.login-btn a {
+      background: var(--tg-theme-secondary, #ffc224) !important;
+      color: var(--tg-heading-color, #161439) !important;
+    }
+
+    .tg-header__area .header-btn .btn:hover,
+    .tgmenu__action .header-btn .btn:hover,
+    .header-btn.login-btn a:hover {
+      background: var(--tg-theme-primary, #0b66c3) !important;
+      color: var(--tg-common-color-white, #ffffff) !important;
+    }
   </style>
 </head>
 
@@ -235,13 +335,14 @@
     <div id="sticky-header" class="tg-header__area py-1">
       <div class="container custom-container">
         <div class="row">
-          <div class="col-12">
+          <div class="col-12" style="margin-top: -13px;">
             <div class="tgmenu__wrap">
               <nav class="tgmenu__nav">
                 <div class="logo">
                   <a href="index.html"><img src="assets/img/logo/skilledU_Logo.png" alt="Logo" /></a>
                 </div>
-                <div class="tgmenu__navbar-wrap tgmenu__navbar-wrap-my tgmenu__main-menu d-none d-xl-flex">
+                <div class="tgmenu__navbar-wrap tgmenu__navbar-wrap-my tgmenu__main-menu d-none d-xl-flex"
+                  style="margin-top: 10px;">
                   <ul class="navigation">
                     <li class="active menu-item">
                       <a href="index.html">Home</a>
@@ -323,6 +424,7 @@
   <!-- main-area -->
   <main class="main-area fix">
     <!-- banner-area -->
+<<<<<<< HEAD
     <section class="banner-area banner-bg tg-motion-effects">
       <div class="container">
         <div class="row justify-content-between align-items-start">
@@ -339,6 +441,40 @@
                       fill="currentcolor" />
                   </svg>
                   Skilled.u
+=======
+    <section class="banner-area hero-banner-custom tg-motion-effects" style="background-color: #F8FBFF;">
+      <!-- Background subtle organic curve decoration -->
+      <div class="hero-bg-accent" aria-hidden="true"></div>
+
+      <div class="container custom-container">
+        <div class="row align-items-center justify-content-between hero-banner-row" style="margin-left: -40px;">
+
+          <!-- Left Content Area -->
+          <div class="col-xl-6 col-lg-6 col-md-12">
+            <div class="hero-left-content hero__content-custom" style="margin-left: 100px;">
+
+              <!-- Yellow 3-ray burst decoration above heading -->
+              <div class="hero-sparkle top-sparkle" aria-hidden="true" data-aos="fade-down" data-aos-delay="300">
+                <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left: -28px;
+    margin-bottom: -50px;">
+                  <path d="M5 25L1 27" stroke="#ffbe1a" stroke-width="3.2" stroke-linecap="round" />
+                  <path d="M10 16L3 11" stroke="#ffbe1a" stroke-width="3.5" stroke-linecap="round" />
+                  <path d="M19 13L17 4" stroke="#ffbe1a" stroke-width="3.2" stroke-linecap="round" />
+                </svg>
+              </div>
+
+              <h1 class="hero-title" data-aos="fade-right" data-aos-delay="400">
+                <span class="hero-title-line1">Master Skills at
+                  <span class="hero-brand-highlight">
+                    <svg class="brush-stroke-svg" viewBox="0 0 209 59" fill="none" preserveAspectRatio="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M4.74438 7.70565C69.7006 -1.18799 136.097 -2.38304 203.934 4.1205C207.178 4.48495 209.422 7.14626 208.933 10.0534C206.793 23.6481 205.415 36.5704 204.801 48.8204C204.756 51.3291 202.246 53.5582 199.213 53.7955C136.093 59.7623 74.1922 60.5985 13.5091 56.3043C10.5653 56.0924 7.84371 53.7277 7.42158 51.0325C5.20725 38.2627 2.76333 25.6511 0.0898448 13.1978C-0.465589 10.5873 1.61173 8.1379 4.73327 7.70565"
+                        fill="#fec829" />
+                    </svg>
+                    <span class="brand-text">skilled.u</span>
+                  </span>
+>>>>>>> 384b37a (Update website design and content)
                 </span>
                 <br />Hands-On <b>Learning</b> Awaits
               </h3>
@@ -346,9 +482,21 @@
                 Skilled.u opens doors to endless tech opportunities with
                 diverse courses empowering your success in the industry.
               </p>
+<<<<<<< HEAD
               <div class="banner__btn-wrap" data-aos="fade-right" data-aos-delay="800">
                 <a href="#our_courses" class="btn arrow-btn">See Our Courses
                   <img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable" /></a>
+=======
+
+              <div class="hero-cta-wrap" data-aos="fade-right" data-aos-delay="800">
+                <!-- Yellow 3-ray burst decoration bottom-left of button -->
+
+
+                <a href="#our_courses">
+                  <span class="btn arrow-btn">See Our Courses</span>
+
+                </a>
+>>>>>>> 384b37a (Update website design and content)
               </div>
             </div>
           </div>
@@ -384,12 +532,19 @@
         data-aos-delay="1600" />
     </section>
     <!-- banner-area-end -->
+<<<<<<< HEAD
     <!-- brand-area -->
+=======
+
+
+
+>>>>>>> 384b37a (Update website design and content)
     <!-- brand-area -->
     <div class="brand-area brand-area-two">
       <div class="container-fluid">
         <div class="marquee_mode lang_stripe">
           <div class="brand__item">
+<<<<<<< HEAD
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/html.webp" alt="brand" /></a>
             <img src="assets/img/icons/brand_star.svg" alt="star" />
           </div>
@@ -435,8 +590,20 @@
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/MySQL_logo.webp" alt="brand" /></a>
             <img src="assets/img/icons/brand_star.svg" alt="star" />
+=======
+            <a href="index.html"><img class="lang_st" src="assets/img/ai courses/ai.png" alt="AI"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/CSS3_logo_and_wordmark.webp" alt="CSS3"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+>>>>>>> 384b37a (Update website design and content)
           </div>
           <div class="brand__item">
+<<<<<<< HEAD
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/sqlite_logo.webp" alt="brand"
                 height="50" width="50" /></a>
             <img src="assets/img/icons/brand_star.svg" alt="star" />
@@ -450,32 +617,126 @@
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/mongodb-icon-1.svg" alt="brand" /></a>
             <img src="assets/img/icons/brand_star.svg" alt="star" />
+=======
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/images.webp" alt="HTML"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/ai courses/js.webp" alt="JavaScript"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/react.webp" alt="React"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/ai courses/ChatGPT-Logo.png" alt="ChatGPT"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/ajax_lan.webp" alt="Ajax"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/JSON_vector_logo.webp" alt="JSON"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Node.js_logo.webp" alt="Node.js"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+>>>>>>> 384b37a (Update website design and content)
           </div>
           <div class="brand__item">
+<<<<<<< HEAD
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/pandas.svg" alt="brand" /></a>
             <img src="assets/img/icons/brand_star.svg" alt="star" />
+=======
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/PHP-logo.webp" alt="PHP"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+>>>>>>> 384b37a (Update website design and content)
           </div>
           <div class="brand__item">
+<<<<<<< HEAD
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/numpy-1.svg" alt="brand" /></a>
             <img src="assets/img/icons/brand_star.svg" alt="star" />
+=======
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/MySQL_logo.webp" alt="MySQL"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/ai courses/logo.png" alt="Technology"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+>>>>>>> 384b37a (Update website design and content)
           </div>
           <div class="brand__item">
+<<<<<<< HEAD
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Tensorflow_logo.webp" alt="brand" /></a>
             <img src="assets/img/icons/brand_star.svg" alt="star" />
+=======
+            <a href="index.html">
+              <img class="lang_st" src="assets/img/lang_logo/sqlite_logo.webp" alt="SQLite"
+                style="width:50px;height:50px;object-fit:contain;" />
+            </a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+          <!-- Python: restored old logo path -->
+          <div class="brand__item">
+            <a href="index.html">
+              <img class="lang_st" src="assets/img/lang_logo/Python-logo-notext.webp" alt="Python"
+                style="width:50px;height:50px;object-fit:contain;" />
+            </a>
+            <span class="brand-dot" aria-hidden="true"></span>
+>>>>>>> 384b37a (Update website design and content)
           </div>
           <div class="brand__item">
+<<<<<<< HEAD
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Arduino_Logo.webp" alt="brand" /></a>
             <img src="assets/img/icons/brand_star.svg" alt="star" />
+=======
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/mongodb-icon-1.svg" alt="brand" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+>>>>>>> 384b37a (Update website design and content)
           </div>
           <div class="brand__item">
+<<<<<<< HEAD
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/ISO_C_Logo.webp" alt="brand" /></a>
             <img src="assets/img/icons/brand_star.svg" alt="star" />
+=======
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/pandas.svg" alt="Pandas"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+>>>>>>> 384b37a (Update website design and content)
           </div>
           <div class="brand__item">
+<<<<<<< HEAD
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Keras_logo.webp" alt="brand" /></a>
             <img src="assets/img/icons/brand_star.svg" alt="star" />
+=======
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/numpy-1.svg" alt="NumPy"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+>>>>>>> 384b37a (Update website design and content)
           </div>
           <div class="brand__item">
+<<<<<<< HEAD
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Matplotlib_icon.webp" alt="brand" /></a>
             <img src="assets/img/icons/brand_star.svg" alt="star" />
           </div>
@@ -483,18 +744,64 @@
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Scikit_learn_logo_small.webp"
                 alt="brand" /></a>
             <img src="assets/img/icons/brand_star.svg" alt="star" />
+=======
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Tensorflow_logo.webp" alt="TensorFlow"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Arduino_Logo.webp" alt="Arduino"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/ISO_C_Logo.webp" alt="C Language"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Keras_logo.webp" alt="Keras"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Matplotlib_icon.webp" alt="Matplotlib"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Scikit_learn_logo_small.webp"
+                alt="Scikit-learn" style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+>>>>>>> 384b37a (Update website design and content)
           </div>
           <div class="brand__item">
+<<<<<<< HEAD
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/xml.webp" alt="brand" /></a>
             <img src="assets/img/icons/brand_star.svg" alt="star" />
+=======
+            <a href="index.html"><img class="lang_st" src="assets/img/ai courses/google-gemini-icon.webp"
+                alt="Google Gemini" style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+>>>>>>> 384b37a (Update website design and content)
           </div>
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/java-14.svg" alt="brand" /></a>
+<<<<<<< HEAD
             <img src="assets/img/icons/brand_star.svg" alt="star" />
+=======
+            <span class="brand-dot" aria-hidden="true"></span>
+>>>>>>> 384b37a (Update website design and content)
           </div>
 
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Raspberry_Pi_Logo.webp"
+<<<<<<< HEAD
                 alt="brand" /></a>
             <img src="assets/img/icons/brand_star.svg" alt="star" />
           </div>
@@ -502,11 +809,41 @@
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/seaborn.webp" alt="brand" /></a>
             <img src="assets/img/icons/brand_star.svg" alt="star" />
+=======
+                alt="Raspberry Pi" style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/seaborn.webp" alt="Seaborn"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+>>>>>>> 384b37a (Update website design and content)
           </div>
           <div class="brand__item">
+<<<<<<< HEAD
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/spring-3.svg" alt="brand" /></a>
             <img src="assets/img/icons/brand_star.svg" alt="star" />
           </div>
+=======
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/spring-3.svg" alt="Spring"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/ai courses/logo.png" alt="Technology"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/ai courses/images.jpg" alt="Technology"
+                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+>>>>>>> 384b37a (Update website design and content)
         </div>
       </div>
     </div>
@@ -554,6 +891,7 @@
                 </div>
             </div> -->
     <!-- brand-area-end -->
+
 
     <!-- categories-area -->
     <section class="categories-area pt-60 section-py-120">
@@ -909,8 +1247,15 @@
               </div>
 
               <!-- <p style="margin-left: -356px; color: #000; margin-top: 11px;">Ready to Learn Python <br> Start Your Journey Today →</p> -->
-              <a href="about-us.html" class="btn arrow-btn" style="    margin-top: -30px;">Know More <img
-                  src="assets/img/icons/right_arrow.svg" alt="" class="injectable"></a>
+              <div class="hero-cta-wrap" data-aos="fade-right" data-aos-delay="800">
+                <!-- Yellow 3-ray burst decoration bottom-left of button -->
+
+
+                <a href="about-us.html">
+                  <span class="btn arrow-btn" style="margin-top: -60px;">Know More</span>
+
+                </a>
+              </div>
 
               <!-- Right Top Star Outline Shape -->
               <img src="assets/img/ai courses/h3_about_shape03.svg" alt="shape" class="star-shape alltuchtopdown">
@@ -967,6 +1312,22 @@
                   <img src="assets/img/ai courses/choose_shape03.svg" alt="shape" class="tg-motion-effects4">
                 </div>
               </div>
+<<<<<<< HEAD
+=======
+
+              <br>
+              <!-- CTA Button -->
+              <div class="hero-cta-wrap" data-aos="fade-right" data-aos-delay="800">
+                <!-- Yellow 3-ray burst decoration bottom-left of button -->
+
+
+                <a href="about-us.html">
+                  <span class="btn arrow-btn">Explore Course</span>
+
+                </a>
+              </div>
+
+>>>>>>> 384b37a (Update website design and content)
             </div>
 
 
@@ -1121,22 +1482,21 @@
     <section id="sss" class="work__area py-5">
       <div class="container">
         <div class="row align-items-center justify-content-center">
-          <div class="col-lg-6">
+          <div class="col-lg-7">
             <div class="work__content">
               <div class="section__title mb-20">
-                <span class="sub-title">Skilledu Sunday Special</span>
-                <h2 class="title">Join Our Free Webinar</h2>
+                <span class="sub-title">Skilledu Saturday Learning</span>
+                <h2 class="title">Discover Something New Every Saturday</h2>
               </div>
-              <p>"Elevate your knowledge with our expert-led webinars, held every Sunday! Dive into insightful sessions
-                designed to enhance your cognitive and tech skills. Whether you're a student, professional, or simply
-                curious, our webinars are tailored for everyone eager to learn and grow! 🚀.</p>
+              <p>Explore Skilledu Saturday Learning (SSL), where students discover new technologies, useful tools, and
+                industry-relevant skills through engaging learning sessions every Saturday.</p>
               <div class="work__list-wrap">
                 <div class="work__list-box">
                   <div class="work__list-box-top">
                     <div class="icon">
                       <i class="flaticon-profit"></i>
                     </div>
-                    <h4 class="title">Expert-Led Topics Every Sunday </h4>
+                    <h4 class="title">New Topics Every Week </h4>
                   </div>
                   <!--<p>Free Masterclass Every Sunday – Learn Something New!.</p>-->
                 </div>
@@ -1145,21 +1505,19 @@
                     <div class="icon">
                       <i class="flaticon-mortarboard"></i>
                     </div>
-                    <h4 class="title">Absolutely Free! for All</h4>
+                    <h4 class="title">Practical Knowledge</h4>
                   </div>
                   <!--<p>Free for All – Join Our  Masterclass!.</p>-->
                 </div>
               </div>
               <div class="tg-button-wrap">
-                <a href="https://sss.skilledu.in/" class="btn arrow-btn"> See What Will Be The Next Topic <img
-                    src="assets/img/icons/right_arrow.svg" alt="img" class="injectable"></a>
+                <a href="https://sss.skilledu.in/" class="btn arrow-btn"> Explore Our SSL Journey </a>
               </div>
             </div>
           </div>
-          <div class="col-lg-6 col-md-9 text-center">
+          <div class="col-lg-5 col-md-7 text-center">
             <div class="about_images work_images">
-              <img src="assets/img/Dark Green and Yellow Minimalist Finance Instagram Post (1).png" width="78%"
-                alt="img" class="main-img">
+              <img src="assets/img/ai courses/ssl.png" width="78%" alt="img" class="main-img">
 
             </div>
           </div>
@@ -1223,9 +1581,61 @@
                   <p class="content">Expert Instructors</p>
                 </li>
               </ul>
+<<<<<<< HEAD
               <div class="tg-button-wrap">
                 <a href="#our_courses" class="btn arrow-btn">Join Us<img src="assets/img/icons/right_arrow.svg"
                     alt="img" class="injectable" /></a>
+=======
+
+
+              <a href="#our_courses" class="btn arrow-btn btn-four" style="    padding: 10px;
+    margin: 20px;
+    margin-left: 0px;">
+                Join Us
+
+              </a>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- choose-area-end -->
+
+    <!-- second perk -->
+    <!-- <section class="fact__area-three fact__bg" data-background="assets/img/bg/fact_bg.jpg">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-5">
+            <div class="fact__content-wrap">
+              <h2 class="title">Weekly <span>Personality</span> Development Classes</h2>
+              <p>(Leadership, Professional Guest Lectures, Interview Preparation, Group Discussion, Mock Interviews
+                ...etc)</p>
+
+              <a href="about-us.html" class="btn arrow-btn btn-four">
+                Take a Tour
+
+              </a>
+
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="fact__item-wrap-two">
+              <div class="row justify-content-center">
+                <div class="col-md-6 col-sm-6">
+                  <div class="fact__item fact__item-two">
+                    <h2 class="count"><span class="odometer" data-count="250"></span>+</h2>
+                    <p>Active Students</p>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                  <div class="fact__item fact__item-two">
+                    <h2 class="count"><span class="odometer" data-count="15"></span>+</h2>
+                    <p>Best Instructors</p>
+                  </div>
+                </div>
+>>>>>>> 384b37a (Update website design and content)
               </div>
             </div>
           </div>
@@ -1287,7 +1697,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     <!-- second perk end  -->
 
     <!-- course-area -->
@@ -2379,6 +2789,7 @@
     </section>
     <!-- course-area-end -->
 
+<<<<<<< HEAD
     <!-- newsletter-area  first perks  -->
     <section class="newsletter__area">
       <div class="container">
@@ -2416,6 +2827,230 @@
                                     <button type="submit" class="btn">Subscribe Now</button>
                                 </form>
                             </div> -->
+=======
+
+
+    <!-- blog-area -->
+    <section class="blog__post-area-seven section-pt-140 section-pb-110" style="    background-color: #F8FBFF;">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-6">
+            <div class="section__title text-center mb-50">
+              <span class="sub-title" style="    margin: 20px;">Free Learning Tutorial For skilledu</span>
+              <h2 class="title bold">Explore Our Tech Tutorials</h2>
+              <p>Learn new technologies, build practical skills, and grow your development journey.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6" style="    border-radius: 21px;">
+            <div class="blog__post-item-five shine__animate-item">
+              <div class="blog__post-thumb-five">
+                <a href="https://skillgro.websolutionus.com/blog/top-classroom-resources-for-teachers"
+                  class="shine__animate-link"><img src="assets/img/ai courses/docker.png" alt="img"></a>
+              </div>
+              <div class="blog__post-content-five">
+                <li class="courses__item-tag hide-git">
+                  <a href="">Docker Tutorial</a>
+
+                </li>
+                <h5 class="title" style="    margin: 5px;">Master Docker</h5>
+
+                <ul>
+                  <li>Explore Docker with our complete free tutorial.</li>
+
+                  <li>Build and deploy applications faster and more efficiently.</li>
+                  <li>Enhance your development skills with practical Docker concepts.</li>
+                </ul>
+
+
+                <div class="class=docker__features-wrap">
+                  <div class="docker__feature-pill">
+                    <div class="docker__feature-icon icon-code">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                      </svg>
+                    </div>
+                    <div class="docker__feature-info">
+                      <span class="sub">Build</span>
+                      <span class="main">Your Skills</span>
+                    </div>
+                  </div>
+
+                  <div class="docker__feature-pill">
+                    <div class="docker__feature-icon icon-rocket">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M12 2.5C12 2.5 16.5 4 18 10C18 13.5 16 16.5 16 16.5L14 15.5L13 17.5L11 17.5L10 15.5L8 16.5C8 16.5 6 13.5 6 10C7.5 4 12 2.5 12 2.5ZM12 7.5C11.17 7.5 10.5 8.17 10.5 9C10.5 9.83 11.17 10.5 12 10.5C12.83 10.5 13.5 9.83 13.5 9C13.5 8.17 12.83 7.5 12 7.5ZM5.5 18C4 18.5 2.5 21.5 2.5 21.5C2.5 21.5 5.5 20 6 18.5L5.5 18ZM18.5 18C18 18.5 21.5 21.5 21.5 21.5C21.5 21.5 20 18.5 18.5 18ZM12 19C11.5 20 11 21.5 11 21.5H13C13 21.5 12.5 20 12 19Z" />
+                      </svg>
+                    </div>
+                    <div class="docker__feature-info">
+                      <span class="sub">Learn</span>
+                      <span class="main">Faster</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tg-button-wrap">
+                  <a href="https://docker.skilledu.in/" target="_blank" class="btn arrow-btn"
+                    style="border-radius: 21px;">
+                    Master Docker
+                    <!-- <img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable"> -->
+                  </a>
+                </div>
+                <div class="blog__post-meta">
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" style="    border-radius: 21px;">
+            <div class="blog__post-item-five shine__animate-item">
+              <div class="blog__post-thumb-five">
+                <a href="https://skillgro.websolutionus.com/blog/latest-research-in-educational-technology"
+                  class="shine__animate-link"><img src="assets/img/ai courses/skilleduai.png" alt="img"></a>
+              </div>
+              <div class="blog__post-content-five">
+                <li class="courses__item-tag hide-git">
+                  <a href="">API Toolkit</a>
+                </li>
+                <h5 class="title" style="    margin: 5px;">Skilled.U AI SDK</h5>
+
+                <ul>
+
+
+                  <li>Integrate AI capabilities into your projects with ease.</li>
+                  <li>Build AI-powered applications with minimal setup.</li>
+                  <li>Accelerate prototyping and simplify development workflows.</li>
+                </ul>
+
+
+
+                <div class="docker__features-wrap">
+                  <div class="docker__feature-pill">
+                    <div class="docker__feature-icon icon-code">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 8V4H8"></path>
+                        <rect width="16" height="12" x="4" y="8" rx="2"></rect>
+                        <path d="M2 14h2"></path>
+                        <path d="M20 14h2"></path>
+                        <path d="M9 14h.01"></path>
+                        <path d="M15 14h.01"></path>
+                      </svg>
+                    </div>
+                    <div class="docker__feature-info">
+                      <span class="sub">Host</span>
+                      <span class="main">Your Projects</span>
+                    </div>
+                  </div>
+
+                  <div class="docker__feature-pill">
+                    <div class="docker__feature-icon icon-rocket">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="18" cy="5" r="3"></circle>
+                        <circle cx="6" cy="12" r="3"></circle>
+                        <circle cx="18" cy="19" r="3"></circle>
+                        <path d="m8.7 10.7 6.6-4.4"></path>
+                        <path d="m8.7 13.3 6.6 4.4"></path>
+                      </svg>
+                    </div>
+                    <div class="docker__feature-info">
+                      <span class="sub">Learn</span>
+                      <span class="main">Team Collaboration</span>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="tg-button-wrap">
+                  <a href="https://github.com/skilledu/Skilled.U-Ai-SDK" target="_blank" class="btn arrow-btn"
+                    style="border-radius: 21px;">
+                    Skilled.U AI SDK
+                    <!-- <img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable"> -->
+                  </a>
+
+                </div>
+                <div class="blog__post-meta">
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6" style="    border-radius: 21px;">
+            <div class="blog__post-item-five shine__animate-item">
+              <div class="blog__post-thumb-five">
+                <a href="https://skillgro.websolutionus.com/blog/promoting-health-and-wellbeing-in-schools"
+                  class="shine__animate-link"><img src="assets/img/ai courses/git.png" alt="img"></a>
+              </div>
+              <div class="blog__post-content-five">
+
+                <li class="courses__item-tag hide-git">
+                  <a href="">Version Control</a>
+                </li>
+                <h5 class="title" style="    margin: 5px;">Git Master</h5>
+
+                <ul>
+                  <li>Learn Git fundamentals and essential commands.</li>
+                  <li>Track code changes and manage project history.</li>
+
+
+                  <li>Collaborate with developers using Git and GitHub.</li>
+                </ul>
+
+
+
+                <div class="docker__features-wrap">
+                  <!-- Git Card -->
+                  <div class="docker__feature-pill">
+                    <div class="docker__feature-icon icon-code">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="6" cy="4" r="2"></circle>
+                        <circle cx="6" cy="20" r="2"></circle>
+                        <circle cx="18" cy="16" r="2"></circle>
+                        <path d="M6 6v12"></path>
+                        <path d="M6 8a6 6 0 0 0 6 6h4"></path>
+                        <path d="M16 14l2 2-2 2"></path>
+                      </svg>
+                    </div>
+                    <div class="docker__feature-info">
+                      <span class="sub">Master</span>
+                      <span class="main">Git Commands</span>
+                    </div>
+                  </div>
+
+                  <!-- GitHub Card -->
+                  <div class="docker__feature-pill">
+                    <div class="docker__feature-icon icon-rocket">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.33 6.84 9.68.5.09.68-.22.68-.49v-1.7c-2.78.62-3.37-1.22-3.37-1.22-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.58 2.36 1.13 2.94.86.09-.67.35-1.13.64-1.39-2.22-.26-4.55-1.14-4.55-5.05 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.92-2.33 4.79-4.56 5.05.36.32.68.94.68 1.9v2.83c0 .27.18.59.69.49A10.18 10.18 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z" />
+                      </svg>
+                    </div>
+                    <div class="docker__feature-info">
+                      <span class="sub">Collaborate</span>
+                      <span class="main">With GitHub</span>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="tg-button-wrap">
+                  <a href="https://skilledu.in/git/" target="_blank" class="btn arrow-btn" style="border-radius: 21px;">
+                    Git Master
+                    <!-- <img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable"> -->
+                  </a>
+                </div>
+                <div class="blog__post-meta">
+
+                </div>
+              </div>
+>>>>>>> 384b37a (Update website design and content)
             </div>
           </div>
         </div>
@@ -2424,7 +3059,7 @@
         <img src="assets/img/others/newsletter_shape03.png" alt="img" data-aos="fade-left" data-aos-delay="400" />
       </div>
     </section>
-    <!-- newsletter-area-end -->
+    <!-- blog-area-end -->
 
     <!-- gallery  -->
     <section class="about-area tg-motion-effects pt-90">
@@ -2859,42 +3494,101 @@
             <div class="section__title text-center mb-50">
               <div class="banner__btn-wrap">
                 <a href="https://www.google.com/maps/place/Skilled.u/@23.1770363,75.7888259,17z/data=!4m8!3m7!1s0xde22d6ed4c1dceb:0x386b788349ba3f7b!8m2!3d23.1770363!4d75.7888259!9m1!1b1!16s%2Fg%2F11w46nk977?authuser=0&entry=ttu&g_ep=EgoyMDI0MTIwOC4wIKXMDSoASAFQAw%3D%3D"
-                  target="_blank" class="btn arrow-btn">Rate Us
-                  <img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable" /></a>
+                  target="_blank" class="btn arrow-btn">Rate Us </a>
+                <!-- <img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable" />-->
               </div>
             </div>
           </div>
         </div>
         <!-- ============= -->
+<<<<<<< HEAD
         <div class="row align-items-center mt-5 py-5">
           <div class="col-xl-6">
             <div class="instructor__content-wrap">
               <div class="section__title mb-15">
                 <span class="sub-title">Feedback</span>
                 <h2 class="title">Scan QR and give your feedback</h2>
+=======
+
+
+
+
+        <!-- Review CTA Area -->
+        <section class="feedback-cta-area">
+          <div class="cta__bg" data-background="assets/img/bg/review_cta_bg.png">
+          </div>
+
+          <div class="container">
+            <div class="row align-items-center feedback-cta-row">
+
+              <!-- Left Content -->
+              <div class="col-xl-6 col-lg-6">
+                <div class="feedback-cta-left">
+
+                  <div class="section__title mb-15">
+                    <span class="sub-title">Review</span>
+                    <h2 class="title feedback-cta-title">Scan QR And Give Your
+                      <span class="highlight">Review</span>
+                    </h2>
+                  </div>
+
+                  <p class="feedback-cta-desc">
+                    Your opinion counts — help us improve.
+                    <br />
+                    We would love to hear your thoughts.
+                  </p>
+
+                  <div class="banner__btn-wrap tg-button-wrap">
+                    <a href="https://skilledu.in/reviews/" target="_blank" rel="noopener noreferrer"
+                      class="btn arrow-btn">
+                      Click here if you don't want to scan
+                      <img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable">
+                    </a>
+                  </div>
+
+                </div>
+>>>>>>> 384b37a (Update website design and content)
               </div>
-              <p>
-                Your opinion counts : Help us Improve <br />
-                We would love to here your thoughts
-              </p>
-              <div class="tg-button-wrap">
-                <a href="https://docs.google.com/forms/d/1xBilrIstxKVgjrqw5wrI8TUDuGh9CN3ZAX_Tzf6dZuE/viewform?pli=1&pli=1&edit_requested=true#settings"
-                  target="_blank" class="btn arrow-btn">Click here if don't want to scan
-                  <img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable" /></a>
+
+              <!-- Right QR Code -->
+              <div class="col-xl-6 col-lg-6">
+                <div class="feedback-cta-qr-wrap">
+                  <div class="feedback-cta-qr-card">
+                    <img src="assets/img/ai courses/Review-skilled.U.png" alt="Scan QR code to give review" />
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
+<<<<<<< HEAD
           <div class="col-xl-6">
             <div class="instructor__item-wrap QR_parent_my d-flex justify-content-center">
               <img src="assets/img//banner/SkilledU_QR.png" alt="" />
             </div>
           </div>
         </div>
+=======
+        </section>
+        <!-- Review CTA Area End -->
+
+
+
+
+>>>>>>> 384b37a (Update website design and content)
         <!-- ================= -->
       </div>
     </section>
     <!-- Google reviews-area-end -->
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> 384b37a (Update website design and content)
     <!-- fact-area -->
     <section class="fact__area">
       <div class="container">
@@ -3214,7 +3908,12 @@
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="footer__widget">
               <div class="logo logo_footer">
+<<<<<<< HEAD
                 <a href="index.html"><img src="assets/img/logo/Skilledu_Logo_White2.png" alt="img" /></a>
+=======
+                <a href="index.html"><img src="assets/img/logo/Skilledu_Logo_White2.png" alt="Skilled.u Logo"
+                    style="height: 120px;" /></a>
+>>>>>>> 384b37a (Update website design and content)
               </div>
               <div class="footer__content">
                 <p>
