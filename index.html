@@ -24,7 +24,15 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <link rel="icon" type="image/x-icon" href="/favicon.ico"> <!-- Place favicon.ico in the root directory -->
+  <!-- Place favicon.ico in the root directory -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <!-- Google Fonts: Inter & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap"
+    rel="stylesheet" />
 
   <!-- flaticons  -->
   <!--load all styles -->
@@ -61,7 +69,7 @@
   <link rel="stylesheet" href="assets/css/spacing.css" />
   <link rel="stylesheet" href="assets/css/tg-cursor.css" />
   <link rel="stylesheet" href="assets/css/main.css" />
-  <link rel="stylesheet" href="assets/css/aicourses.css" />
+  <link rel="stylesheet" href="assets/css/aicourses.css?v=13" />
   <!-- additional css  -->
   <link rel="stylesheet" href="assets/css/my_css.css" />
 
@@ -70,17 +78,574 @@
   <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css" />
 
   <style>
+    /* =========================================================
+       TYPOGRAPHY MANAGEMENT (Inter & Poppins)
+       Preserves all existing alignments, paddings & flexbox spacing
+       ========================================================= */
+
+    /* 1. Base Variables & Body */
+    :root {
+      --tg-body-font-family: 'Inter', sans-serif;
+      --tg-heading-font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      font-family: var(--tg-body-font-family);
+    }
+
+    /* 2. Header Top Bar & Navigation (Inter Medium / Poppins Bold) */
+    .tg-header__top,
+    .tg-header__top-info,
+    .tg-header__top-info li,
+    .tg-header__top-info li span,
+    .tg-header__top-info li a,
+    .tg-header__phone,
+    .tg-header__phone a,
+    .tg-header__top-social,
+    .tg-header__top-social li {
+      font-family: 'Inter', sans-serif !important;
+      font-weight: 500 !important;
+    }
+
+    .tgmenu__navbar-wrap ul.navigation>li>a,
+    .tgmenu__main-menu ul li a,
+    .mobile-menu .navigation li a {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 700 !important;
+    }
+
+    /* 3. Main Banners & Headings (Poppins Bold) */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .hero-title,
+    .hero-title-line1,
+    .hero-title-line2,
+    .brand-text,
+    .section__title .title,
+    .banner__content .title,
+    .courses__item-content .title,
+    .courses__item-content .title a,
+    .categories__item-content .title,
+    .categories__item-content .title a,
+    .fact__content-wrap .title,
+    .fact__item-two .count,
+    .testimonial__content h4,
+    .accordion-header,
+    .accordion-button {
+      font-family: 'Poppins', sans-serif !important;
+      font-weight: 700 !important;
+    }
+
+    /* 4. Body Paragraphs (Inter Regular) */
+    p,
+    .hero-desc,
+    .about__content p,
+    .courses__item-content p,
+    .accordion-body,
+    .accordion-body p,
+    .faq__content p,
+    .banner__content p,
+    .fact__content-wrap p,
+    .author,
+    .author a,
+    .testimonial__item .testimonial__content p {
+      font-family: 'Inter', sans-serif !important;
+      font-weight: 400 !important;
+    }
+
+    /* 5. Footer & Meta Info (Inter Medium) */
+    .footer__area,
+    .footer__widget,
+    .footer__content,
+    .footer__content p,
+    .footer__link ul li a,
+    .footer__contact-content,
+    .footer__content .list-wrap li a,
+    .copy-right-text,
+    .copy-right-text p,
+    .copy-right-text a,
+    .footer__bottom-menu ul li a,
+    .courses__item-meta,
+    .courses__item-meta li,
+    .courses__item-tag a,
+    .avg-rating,
+    .section__title .sub-title {
+      font-family: 'Inter', sans-serif !important;
+      font-weight: 500 !important;
+    }
+
+    /* =========================================================
+       FOOTER ELEMENT ALIGNMENT & SPACING SETUP
+       ========================================================= */
+    .footer__top {
+      padding: 80px 0 50px !important;
+    }
+
+    /* Normalize column margins so widgets align cleanly with the grid */
+    .footer__top .row [class*=col-]:nth-child(2) .footer__widget,
+    .footer__top .row [class*=col-]:nth-child(3) .footer__widget {
+      margin-left: 0 !important;
+    }
+
+    .footer__widget {
+      margin-bottom: 30px !important;
+    }
+
+    .footer__widget .logo {
+      margin-bottom: 22px !important;
+    }
+
+    .footer__widget-title {
+      font-size: 20px !important;
+      font-weight: 600 !important;
+      margin-bottom: 22px !important;
+      padding-bottom: 12px !important;
+      position: relative;
+    }
+
+    .footer__widget-title::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 32px;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--tg-theme-secondary, #ffc224);
+    }
+
+    .footer__content p {
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    .footer__link .list-wrap li {
+      margin-bottom: 12px !important;
+    }
+
+    .footer__link .list-wrap li a {
+      font-size: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .footer__contact-content .footer__content .list-wrap li {
+      margin-bottom: 12px !important;
+      line-height: 1.5;
+    }
+
     .footer__content .list-wrap li a.f_contact {
       color: #ffc224 !important;
+      font-size: 15px;
+      display: inline-block;
+      transition: color 0.3s ease;
     }
 
     .footer__content .list-wrap li a.f_contact:hover {
-      color: #1c1ab8 !important;
+      color: #ffffff !important;
     }
 
-    /*.footer__widget .footer__contact-content .footer__content .list-wrap a.f_contact {*/
-    /*    color: red !important;*/
-    /*}*/
+    /* Social Icons Alignment */
+    .footer__social {
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      margin-top: 20px !important;
+      margin-bottom: 0 !important;
+      padding: 0 !important;
+    }
+
+    .footer__social li {
+      margin: 0 !important;
+      list-style: none !important;
+    }
+
+    .footer__social li a {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 36px !important;
+      height: 36px !important;
+      border-radius: 50% !important;
+      background: rgba(255, 255, 255, 0.08) !important;
+      color: #ffffff !important;
+      font-size: 14px !important;
+      transition: all 0.3s ease !important;
+      text-decoration: none !important;
+    }
+
+    .footer__social li a:hover {
+      background: #0b66c3 !important;
+      color: #ffffff !important;
+      transform: translateY(-2px);
+    }
+
+    /* Map Alignment */
+    .footer__map-wrapper {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer__map-wrapper iframe {
+      display: block;
+      width: 100%;
+      height: 175px;
+      border: 0;
+    }
+
+    /* Footer Bottom Alignment */
+    .footer__bottom {
+      padding: 24px 0 !important;
+      background: #0c0a2a !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer__bottom .copy-right-text p {
+      font-size: 14px;
+      margin-bottom: 0;
+      color: #8C9AB4;
+    }
+
+    .footer__bottom .copy-right-text p a {
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .footer__bottom-menu .list-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .footer__bottom-menu .list-wrap li a {
+      font-size: 14px;
+      color: #8C9AB4;
+      transition: color 0.3s ease;
+    }
+
+    .footer__bottom-menu .list-wrap li a:hover {
+      color: #ffc224;
+    }
+
+    @media (max-width: 767.98px) {
+      .footer__bottom .copy-right-text {
+        text-align: center;
+        margin-bottom: 12px;
+      }
+
+      .footer__bottom-menu .list-wrap {
+        justify-content: center !important;
+      }
+    }
+
+    /* =========================================================
+       COURSE AREA SECTION ALIGNMENT & HEIGHT/WIDTH SETUP
+       ========================================================= */
+    .courses-area {
+      padding: 70px 0 90px !important;
+      position: relative;
+    }
+
+    .courses-area .section__title {
+      margin-bottom: 35px;
+    }
+
+    .courses-area .section__title .title {
+      font-size: 36px !important;
+      margin-top: 10px;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .courses-area .section__title .desc {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 15.5px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    /* Course Navigation Tabs Alignment & Width */
+    .courses-area .courses__nav {
+      margin-bottom: 35px;
+    }
+
+    .courses-area .courses__nav .nav {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-wrap: wrap !important;
+      gap: 10px 12px !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+
+    .courses-area .courses__nav .nav::after {
+      display: none !important;
+    }
+
+    .courses-area .courses__nav .nav .nav-item {
+      padding: 0 !important;
+      margin: 0 !important;
+      list-style: none !important;
+    }
+
+    .courses-area .courses__nav .nav .nav-item .nav-link {
+      padding: 9px 22px !important;
+      border-radius: 30px !important;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      color: #475569 !important;
+      background: #f1f5f9 !important;
+      border: 1px solid #e2e8f0 !important;
+      transition: all 0.25s ease !important;
+      cursor: pointer;
+      display: inline-block !important;
+    }
+
+    .courses-area .courses__nav .nav .nav-item .nav-link:hover {
+      background: #e2e8f0 !important;
+      color: #0b66c3 !important;
+      border-color: #cbd5e1 !important;
+    }
+
+    .courses-area .courses__nav .nav .nav-item .nav-link.active {
+      background: #0b66c3 !important;
+      color: #ffffff !important;
+      border-color: #0b66c3 !important;
+      box-shadow: 0 4px 14px rgba(11, 102, 195, 0.28) !important;
+    }
+
+    .courses-area .courses__nav .nav .nav-item .nav-link::after {
+      display: none !important;
+    }
+
+    /* Course Card Equal Height & Width */
+    .swiper-slide {
+      height: auto !important;
+      display: flex !important;
+      align-items: stretch !important;
+    }
+
+    .courses__grid-wrap>[class*="col-"] {
+      display: flex !important;
+      align-items: stretch !important;
+      margin-bottom: 30px;
+    }
+
+    .courses__item {
+      width: 100% !important;
+      height: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      border-radius: 16px !important;
+      padding: 22px 20px 24px !important;
+      background: #ffffff !important;
+      border: 1px solid #e2e8f0 !important;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04) !important;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+      margin: 0 !important;
+    }
+
+    .courses__item:hover {
+      transform: translateY(-5px) !important;
+      box-shadow: 0 12px 30px rgba(11, 102, 195, 0.12) !important;
+      border-color: #cbd5e1 !important;
+      filter: none !important;
+    }
+
+    /* Thumbnail Fixed Ratio & Height */
+    .courses__item-thumb {
+      position: relative;
+      width: 100% !important;
+      height: 195px !important;
+      border-radius: 10px !important;
+      overflow: hidden;
+      margin: 0 0 16px !important;
+      background: #f1f5f9;
+    }
+
+    .courses__item-thumb a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .courses__item-thumb img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block;
+      border-radius: 10px !important;
+      transition: transform 0.4s ease !important;
+    }
+
+    .courses__item:hover .courses__item-thumb img {
+      transform: scale(1.05) !important;
+    }
+
+    /* Card Content Flex Distribution */
+    .courses__item-content {
+      display: flex !important;
+      flex-direction: column !important;
+      flex-grow: 1 !important;
+    }
+
+    .courses__item-meta {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 10px !important;
+      margin: 0 0 12px !important;
+      padding: 0 !important;
+    }
+
+    .courses__item-tag a {
+      font-size: 12px !important;
+      font-weight: 600 !important;
+      color: #0b66c3 !important;
+      background: #e0f2fe !important;
+      padding: 4px 12px !important;
+      border-radius: 20px !important;
+      display: inline-block;
+      line-height: 1.4 !important;
+      text-decoration: none !important;
+      transition: all 0.2s ease;
+    }
+
+    .courses__item-tag a:hover {
+      background: #0b66c3 !important;
+      color: #ffffff !important;
+    }
+
+    .courses__item .avg-rating {
+      font-size: 13px !important;
+      font-weight: 500 !important;
+      color: #64748b !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+      margin: 0 !important;
+    }
+
+    .courses__item .avg-rating i {
+      color: #f59e0b !important;
+      font-size: 13px;
+    }
+
+    /* Course Titles Aligned in Row */
+    .courses__item-content .title {
+      font-size: 17px !important;
+      font-weight: 700 !important;
+      line-height: 1.35 !important;
+      margin-bottom: 8px !important;
+      min-height: 46px !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+    }
+
+    .courses__item-content .title a {
+      color: #1e293b !important;
+      transition: color 0.2s ease !important;
+    }
+
+    .courses__item-content .title a:hover {
+      color: #0b66c3 !important;
+    }
+
+    .courses__item .author {
+      font-size: 13px !important;
+      color: #94a3b8 !important;
+      margin-bottom: 16px !important;
+      line-height: 1.2;
+    }
+
+    .courses__item .author a {
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    /* Bottom Button Row Aligned at Base */
+    .courses__item-bottom {
+      margin-top: auto !important;
+      padding-top: 14px !important;
+      border-top: 1px solid #f1f5f9 !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+
+    .courses__item-bottom .button {
+      width: 100% !important;
+    }
+
+    .courses__item-bottom .button a {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      padding: 10px 16px !important;
+      border-radius: 8px !important;
+      background: #ffc224 !important;
+      color: #0f172a !important;
+      font-weight: 600 !important;
+      font-size: 13.5px !important;
+      border: none !important;
+      box-shadow: 0 2px 6px rgba(255, 194, 36, 0.3) !important;
+      transition: all 0.25s ease !important;
+      gap: 8px !important;
+      text-decoration: none !important;
+    }
+
+    .courses__item-bottom .button a:hover {
+      background: #0b66c3 !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 12px rgba(11, 102, 195, 0.3) !important;
+      transform: translateY(-1px) !important;
+    }
+
+    /* Slider Navigation Controls */
+    .tab-pane .courses__nav {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 16px !important;
+      margin-top: 30px !important;
+    }
+
+    .tab-pane .courses__nav .courses-button-prev,
+    .tab-pane .courses__nav .courses-button-next {
+      position: static !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 44px !important;
+      height: 44px !important;
+      border-radius: 50% !important;
+      border: 1px solid #cbd5e1 !important;
+      background: #ffffff !important;
+      color: #0b66c3 !important;
+      cursor: pointer !important;
+      transition: all 0.25s ease !important;
+    }
+
+    .tab-pane .courses__nav .courses-button-prev:hover,
+    .tab-pane .courses__nav .courses-button-next:hover {
+      background: #0b66c3 !important;
+      color: #ffffff !important;
+      border-color: #0b66c3 !important;
+      box-shadow: 0 4px 12px rgba(11, 102, 195, 0.25) !important;
+    }
 
     .bg-cust {
       position: relative;
@@ -263,6 +828,208 @@
       background: var(--tg-theme-primary, #0b66c3) !important;
       color: var(--tg-common-color-white, #ffffff) !important;
     }
+
+    /* =========================================================
+       WEBINAR MARQUEE SECTION — PREMIUM DESIGN
+       ========================================================= */
+    .webinar__marquee {
+      position: relative;
+      background: #080910 !important;
+      padding: 60px 0 !important;
+      overflow: hidden !important;
+    }
+
+    .webinar__marquee + .webinar__marquee {
+      margin-top: 40px;
+    }
+
+    .webinar__marquee::before,
+    .webinar__marquee::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 120px;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .webinar-bg-motion {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("assets/img/banner/parallex.png") center / cover no-repeat;
+    }
+
+    .webinar__marquee-copy .webinar-bg-motion {
+      background-attachment: fixed;
+    }
+
+    .webinar__marquee::after {
+      right: 0;
+      background: transparent;
+    }
+
+    .webinar-container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .webinar-header {
+      margin-bottom: 32px !important;
+    }
+
+    .webinar-intro {
+      margin: 0;
+      padding: 0 16px;
+      color: rgba(255, 255, 255, 0.75);
+      font-family: 'Inter', sans-serif !important;
+      font-size: 15px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .webinar-cta {
+      margin-top: 28px;
+      text-align: center;
+    }
+
+    .webinar-card {
+      height: auto !important;
+      aspect-ratio: 940 / 788;
+    }
+
+    .webinar-card img {
+      object-fit: cover !important;
+      object-position: center !important;
+    }
+
+    .marquee-container {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+    }
+
+    .marquee-heading {
+      text-align: center;
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif !important;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      padding: 0 16px;
+    }
+
+    .marquee-heading span {
+      color: #ffc224;
+    }
+
+    .marquee-subtext {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.6);
+      font-family: 'Inter', sans-serif !important;
+      font-size: 15px;
+      margin-bottom: 40px;
+      padding: 0 16px;
+    }
+
+    .marquee-track-outer {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .marquee-content {
+      display: flex !important;
+      width: max-content !important;
+      animation: webinar-slide 30s linear infinite !important;
+    }
+
+    .marquee-content:hover {
+      animation-play-state: paused !important;
+    }
+
+    @keyframes webinar-slide {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .img-wrapper {
+      flex: 0 0 auto !important;
+      width: 320px !important;
+      height: 200px !important;
+      margin: 0 16px !important;
+      border-radius: 16px !important;
+      overflow: hidden !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+      border: 2px solid rgba(255, 194, 36, 0.25) !important;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+    }
+
+    .img-wrapper:hover {
+      transform: scale(1.04) translateY(-4px) !important;
+      box-shadow: 0 16px 48px rgba(255, 194, 36, 0.3) !important;
+      border-color: #ffc224 !important;
+    }
+
+    .img-wrapper img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block !important;
+      border-radius: 14px !important;
+    }
+
+    /* === Mobile Responsive === */
+    @media (max-width: 767.98px) {
+      .webinar__marquee {
+        padding: 40px 0 !important;
+        height: auto !important;
+        min-height: 0 !important;
+      }
+
+      .webinar__marquee::before,
+      .webinar__marquee::after {
+        width: 40px;
+      }
+
+      .webinar-header {
+        margin-bottom: 24px !important;
+      }
+
+      .marquee-heading {
+        font-size: 22px;
+      }
+
+      .webinar-intro {
+        font-size: 13px;
+      }
+
+      .marquee-subtext {
+        font-size: 13px;
+        margin-bottom: 28px;
+      }
+
+      .img-wrapper {
+        width: 220px !important;
+        height: 138px !important;
+        margin: 0 10px !important;
+        border-radius: 10px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .img-wrapper {
+        width: 175px !important;
+        height: 112px !important;
+        margin: 0 8px !important;
+      }
+    }
   </style>
 </head>
 
@@ -332,7 +1099,7 @@
       </div>
     </div>
     <div id="header-fixed-height"></div>
-    <div id="sticky-header" class="tg-header__area py-1">
+    <div id="sticky-header" class="tg-header__area py-1" style="height: 81px;">
       <div class="container custom-container">
         <div class="row">
           <div class="col-12" style="margin-top: -13px;">
@@ -344,7 +1111,7 @@
                 <div class="tgmenu__navbar-wrap tgmenu__navbar-wrap-my tgmenu__main-menu d-none d-xl-flex"
                   style="margin-top: 10px;">
                   <ul class="navigation">
-                    <li class="active menu-item">
+                    <li class="active menu-item" style="color: #000;">
                       <a href="index.html">Home</a>
 
                     </li>
@@ -354,9 +1121,8 @@
 
                     </li>
                     <li class="menu-item">
-                      <a href="https://sss.skilledu.in">SSS</a>
+                      <a href="sms.html">SMS</a>
                     </li>
-
                   </ul>
                 </div>
 
@@ -424,24 +1190,6 @@
   <!-- main-area -->
   <main class="main-area fix">
     <!-- banner-area -->
-<<<<<<< HEAD
-    <section class="banner-area banner-bg tg-motion-effects">
-      <div class="container">
-        <div class="row justify-content-between align-items-start">
-          <div class="col-xl-5 col-lg-6">
-            <div class="banner__content">
-              <h3 class="title tg-svg" data-aos="fade-right" data-aos-delay="400">
-                Master Skills at
-                <span class="position-relative skilled_block">
-                  <span class="svg-icon" id="banner-svg" data-svg-icon="assets/img/objects/title_shape.svg"></span>
-                  <svg x="0px" y="0px" preserveAspectRatio="none" viewBox="0 0 209 59" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M4.74438 7.70565C69.7006 -1.18799 136.097 -2.38304 203.934 4.1205C207.178 4.48495 209.422 7.14626 208.933 10.0534C206.793 23.6481 205.415 36.5704 204.801 48.8204C204.756 51.3291 202.246 53.5582 199.213 53.7955C136.093 59.7623 74.1922 60.5985 13.5091 56.3043C10.5653 56.0924 7.84371 53.7277 7.42158 51.0325C5.20725 38.2627 2.76333 25.6511 0.0898448 13.1978C-0.465589 10.5873 1.61173 8.1379 4.73327 7.70565"
-                      fill="currentcolor" />
-                  </svg>
-                  Skilled.u
-=======
     <section class="banner-area hero-banner-custom tg-motion-effects" style="background-color: #F8FBFF;">
       <!-- Background subtle organic curve decoration -->
       <div class="hero-bg-accent" aria-hidden="true"></div>
@@ -474,19 +1222,15 @@
                     </svg>
                     <span class="brand-text">skilled.u</span>
                   </span>
->>>>>>> 384b37a (Update website design and content)
                 </span>
-                <br />Hands-On <b>Learning</b> Awaits
-              </h3>
-              <p data-aos="fade-right" data-aos-delay="600">
+                <br />
+                <span class="hero-title-line2">Hands-On <span class="highlight-learning">Learning</span> Awaits</span>
+              </h1>
+
+              <p class="hero-desc" data-aos="fade-right" data-aos-delay="600">
                 Skilled.u opens doors to endless tech opportunities with
                 diverse courses empowering your success in the industry.
               </p>
-<<<<<<< HEAD
-              <div class="banner__btn-wrap" data-aos="fade-right" data-aos-delay="800">
-                <a href="#our_courses" class="btn arrow-btn">See Our Courses
-                  <img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable" /></a>
-=======
 
               <div class="hero-cta-wrap" data-aos="fade-right" data-aos-delay="800">
                 <!-- Yellow 3-ray burst decoration bottom-left of button -->
@@ -496,144 +1240,192 @@
                   <span class="btn arrow-btn">See Our Courses</span>
 
                 </a>
->>>>>>> 384b37a (Update website design and content)
               </div>
+
             </div>
           </div>
-          <div class="col-lg-6">
-            <div class="banner__images">
-              <img src="assets/img/changed/banner_img.png" alt="img" class="main-img" />
-              <div class="shape big-shape" data-aos="fade-up-right" data-aos-delay="600">
-                <img src="assets/img/banner/banner_shape001.png" alt="shape" class="tg-motion-effects1" />
+
+          <!-- Right Visual Scene -->
+          <div class="col-xl-6 col-lg-6 col-md-12">
+            <div class="hero__visual-wrapper" data-aos="fade-left" data-aos-delay="500">
+
+              <!-- Main Person Image -->
+              <img src="assets/img/ai courses/Smiling Young Man at Laptop.png" alt="Smiling Young Man at Laptop"
+                class="hero-person-img" style="width: 800px;" />
+
+              <!-- Floating Feature Badges (Stacked on the left along the dashed curve) -->
+              <div class="hero-floating-cards">
+
+                <!-- Badge 1: Learn In-Demand Skills -->
+                <div class="hero-card card-learn" data-aos="fade-right" data-aos-delay="700">
+                  <div class="card-badge-icon blue-icon">
+                    <span class="code-brackets">&lt;/&gt;</span>
+                  </div>
+                  <div class="card-badge-info">
+                    <span class="badge-label">Learn</span>
+                    <strong class="badge-title">In-Demand Skills</strong>
+                  </div>
+                </div>
+
+                <!-- Badge 2: Build Real Projects -->
+                <div class="hero-card card-build" data-aos="fade-right" data-aos-delay="850">
+                  <div class="card-badge-icon yellow-icon">
+                    <i class="fas fa-rocket"></i>
+                  </div>
+                  <div class="card-badge-info">
+                    <span class="badge-label">Build</span>
+                    <strong class="badge-title">Real Projects</strong>
+                  </div>
+                </div>
+
+                <!-- Badge 3: Grow Your Career -->
+                <div class="hero-card card-grow" data-aos="fade-right" data-aos-delay="1000">
+                  <div class="card-badge-icon blue-icon">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  <div class="card-badge-info">
+                    <span class="badge-label">Grow</span>
+                    <strong class="badge-title">Your Career</strong>
+                  </div>
+                </div>
+
               </div>
-              <img src="assets/img/banner/bg_dots.svg" alt="shape" class="shape bg-dots rotateme" />
-              <img src="assets/img/banner/banner_shape02.png" alt="shape"
-                class="shape small-shape tg-motion-effects3" />
-              <!-- <div class="banner__author">
-                                <div class="banner__author-item">
-                                    <div class="image">
-                                        <img src="assets/img/banner/banner_author01.png" alt="img">
-                                    </div>
-                                    <h6 class="name">Lorem t</h6>
-                                </div> 
-                                <div class="banner__author-item">
-                                    <div class="image">
-                                        <img src="assets/img/banner/banner_author02.png" alt="img">
-                                    </div>
-                                    <h6 class="name">Lorempsum.  </h6>
-                                </div>
-                                <img src="assets/img/banner/banner_shape02.svg" alt="shape" class="arrow-shape tg-motion-effects3">
-                            </div> -->
+
+
+
+              <!-- Mug caption on plant desk mug -->
+              <div class="hero-mug-caption" aria-hidden="true">
+                <span>&bull; Learn &bull;</span>
+                <span>&bull; Create &bull;</span>
+                <span>Grow</span>
+              </div>
+
             </div>
           </div>
+
         </div>
       </div>
-      <img src="assets/img/banner/banner_shape01.svg" alt="shape" class="line-shape" data-aos="fade-right"
-        data-aos-delay="1600" />
     </section>
     <!-- banner-area-end -->
-<<<<<<< HEAD
+
     <!-- brand-area -->
-=======
-
-
-
->>>>>>> 384b37a (Update website design and content)
-    <!-- brand-area -->
-    <div class="brand-area brand-area-two">
+    <div class="brand-area brand-area-two" style="margin-top: -32px;">
       <div class="container-fluid">
         <div class="marquee_mode lang_stripe">
+
           <div class="brand__item">
-<<<<<<< HEAD
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/html.webp" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
+            <span class="brand-dot" aria-hidden="true"></span>
           </div>
+
+
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/CSS3_logo_and_wordmark.webp"
                 alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
+            <span class="brand-dot" aria-hidden="true"></span>
           </div>
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/images.webp" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
+            <span class="brand-dot" aria-hidden="true"></span>
           </div>
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/JavaScript-logo.webp" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
+            <span class="brand-dot" aria-hidden="true"></span>
           </div>
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/react.webp" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
+            <span class="brand-dot" aria-hidden="true"></span>
           </div>
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/ajax_lan.webp" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
+            <span class="brand-dot" aria-hidden="true"></span>
           </div>
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/JSON_vector_logo.webp"
                 alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
+            <span class="brand-dot" aria-hidden="true"></span>
           </div>
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/express_logo.png" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
+            <span class="brand-dot" aria-hidden="true"></span>
           </div>
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Node.js_logo.webp" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
+            <span class="brand-dot" aria-hidden="true"></span>
           </div>
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/PHP-logo.webp" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
+            <span class="brand-dot" aria-hidden="true"></span>
           </div>
 
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/MySQL_logo.webp" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
-=======
-            <a href="index.html"><img class="lang_st" src="assets/img/ai courses/ai.png" alt="AI"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
             <span class="brand-dot" aria-hidden="true"></span>
           </div>
-
           <div class="brand__item">
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/CSS3_logo_and_wordmark.webp" alt="CSS3"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
->>>>>>> 384b37a (Update website design and content)
-          </div>
-          <div class="brand__item">
-<<<<<<< HEAD
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/sqlite_logo.webp" alt="brand"
                 height="50" width="50" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
+            <span class="brand-dot" aria-hidden="true"></span>
           </div>
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Python-logo-notext.webp"
                 alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
+            <span class="brand-dot" aria-hidden="true"></span>
           </div>
 
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/mongodb-icon-1.svg" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
-=======
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/images.webp" alt="HTML"
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/pandas.svg" alt="brand" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/numpy-1.svg" alt="brand" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Tensorflow_logo.webp" alt="brand" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Arduino_Logo.webp" alt="brand" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/ISO_C_Logo.webp" alt="brand" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/ai courses/logo.png" alt="Technology"
                 style="width:50px;height:50px;object-fit:contain;" /></a>
             <span class="brand-dot" aria-hidden="true"></span>
           </div>
 
           <div class="brand__item">
-            <a href="index.html"><img class="lang_st" src="assets/img/ai courses/js.webp" alt="JavaScript"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Keras_logo.webp" alt="brand" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Matplotlib_icon.webp" alt="brand" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Scikit_learn_logo_small.webp"
+                alt="brand" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/xml.webp" alt="brand" /></a>
+            <span class="brand-dot" aria-hidden="true"></span>
+          </div>
+          <div class="brand__item">
+            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/java-14.svg" alt="brand" /></a>
             <span class="brand-dot" aria-hidden="true"></span>
           </div>
 
-          <div class="brand__item">
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/react.webp" alt="React"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
-          </div>
 
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/ai courses/ChatGPT-Logo.png" alt="ChatGPT"
@@ -642,255 +1434,39 @@
           </div>
 
           <div class="brand__item">
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/ajax_lan.webp" alt="Ajax"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
-          </div>
-
-          <div class="brand__item">
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/JSON_vector_logo.webp" alt="JSON"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
-          </div>
-
-          <div class="brand__item">
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Node.js_logo.webp" alt="Node.js"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
->>>>>>> 384b37a (Update website design and content)
-          </div>
-          <div class="brand__item">
-<<<<<<< HEAD
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/pandas.svg" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
-=======
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/PHP-logo.webp" alt="PHP"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
->>>>>>> 384b37a (Update website design and content)
-          </div>
-          <div class="brand__item">
-<<<<<<< HEAD
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/numpy-1.svg" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
-=======
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/MySQL_logo.webp" alt="MySQL"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
-          </div>
-
-          <div class="brand__item">
-            <a href="index.html"><img class="lang_st" src="assets/img/ai courses/logo.png" alt="Technology"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
->>>>>>> 384b37a (Update website design and content)
-          </div>
-          <div class="brand__item">
-<<<<<<< HEAD
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Tensorflow_logo.webp" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
-=======
-            <a href="index.html">
-              <img class="lang_st" src="assets/img/lang_logo/sqlite_logo.webp" alt="SQLite"
-                style="width:50px;height:50px;object-fit:contain;" />
-            </a>
-            <span class="brand-dot" aria-hidden="true"></span>
-          </div>
-
-          <!-- Python: restored old logo path -->
-          <div class="brand__item">
-            <a href="index.html">
-              <img class="lang_st" src="assets/img/lang_logo/Python-logo-notext.webp" alt="Python"
-                style="width:50px;height:50px;object-fit:contain;" />
-            </a>
-            <span class="brand-dot" aria-hidden="true"></span>
->>>>>>> 384b37a (Update website design and content)
-          </div>
-          <div class="brand__item">
-<<<<<<< HEAD
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Arduino_Logo.webp" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
-=======
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/mongodb-icon-1.svg" alt="brand" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
->>>>>>> 384b37a (Update website design and content)
-          </div>
-          <div class="brand__item">
-<<<<<<< HEAD
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/ISO_C_Logo.webp" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
-=======
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/pandas.svg" alt="Pandas"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
->>>>>>> 384b37a (Update website design and content)
-          </div>
-          <div class="brand__item">
-<<<<<<< HEAD
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Keras_logo.webp" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
-=======
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/numpy-1.svg" alt="NumPy"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
->>>>>>> 384b37a (Update website design and content)
-          </div>
-          <div class="brand__item">
-<<<<<<< HEAD
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Matplotlib_icon.webp" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
-          </div>
-          <div class="brand__item">
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Scikit_learn_logo_small.webp"
-                alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
-=======
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Tensorflow_logo.webp" alt="TensorFlow"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
-          </div>
-
-          <div class="brand__item">
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Arduino_Logo.webp" alt="Arduino"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
-          </div>
-
-          <div class="brand__item">
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/ISO_C_Logo.webp" alt="C Language"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
-          </div>
-
-          <div class="brand__item">
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Keras_logo.webp" alt="Keras"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
-          </div>
-
-          <div class="brand__item">
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Matplotlib_icon.webp" alt="Matplotlib"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
-          </div>
-
-          <div class="brand__item">
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Scikit_learn_logo_small.webp"
-                alt="Scikit-learn" style="width:50px;height:50px;object-fit:contain;" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
->>>>>>> 384b37a (Update website design and content)
-          </div>
-          <div class="brand__item">
-<<<<<<< HEAD
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/xml.webp" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
-=======
-            <a href="index.html"><img class="lang_st" src="assets/img/ai courses/google-gemini-icon.webp"
-                alt="Google Gemini" style="width:50px;height:50px;object-fit:contain;" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
->>>>>>> 384b37a (Update website design and content)
-          </div>
-          <div class="brand__item">
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/java-14.svg" alt="brand" /></a>
-<<<<<<< HEAD
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
-=======
-            <span class="brand-dot" aria-hidden="true"></span>
->>>>>>> 384b37a (Update website design and content)
-          </div>
-
-          <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/Raspberry_Pi_Logo.webp"
-<<<<<<< HEAD
                 alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
+            <span class="brand-dot" aria-hidden="true"></span>
           </div>
 
           <div class="brand__item">
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/seaborn.webp" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
-=======
-                alt="Raspberry Pi" style="width:50px;height:50px;object-fit:contain;" /></a>
             <span class="brand-dot" aria-hidden="true"></span>
           </div>
 
           <div class="brand__item">
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/seaborn.webp" alt="Seaborn"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
+            <a href="index.html"><img class="lang_st" src="assets/img/ai courses/google-gemini-icon.webp"
+                alt="Google Gemini" style="width:50px;height:50px;object-fit:contain;" /></a>
             <span class="brand-dot" aria-hidden="true"></span>
->>>>>>> 384b37a (Update website design and content)
           </div>
+
           <div class="brand__item">
-<<<<<<< HEAD
             <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/spring-3.svg" alt="brand" /></a>
-            <img src="assets/img/icons/brand_star.svg" alt="star" />
-          </div>
-=======
-            <a href="index.html"><img class="lang_st" src="assets/img/lang_logo/spring-3.svg" alt="Spring"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
             <span class="brand-dot" aria-hidden="true"></span>
           </div>
-
           <div class="brand__item">
-            <a href="index.html"><img class="lang_st" src="assets/img/ai courses/logo.png" alt="Technology"
+            <a href="index.html"><img class="lang_st" src="assets/img/ai courses/ai.png" alt="AI"
                 style="width:50px;height:50px;object-fit:contain;" /></a>
             <span class="brand-dot" aria-hidden="true"></span>
           </div>
-
-          <div class="brand__item">
-            <a href="index.html"><img class="lang_st" src="assets/img/ai courses/images.jpg" alt="Technology"
-                style="width:50px;height:50px;object-fit:contain;" /></a>
-            <span class="brand-dot" aria-hidden="true"></span>
-          </div>
-
->>>>>>> 384b37a (Update website design and content)
         </div>
       </div>
     </div>
+    </div>
     <!-- brand-area-end -->
-    <!-- <div class="brand-area brand-area-two mt-2">
-                <div class="container-fluid">
-                    <div class="marquee_mode">
-                        <div class="brand__item">
-                            <a href="index.html"><img src="assets/img/brand/brand01.png" alt="brand"></a>
-                            <img src="assets/img/icons/brand_star.svg" alt="star">
-                        </div>
-                        <div class="brand__item">
-                            <a href="index.html"><img src="assets/img/brand/brand02.png" alt="brand"></a>
-                            <img src="assets/img/icons/brand_star.svg" alt="star">
-                        </div>
-                        <div class="brand__item">
-                            <a href="index.html"><img src="assets/img/brand/brand03.png" alt="brand"></a>
-                            <img src="assets/img/icons/brand_star.svg" alt="star">
-                        </div>
-                        <div class="brand__item">
-                            <a href="index.html"><img src="assets/img/brand/brand04.png" alt="brand"></a>
-                            <img src="assets/img/icons/brand_star.svg" alt="star">
-                        </div>
-                        <div class="brand__item">
-                            <a href="index.html"><img src="assets/img/brand/brand05.png" alt="brand"></a>
-                            <img src="assets/img/icons/brand_star.svg" alt="star">
-                        </div>
-                        <div class="brand__item">
-                            <a href="index.html"><img src="assets/img/brand/brand06.png" alt="brand"></a>
-                            <img src="assets/img/icons/brand_star.svg" alt="star">
-                        </div>
-                        <div class="brand__item">
-                            <a href="index.html"><img src="assets/img/brand/brand07.png" alt="brand"></a>
-                            <img src="assets/img/icons/brand_star.svg" alt="star">
-                        </div>
-                        <div class="brand__item">
-                            <a href="index.html"><img src="assets/img/brand/brand04.png" alt="brand"></a>
-                            <img src="assets/img/icons/brand_star.svg" alt="star">
-                        </div>
-                        <div class="brand__item">
-                            <a href="index.html"><img src="assets/img/brand/brand03.png" alt="brand"></a>
-                            <img src="assets/img/icons/brand_star.svg" alt="star">
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-    <!-- brand-area-end -->
+
+
+
 
 
     <!-- categories-area -->
@@ -1003,13 +1579,13 @@
               <div class="categories__nav">
                 <button class="categories-button-prev">
                   <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15 7L1 7M1 7L7 1M1 7L7 13" stroke="#161439" stroke-width="2" stroke-linecap="round"
+                    <path d="M15 7L1 7M1 7L7 1M1 7L7 13" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
                       stroke-linejoin="round" />
                   </svg>
                 </button>
                 <button class="categories-button-next">
                   <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 7L15 7M15 7L9 1M15 7L9 13" stroke="#161439" stroke-width="2" stroke-linecap="round"
+                    <path d="M1 7L15 7M15 7L9 1M15 7L9 13" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
                       stroke-linejoin="round" />
                   </svg>
                 </button>
@@ -1023,160 +1599,18 @@
 
     <!--basic computer section-->
 
-    <!-- AI intro-area -->
-    <section class="about-area tg-motion-effects pt-60 section-py-120 bg-cust">
-      <div class="container">
-        <div class="row align-items-center justify-content-center">
-          <div class="col-lg-5 col-md-9">
-            <div class="about__images ai_section">
-              <img src="assets/img/skilleduAI/new.png" alt="img" class="main-img" />
-              <div class="about__enrolled" data-aos="fade-right" data-aos-delay="200">
-                <!-- <p class="title"><span></span>Artificial Intelligence</p> -->
-                <!-- <img src="assets/img/others/student_grp.png" alt="img" /> -->
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-7">
-            <div class="about__content">
-              <div class="section__title mt-4">
-                <span class="sub-title ">AI Programs</span>
-                <h2 class="title ">
 
-                  <span class="position-relative">
-                    <svg x="0px" y="0px" preserveAspectRatio="none" viewBox="0 0 209 59" fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M4.74438 7.70565C69.7006 -1.18799 136.097 -2.38304 203.934 4.1205C207.178 4.48495 209.422 7.14626 208.933 10.0534C206.793 23.6481 205.415 36.5704 204.801 48.8204C204.756 51.3291 202.246 53.5582 199.213 53.7955C136.093 59.7623 74.1922 60.5985 13.5091 56.3043C10.5653 56.0924 7.84371 53.7277 7.42158 51.0325C5.20725 38.2627 2.76333 25.6511 0.0898448 13.1978C-0.465589 10.5873 1.61173 8.1379 4.73327 7.70565"
-                        fill="currentcolor" />
-                    </svg>
-                    Unlock the Future
-                  </span>
-                  with Our AI Courses
-                </h2>
-              </div>
-              <p class="desc">
-                Stay ahead in the world of Artificial Intelligence with our specially designed programs. From mastering
-                Generative AI tools to building next-gen applications and diving deep into advanced AI engineering,
-                these courses will equip you with the practical skills needed to thrive in today’s AI-driven industry.
-              </p>
-
-
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container mt-5">
-        <div class="row g-4">
-          <!-- Card 1 -->
-          <div class="col-md-4 d-flex">
-            <div class="about-box-2 d-flex flex-column h-100 w-100">
-              <h3 class="text-white">Generative AI Builder</h3>
-              <p class="text-white">
-                Learn to create AI models that generate text, images, and more.
-              </p>
-              <ul class="about__info-list list-wrap flex-grow-1">
-                <li class="about__info-list-item"><i class="flaticon-angle-right"></i>
-                  <p class="content text-white">LLM &amp; API’s Basics</p>
-                </li>
-                <li class="about__info-list-item"><i class="flaticon-angle-right"></i>
-                  <p class="content text-white">N8N Tool</p>
-                </li>
-                <li class="about__info-list-item"><i class="flaticon-angle-right"></i>
-                  <p class="content text-white">API Integration &amp; Automation</p>
-                </li>
-                <li class="about__info-list-item"><i class="flaticon-angle-right"></i>
-                  <p class="content text-white">Deploy &amp; Launch AI Applications</p>
-                </li>
-              </ul>
-              <div class="courses__item-bottom">
-                <div class="button">
-                  <a href="generative-AI-builder.html" target="_blank">
-                    <span class="text"> Enroll Now </span>
-                    <i class="flaticon-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="col-md-4 d-flex">
-            <div class="about-box-2 d-flex flex-column h-100 w-100">
-              <div class="parent-cust-chip"><span class="cust-chip">Most Popular</span></div>
-              <h3 class="text-white">Next-Gen AI</h3>
-              <p class="text-white">
-                Explore the latest advancements in AI technology and their applications.
-              </p>
-              <ul class="about__info-list list-wrap text-white flex-grow-1">
-                <li class="about__info-list-item"><i class="flaticon-angle-right"></i>
-                  <p class="content text-white">Types of AI &amp; Their Uses</p>
-                </li>
-                <li class="about__info-list-item"><i class="flaticon-angle-right"></i>
-                  <p class="content text-white">Fundamentals of Prompt Design</p>
-                </li>
-                <li class="about__info-list-item"><i class="flaticon-angle-right"></i>
-                  <p class="content text-white">Explore Top 15+ AI Tools</p>
-                </li>
-                <li class="about__info-list-item"><i class="flaticon-angle-right"></i>
-                  <p class="content text-white">And Many More.</p>
-                </li>
-              </ul>
-              <div class="courses__item-bottom">
-                <div class="button">
-                  <a href="Next-Gen AI.html" target="_blank">
-                    <span class="text"> Enroll Now </span>
-                    <i class="flaticon-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Card 3 -->
-          <div class="col-md-4 d-flex">
-            <div class="about-box-2 d-flex flex-column h-100 w-100">
-              <h3 class="text-white">Advanced AI Engineering</h3>
-              <p class="text-white">
-                Dive deep into the complexities of AI systems and learn to build robust AI solutions
-              </p>
-              <ul class="about__info-list list-wrap flex-grow-1">
-                <li class="about__info-list-item"><i class="flaticon-angle-right"></i>
-                  <p class="content text-white">RAG Engineering</p>
-                </li>
-                <li class="about__info-list-item"><i class="flaticon-angle-right"></i>
-                  <p class="content text-white">Fine-Tuning</p>
-                </li>
-                <li class="about__info-list-item"><i class="flaticon-angle-right"></i>
-                  <p class="content text-white">AI Agent</p>
-                </li>
-                <li class="about__info-list-item"><i class="flaticon-angle-right"></i>
-                  <p class="content text-white">Advance Prompt Engineering</p>
-                </li>
-              </ul>
-              <div class="courses__item-bottom">
-                <div class="button">
-                  <a href="Advanced AI Engineering.html" target="_blank">
-                    <span class="text"> Enroll Now </span>
-                    <i class="flaticon-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-    <!-- AI intro-end -->
 
 
     <!-- about-area -->
-    <section class="about-area-four section-pb-120">
+    <section class="about-area-four section-pb-120" style="padding: 0px 0;">
       <div class="container">
         <div class="row align-items-center justify-content-center">
           <div class="col-lg-5 col-md-9">
             <div class="about__images-four">
               <!-- Main Image -->
-              <img src="assets/img/ai courses/python.jpeg" alt="Student" class="main-img">
+              <img src="assets/img/ai courses/Thoughtful Student in a Tech Learning World.png" alt="Student"
+                class="main-img">
 
 
               <!-- Enrolled Students Badge (Bottom Left Floating) -->
@@ -1207,60 +1641,81 @@
 
 
           <!-- Right Content -->
+
           <div class="col-lg-7">
             <div class="about__content-four">
+
               <div class="section__title mb-15">
-                <span class="sub-title">Python, DS & ML</span>
-                <h1 class="title">Master Python, Data Science & Machine Learning</h1>
+                <span class="sub-title">AI Engineering</span>
+
+                <h1 class="title">
+                  From Python Basics to
+                  <span style="color: #0866c6; padding: 0px;">AI Engineering</span>
+                </h1>
               </div>
-              <p class="info-bold">Start with Python basics and move into real-world Data Analysis and Machine Learning.
-                Learn how to collect data, understand it and use it to make predictions, step by step.
-                Work with tools like NumPy, Pandas, Matplotlib, Scikit-learn, Selenium and SQL. Build real projects such
-                as Sales Prediction, a Data Dashboard and Web Scraping, and earn a certificate.</p>
+
+              <p class="info-bold">
+                Master Python, Machine Learning and Generative AI through
+                a structured 10-month learning journey. Build intelligent
+                applications using LLMs, AI agents, APIs and modern automation
+                tools — with practical projects designed for real-world skills.
+              </p>
 
               <div class="about__content-inner">
                 <div class="row">
+
                   <div class="col-md-6">
-                    <p>Training From Zero To Advanced
-                      Hands-On Projects And Assignments
-                      Mentorship And Doubt Support
+                    <p>
+                      <strong>Your AI journey, step by step.</strong><br>
+                      Learn the fundamentals, develop real projects and
+                      turn your ideas into AI-powered solutions.
                     </p>
                   </div>
+
                   <div class="col-md-6">
                     <ul class="about__info-list list-wrap">
+
                       <li class="about__info-list-item">
                         <i class="flaticon-angle-right"></i>
-                        <p class="content">Training From Zero To Advanced</p>
-                      </li>
-                      <li class="about__info-list-item">
-                        <i class="flaticon-angle-right"></i>
-                        <p class="content">Hands-On Projects And Assignments</p>
-                      </li>
-                      <li class="about__info-list-item">
-                        <i class="flaticon-angle-right"></i>
-                        <p class="content">Mentorship And Doubt Support
+                        <p class="content">
+                          Python, Data Science &amp; ML
                         </p>
                       </li>
+
+                      <li class="about__info-list-item">
+                        <i class="flaticon-angle-right"></i>
+                        <p class="content">
+                          Generative AI, LLMs &amp; RAG
+                        </p>
+                      </li>
+
+                      <li class="about__info-list-item">
+                        <i class="flaticon-angle-right"></i>
+                        <p class="content">
+                          AI Agents, APIs &amp; Automation
+                        </p>
+                      </li>
+
                     </ul>
                   </div>
+
                 </div>
               </div>
 
-              <!-- <p style="margin-left: -356px; color: #000; margin-top: 11px;">Ready to Learn Python <br> Start Your Journey Today →</p> -->
-              <div class="hero-cta-wrap" data-aos="fade-right" data-aos-delay="800">
-                <!-- Yellow 3-ray burst decoration bottom-left of button -->
-
-
+              <div class="hero-cta-wrap" data-aos="fade-right" data-aos-delay="300">
                 <a href="about-us.html">
-                  <span class="btn arrow-btn" style="margin-top: -60px;">Know More</span>
-
+                  <span class="btn arrow-btn">
+                    Explore Course
+                    <img src="assets/img/icons/right_arrow.svg" alt="" class="injectable">
+                  </span>
                 </a>
               </div>
 
-              <!-- Right Top Star Outline Shape -->
-              <img src="assets/img/ai courses/h3_about_shape03.svg" alt="shape" class="star-shape alltuchtopdown">
+              <img src="assets/img/ai courses/h3_about_shape03.svg" alt="" class="star-shape alltuchtopdown">
+
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -1273,84 +1728,120 @@
 
 
 
-    <!-- choose-area -->
-    <section class="choose__area tg-motion-effects section-py-140">
+    <!-- MERN Stack Hero Section -->
+    <section class="mern-hero-section">
       <div class="container">
-        <div class="choose__inner-wrap">
-          <div class="row align-items-center">
-            <!-- Left Content Card (White Overlapping Box) -->
-            <div class="col-lg-7 order-1 order-lg-1">
-              <div class="choose__content">
-                <div class="section__title mb-15">
-                  <span class="sub-title">MERN Stack</span>
-                  <h2 class="title">Learn MERN Stack, Get Job Ready</h2>
-                </div>
-                <p class="desc">Still don’t understand the code even after watching endless tutorials? Here, you’ll learn MongoDB, Express, React, and Node.js through live, hands-on practice, and build a real project every week. By the end, you won’t just know the concepts. You’ll be able to build full-stack applications on your own.
-                </p>
+        <div class="row align-items-center">
 
-                <ul class="about__info-list list-wrap">
-                  <li class="about__info-list-item">
-                    <i class="flaticon-angle-right"></i>
-                    <p class="content">No Coding Experience Needed</p>
-                  </li>
-                  <li class="about__info-list-item">
-                    <i class="flaticon-angle-right "></i>
-                    <p class="content">Build Real Projects For Your Portfolio</p>
-                  </li>
-                  <li class="about__info-list-item">
-                    <i class="flaticon-angle-right"></i>
-                    <p class="content">Interview Prep And Placement Guidance</p>
-                  </li>
-                </ul>
+          <!-- ===== LEFT: Content ===== -->
 
+          <div class="col-lg-5 col-md-12">
+            <div class="mern-hero-content" data-aos="fade-right" data-aos-delay="100">
 
-                <a href="about-us.html" class="btn arrow-btn">Know More <img src="assets/img/icons/right_arrow.svg"
-                    alt="" class="injectable"></a>
+              <div class="section__title mb-15">
+                <span class="sub-title">Latest Curriculum</span>
 
-                <!-- Notebook Icon Sketch Shape (Top Right inside white box) -->
-                <div class="shape">
-                  <img src="assets/img/ai courses/choose_shape03.svg" alt="shape" class="tg-motion-effects4">
-                </div>
+                <h2 class="title mern-hero-title">
+                  Master MERN Stack.<br>
+                  Build with <span style="color: #0866d1;padding: 0px;">AI-Powered Applications.</span>
+                </h2>
               </div>
-<<<<<<< HEAD
-=======
 
-              <br>
-              <!-- CTA Button -->
-              <div class="hero-cta-wrap" data-aos="fade-right" data-aos-delay="800">
-                <!-- Yellow 3-ray burst decoration bottom-left of button -->
+              <p class="mern-hero-desc">
+                Learn React, Node.js, Express.js and MongoDB with
+                Generative AI. Build real-world projects and develop
+                job-ready skills with practical training.
+              </p>
 
+              <ul class="about__info-list list-wrap mern-hero-features">
+                <li class="about__info-list-item">
+                  <i class="flaticon-angle-right"></i>
+                  <p class="content">Industry-Ready Skills</p>
+                </li>
 
-                <a href="about-us.html">
-                  <span class="btn arrow-btn">Explore Course</span>
+                <li class="about__info-list-item">
+                  <i class="flaticon-angle-right"></i>
+                  <p class="content">Real-World Projects & AI Tools</p>
+                </li>
 
+                <li class="about__info-list-item">
+                  <i class="flaticon-angle-right"></i>
+                  <p class="content">Career & Placement Assistance</p>
+                </li>
+              </ul>
+
+              <div class="hero-cta-wrap">
+                <a href="about-us.html" class="btn arrow-btn">
+                  Explore Course
+                  <img src="assets/img/icons/right_arrow.svg" alt="">
                 </a>
               </div>
 
->>>>>>> 384b37a (Update website design and content)
             </div>
+          </div>
 
 
-            <!-- Right Column (Graduate Photo & Center Video Button) -->
-            <div class="col-lg-5 order-0 order-lg-2">
-              <div class="choose__img" data-aos="fade-left" data-aos-delay="300">
-                <img src="assets/img/ai courses/mern.jpeg" alt="img">
-                <!-- <a href="https://www.youtube.com/watch?v=b2Az7_lLh3g" class="popup-video"><i
-                    class="fas fa-play"></i></a> -->
+          <!-- ===== RIGHT: Image + Floating Cards ===== -->
+          <div class="col-lg-7 col-md-12">
+            <div class="mern-img-area" data-aos="fade-left" data-aos-delay="200">
+
+              <!-- Yellow Decorative Shape (top-right) -->
+              <div class="mern-yellow-shape"></div>
+
+              <!-- Main Photo -->
+              <div class="mern-photo-wrap">
+                <img src="assets/img/ai courses/Pastel MERN Coding Study Scene.png" alt="MERN Stack Student at laptop"
+                  class="mern-main-photo">
+
+                <!-- Floating Card 1: Tech Stack (top-left of photo) -->
+                <div class="mern-float-tech">
+                  <div class="mft-item">
+                    <span class="mft-icon mft-react">⚛</span>
+                    <span class="mft-label">React</span>
+                  </div>
+                  <div class="mft-item">
+                    <span class="mft-icon mft-node">⬡</span>
+                    <span class="mft-label">Node.js</span>
+                  </div>
+                  <div class="mft-item">
+                    <span class="mft-icon mft-express">ex</span>
+                    <span class="mft-label">Express.js</span>
+                  </div>
+                  <div class="mft-item">
+                    <span class="mft-icon mft-mongo">🍃</span>
+                    <span class="mft-label">MongoDB</span>
+                  </div>
+                </div>
+
+                <!-- Floating Card 2: Code Snippet (right side) -->
+                <div class="mern-float-code">
+                  <div class="mfc-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <pre class="mfc-pre"><span class="c-kw">const</span> app = <span class="c-fn">express</span>();
+app.<span class="c-fn">get</span>(<span class="c-str">'/'</span>, (req, res) <span class="c-kw">=></span> {
+  res.<span class="c-fn">json</span>({
+    message: <span class="c-str">'Hello, World!'</span>
+  });
+});</pre>
+                </div>
+
+                <!-- Floating Badge: Project-Based Learning (bottom-right) -->
+                <div class="mern-float-badge">
+                  <div class="mfb-icon">🚀</div>
+                  <span class="mfb-text">Project-Based<br>Learning</span>
+                </div>
+
               </div>
             </div>
           </div>
+
         </div>
       </div>
-
-
-      <!-- Bottom Right Background Decorative Shapes -->
-      <div class="choose__shape">
-        <img src="assets/img/ai courses/choose_shape01.svg" alt="shape" class="tg-motion-effects4 shape-dots">
-        <img src="assets/img/ai courses/choose_shape02.svg" alt="shape" class="tg-motion-effects5 shape-line">
-      </div>
     </section>
-    <!-- choose-area-end -->
+
+
+
 
 
 
@@ -1361,7 +1852,7 @@
         <div class="row justify-content-center">
           <div class="col-xl-6 col-lg-8">
             <div class="section__title text-center mb-40">
-              <span class="sub-title">Student Roadmap </span>
+              <span class="sub-title">Student Roadmap</span>
               <h2 class="title">Achieve Your Goal With Skilled.u</h2>
               <p>
                 Skilled.u offers expert-designed courses in web development,
@@ -1372,19 +1863,16 @@
           </div>
         </div>
         <div class="features__item-wrap">
-          <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-6">
-              <div class="features__item-two">
+          <div class="row justify-content-center g-4">
+            <div class="col-lg-6 col-md-6 d-flex">
+              <div class="features__item-two w-100">
+                <div class="features__icon-two">
+                  <img src="assets/img/icons/building.png" alt="img" class="injectable" height="45" />
+                </div>
                 <div class="features__content-two">
-                  <div class="content-top">
-                    <div class="features__icon-two">
-                      <img src="assets/img/icons/building.png" alt="img" class="injectable" height="45" />
-                    </div>
-                    <h2 class="title">Visit Us</h2>
-                  </div>
+                  <h2 class="title">Visit Us</h2>
                   <p class="achievw-card">
-                    Explore campus, meet experts, and join hands-on at
-                    Skilled.u
+                    Explore campus, meet experts, and join hands-on at Skilled.u
                   </p>
                 </div>
                 <div class="features__item-shape">
@@ -1392,22 +1880,19 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 col-md-6">
-              <div class="features__item-two">
+            <div class="col-lg-6 col-md-6 d-flex">
+              <div class="features__item-two w-100">
+                <div class="features__icon-two">
+                  <svg width="27" height="32" viewBox="0 0 27 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M5.0116 24.5H21.9884C24.7519 24.5 27 22.2571 27 19.5V5C27 2.24292 24.7519 0 21.9884 0H5.0116C2.24812 0 0 2.24292 0 5V27C0 29.7571 2.24812 32 5.0116 32H21.9884C24.7519 32 27 29.7571 27 27C27 26.3096 26.4391 25.75 25.7471 25.75C25.0551 25.75 24.4942 26.3096 24.4942 27C24.4942 28.3784 23.37 29.5 21.9884 29.5H5.0116C3.62998 29.5 2.5058 28.3784 2.5058 27C2.5058 25.6216 3.62998 24.5 5.0116 24.5ZM2.5058 5C2.5058 3.62158 3.62998 2.5 5.0116 2.5H21.9884C23.37 2.5 24.4942 3.62158 24.4942 5V19.5C24.4942 20.8784 23.37 22 21.9884 22H5.0116C4.09933 22 3.24335 22.2444 2.5058 22.6709V5ZM7.58005 8.4375C7.58005 7.74707 8.14091 7.1875 8.83295 7.1875H18.2297C18.9217 7.1875 19.4826 7.74707 19.4826 8.4375C19.4826 9.12793 18.9217 9.6875 18.2297 9.6875H8.83295C8.14091 9.6875 7.58005 9.12793 7.58005 8.4375Z"
+                      fill="currentcolor" />
+                  </svg>
+                </div>
                 <div class="features__content-two">
-                  <div class="content-top">
-                    <div class="features__icon-two">
-                      <svg width="27" height="32" viewBox="0 0 27 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M5.0116 24.5H21.9884C24.7519 24.5 27 22.2571 27 19.5V5C27 2.24292 24.7519 0 21.9884 0H5.0116C2.24812 0 0 2.24292 0 5V27C0 29.7571 2.24812 32 5.0116 32H21.9884C24.7519 32 27 29.7571 27 27C27 26.3096 26.4391 25.75 25.7471 25.75C25.0551 25.75 24.4942 26.3096 24.4942 27C24.4942 28.3784 23.37 29.5 21.9884 29.5H5.0116C3.62998 29.5 2.5058 28.3784 2.5058 27C2.5058 25.6216 3.62998 24.5 5.0116 24.5ZM2.5058 5C2.5058 3.62158 3.62998 2.5 5.0116 2.5H21.9884C23.37 2.5 24.4942 3.62158 24.4942 5V19.5C24.4942 20.8784 23.37 22 21.9884 22H5.0116C4.09933 22 3.24335 22.2444 2.5058 22.6709V5ZM7.58005 8.4375C7.58005 7.74707 8.14091 7.1875 8.83295 7.1875H18.2297C18.9217 7.1875 19.4826 7.74707 19.4826 8.4375C19.4826 9.12793 18.9217 9.6875 18.2297 9.6875H8.83295C8.14091 9.6875 7.58005 9.12793 7.58005 8.4375Z"
-                          fill="currentcolor" />
-                      </svg>
-                    </div>
-                    <h2 class="title">Choose any Courses</h2>
-                  </div>
+                  <h2 class="title">Choose any Courses</h2>
                   <p class="achievw-card">
-                    Boost technical skills through interactive classroom
-                    learning.
+                    Boost technical skills through interactive classroom learning.
                   </p>
                 </div>
                 <div class="features__item-shape">
@@ -1415,15 +1900,13 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 col-md-6">
-              <div class="features__item-two">
+            <div class="col-lg-6 col-md-6 d-flex">
+              <div class="features__item-two w-100">
+                <div class="features__icon-two">
+                  <img src="assets/img/icons/training.png" alt="img" class="injectable" height="45" />
+                </div>
                 <div class="features__content-two">
-                  <div class="content-top">
-                    <div class="features__icon-two">
-                      <img src="assets/img/icons/training.png" alt="img" class="injectable" height="45" />
-                    </div>
-                    <h2 class="title">Class Room Training</h2>
-                  </div>
+                  <h2 class="title">Class Room Training</h2>
                   <p class="achievw-card">
                     Expand your tech skills with diverse training options.
                   </p>
@@ -1433,36 +1916,34 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-6 col-md-6">
-              <div class="features__item-two">
+            <div class="col-lg-6 col-md-6 d-flex">
+              <div class="features__item-two w-100">
+                <div class="features__icon-two">
+                  <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M34.4167 0H0.583333C0.261187 0 0 0.266138 0 0.59439V24.37C0 24.6983 0.261187 24.9644 0.583333 24.9644H11.1166C11.1341 25.1623 11.1627 25.3573 11.1971 25.5505L7.9975 29.436C7.79027 29.6873 7.82228 30.0623 8.06896 30.2734C8.13845 30.3329 8.2207 30.3751 8.309 30.3965L11.8312 31.2536L13.2714 34.6417C13.3995 34.9429 13.7429 35.0814 14.0385 34.9509C14.1218 34.9142 14.1954 34.8582 14.2537 34.7873L17.4481 30.9083C17.4656 30.9083 17.4825 30.9083 17.5 30.9083C17.5175 30.9083 17.5344 30.9083 17.5519 30.9083L20.7462 34.7873C20.9532 35.0389 21.3211 35.0719 21.568 34.861C21.6375 34.8016 21.6925 34.7265 21.7286 34.6417L23.1688 31.2536L26.691 30.3965C27.0044 30.3204 27.198 29.9999 27.1233 29.6806C27.1022 29.5906 27.0609 29.5068 27.0025 29.436L23.8029 25.5505C23.8373 25.3573 23.8659 25.1623 23.8834 24.9644H34.4167C34.7388 24.9644 35 24.6983 35 24.37V0.59439C35 0.266064 34.7388 0 34.4167 0ZM13.9668 33.2859L12.7855 30.5101C12.7125 30.3384 12.5645 30.2118 12.3859 30.1683L9.49842 29.4651L11.5926 26.9217C11.6037 26.9479 11.6183 26.9717 11.6293 26.9978C11.7052 27.1761 11.7874 27.3455 11.8784 27.5137C11.9157 27.5839 11.9554 27.6528 11.9951 27.7212C12.0752 27.8571 12.1599 27.9902 12.2494 28.1206C12.3118 28.2116 12.3772 28.2989 12.4442 28.3881C12.5224 28.4891 12.6029 28.5878 12.6875 28.6853C12.7721 28.7828 12.8707 28.8903 12.9681 28.989C13.0398 29.0621 13.1139 29.1329 13.1897 29.2024C13.2528 29.2618 13.3093 29.3242 13.3752 29.3807C13.4412 29.4372 13.503 29.4752 13.566 29.5252C13.5946 29.5477 13.6191 29.5739 13.6482 29.5959C13.7007 29.6363 13.7562 29.6714 13.8098 29.71C13.8938 29.7695 13.9767 29.8336 14.0636 29.8883C14.2292 29.9965 14.4002 30.0952 14.5734 30.1855C14.6399 30.22 14.7076 30.2515 14.7752 30.2836C14.9308 30.3581 15.0873 30.4259 15.2448 30.4869C15.2903 30.5041 15.3353 30.5237 15.3808 30.5398C15.6017 30.6189 15.8269 30.6854 16.0551 30.7389L16.0615 30.7407L13.9668 33.2859ZM18.5955 29.5935C18.328 29.6511 18.0565 29.6875 17.7835 29.7023H17.7759C17.6838 29.707 17.5916 29.7136 17.4988 29.7136C17.4061 29.7136 17.3139 29.707 17.2218 29.7023H17.2142C16.9417 29.6874 16.6709 29.6512 16.4039 29.5941L16.3549 29.584C16.2511 29.5608 16.1484 29.5323 16.0469 29.5026C16.0043 29.4901 15.9612 29.4788 15.9192 29.4651C15.8462 29.4419 15.7745 29.4146 15.7027 29.3884C15.631 29.3623 15.5627 29.3367 15.4939 29.3076C15.4513 29.2892 15.4093 29.2696 15.3673 29.2482C15.2717 29.2042 15.1766 29.1596 15.0838 29.1103L15.0372 29.0841C14.7967 28.9531 14.5666 28.8032 14.3488 28.636C14.2275 28.5438 14.1155 28.4422 14.0052 28.3417C13.8749 28.2232 13.7504 28.098 13.6325 27.9667C13.5858 27.9155 13.5357 27.8668 13.4913 27.8139C13.3284 27.6186 13.1798 27.4114 13.0468 27.194C13.027 27.1619 13.0101 27.128 12.9885 27.0947C12.8645 26.8835 12.7553 26.6636 12.6618 26.4367C12.6537 26.4165 12.6443 26.3963 12.6367 26.3773C12.5334 26.1172 12.4503 25.8494 12.3883 25.576C12.3883 25.5653 12.3801 25.557 12.3772 25.5463C12.2924 25.1602 12.2498 24.7656 12.25 24.37C12.2483 21.4155 14.5973 19.0191 17.4968 19.0172C20.3963 19.0154 22.7482 21.4091 22.75 24.3635C22.7502 24.7636 22.7064 25.1626 22.6193 25.5528C22.6164 25.5629 22.6106 25.5718 22.6082 25.5819C22.5463 25.8549 22.4634 26.1226 22.3603 26.3825C22.3522 26.4033 22.3428 26.4241 22.3341 26.442C22.2409 26.6675 22.1321 26.886 22.0086 27.0958C21.9893 27.1291 21.9718 27.1642 21.9503 27.1974C21.8172 27.4146 21.6689 27.6216 21.5063 27.8168C21.4626 27.8691 21.413 27.9167 21.3669 27.9678C21.2474 28.1003 21.1214 28.2267 20.9895 28.3464C20.8787 28.4469 20.7684 28.5485 20.6477 28.64C20.5269 28.7316 20.419 28.8088 20.3012 28.8855L20.2942 28.8897C20.1886 28.958 20.0807 29.021 19.971 29.0805C19.9494 29.0924 19.9284 29.1048 19.9068 29.1161C19.8187 29.1631 19.7318 29.2053 19.6391 29.2463C19.5924 29.2677 19.5463 29.2897 19.4991 29.3093C19.4337 29.3373 19.3673 29.3616 19.3008 29.386C19.2343 29.4104 19.152 29.4419 19.0762 29.4656C19.0359 29.4787 18.9951 29.49 18.9542 29.5019C18.851 29.5316 18.7472 29.5613 18.6422 29.5839L18.5955 29.5935ZM25.5016 29.4633L22.6141 30.1665C22.4355 30.21 22.2875 30.3366 22.2145 30.5083L21.0332 33.2859L18.9385 30.7425H18.9437C19.1729 30.6891 19.3988 30.6225 19.6204 30.5428C19.6642 30.5273 19.7062 30.5089 19.7499 30.4928C19.9127 30.4298 20.0731 30.3609 20.2306 30.2842C20.2948 30.2539 20.3589 30.2248 20.4219 30.1915C20.5969 30.0987 20.7719 29.9983 20.9399 29.8883C21.021 29.836 21.0986 29.7772 21.1773 29.7207C21.2357 29.6797 21.294 29.6423 21.3523 29.5989C21.3832 29.5751 21.4107 29.5471 21.441 29.5228C21.4993 29.474 21.567 29.433 21.6265 29.3819C21.686 29.3308 21.7467 29.263 21.8085 29.2072C21.8855 29.1358 21.9613 29.0639 22.0348 28.9896C22.1309 28.8918 22.2238 28.7911 22.3137 28.6877C22.3982 28.5902 22.4787 28.4915 22.5575 28.3905C22.6246 28.3031 22.6899 28.2121 22.7523 28.123C22.8422 27.9934 22.9273 27.8603 23.0061 27.7247C23.0469 27.6558 23.0866 27.5863 23.1227 27.5155C23.2134 27.3479 23.296 27.1765 23.3707 27.0014C23.3812 26.9711 23.3963 26.9467 23.4074 26.9199L25.5016 29.4633ZM33.8333 23.7756H23.8869C23.5704 20.181 20.4539 17.5285 16.9262 17.8511C13.8372 18.1336 11.3891 20.628 11.1119 23.7756H1.16667V1.18878H33.8333V23.7756Z"
+                      fill="currentcolor" />
+                    <path
+                      d="M2.91667 2.37756C2.59452 2.37756 2.33333 2.6437 2.33333 2.97195V5.34951H3.5V3.56634H5.25V2.37756H2.91667Z"
+                      fill="currentcolor" />
+                    <path
+                      d="M32.0833 2.37756H29.75V3.56634H31.5V5.34951H32.6667V2.97195C32.6667 2.64363 32.4055 2.37756 32.0833 2.37756Z"
+                      fill="currentcolor" />
+                    <path
+                      d="M31.5 19.6149V21.3981H29.75V22.5868H32.0833C32.4055 22.5868 32.6667 22.3207 32.6667 21.9924V19.6149H31.5Z"
+                      fill="currentcolor" />
+                    <path
+                      d="M3.5 21.3981V19.6149H2.33333V21.9924C2.33333 22.3207 2.59452 22.5868 2.91667 22.5868H5.25V21.3981H3.5Z"
+                      fill="currentcolor" />
+                    <path d="M24.5 6.5383H10.5V7.72708H24.5V6.5383Z" fill="currentcolor" />
+                    <path d="M28 10.1046H7V11.2934H28V10.1046Z" fill="currentcolor" />
+                    <path
+                      d="M17.5 20.2093C15.2448 20.2093 13.4167 22.0721 13.4167 24.37C13.4192 26.6668 15.2459 28.5281 17.5 28.5307C19.7552 28.5307 21.5833 26.6679 21.5833 24.37C21.5833 22.0721 19.7552 20.2093 17.5 20.2093ZM17.5 27.342C15.8892 27.342 14.5833 26.0113 14.5833 24.37C14.5852 22.7295 15.89 21.4 17.5 21.3981C19.1108 21.3981 20.4167 22.7287 20.4167 24.37C20.4167 26.0113 19.1108 27.342 17.5 27.342Z"
+                      fill="currentcolor" />
+                  </svg>
+                </div>
                 <div class="features__content-two">
-                  <div class="content-top">
-                    <div class="features__icon-two">
-                      <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M34.4167 0H0.583333C0.261187 0 0 0.266138 0 0.59439V24.37C0 24.6983 0.261187 24.9644 0.583333 24.9644H11.1166C11.1341 25.1623 11.1627 25.3573 11.1971 25.5505L7.9975 29.436C7.79027 29.6873 7.82228 30.0623 8.06896 30.2734C8.13845 30.3329 8.2207 30.3751 8.309 30.3965L11.8312 31.2536L13.2714 34.6417C13.3995 34.9429 13.7429 35.0814 14.0385 34.9509C14.1218 34.9142 14.1954 34.8582 14.2537 34.7873L17.4481 30.9083C17.4656 30.9083 17.4825 30.9083 17.5 30.9083C17.5175 30.9083 17.5344 30.9083 17.5519 30.9083L20.7462 34.7873C20.9532 35.0389 21.3211 35.0719 21.568 34.861C21.6375 34.8016 21.6925 34.7265 21.7286 34.6417L23.1688 31.2536L26.691 30.3965C27.0044 30.3204 27.198 29.9999 27.1233 29.6806C27.1022 29.5906 27.0609 29.5068 27.0025 29.436L23.8029 25.5505C23.8373 25.3573 23.8659 25.1623 23.8834 24.9644H34.4167C34.7388 24.9644 35 24.6983 35 24.37V0.59439C35 0.266064 34.7388 0 34.4167 0ZM13.9668 33.2859L12.7855 30.5101C12.7125 30.3384 12.5645 30.2118 12.3859 30.1683L9.49842 29.4651L11.5926 26.9217C11.6037 26.9479 11.6183 26.9717 11.6293 26.9978C11.7052 27.1761 11.7874 27.3455 11.8784 27.5137C11.9157 27.5839 11.9554 27.6528 11.9951 27.7212C12.0752 27.8571 12.1599 27.9902 12.2494 28.1206C12.3118 28.2116 12.3772 28.2989 12.4442 28.3881C12.5224 28.4891 12.6029 28.5878 12.6875 28.6853C12.7721 28.7828 12.8707 28.8903 12.9681 28.989C13.0398 29.0621 13.1139 29.1329 13.1897 29.2024C13.2528 29.2618 13.3093 29.3242 13.3752 29.3807C13.4412 29.4372 13.503 29.4752 13.566 29.5252C13.5946 29.5477 13.6191 29.5739 13.6482 29.5959C13.7007 29.6363 13.7562 29.6714 13.8098 29.71C13.8938 29.7695 13.9767 29.8336 14.0636 29.8883C14.2292 29.9965 14.4002 30.0952 14.5734 30.1855C14.6399 30.22 14.7076 30.2515 14.7752 30.2836C14.9308 30.3581 15.0873 30.4259 15.2448 30.4869C15.2903 30.5041 15.3353 30.5237 15.3808 30.5398C15.6017 30.6189 15.8269 30.6854 16.0551 30.7389L16.0615 30.7407L13.9668 33.2859ZM18.5955 29.5935C18.328 29.6511 18.0565 29.6875 17.7835 29.7023H17.7759C17.6838 29.707 17.5916 29.7136 17.4988 29.7136C17.4061 29.7136 17.3139 29.707 17.2218 29.7023H17.2142C16.9417 29.6874 16.6709 29.6512 16.4039 29.5941L16.3549 29.584C16.2511 29.5608 16.1484 29.5323 16.0469 29.5026C16.0043 29.4901 15.9612 29.4788 15.9192 29.4651C15.8462 29.4419 15.7745 29.4146 15.7027 29.3884C15.631 29.3623 15.5627 29.3367 15.4939 29.3076C15.4513 29.2892 15.4093 29.2696 15.3673 29.2482C15.2717 29.2042 15.1766 29.1596 15.0838 29.1103L15.0372 29.0841C14.7967 28.9531 14.5666 28.8032 14.3488 28.636C14.2275 28.5438 14.1155 28.4422 14.0052 28.3417C13.8749 28.2232 13.7504 28.098 13.6325 27.9667C13.5858 27.9155 13.5357 27.8668 13.4913 27.8139C13.3284 27.6186 13.1798 27.4114 13.0468 27.194C13.027 27.1619 13.0101 27.128 12.9885 27.0947C12.8645 26.8835 12.7553 26.6636 12.6618 26.4367C12.6537 26.4165 12.6443 26.3963 12.6367 26.3773C12.5334 26.1172 12.4503 25.8494 12.3883 25.576C12.3883 25.5653 12.3801 25.557 12.3772 25.5463C12.2924 25.1602 12.2498 24.7656 12.25 24.37C12.2483 21.4155 14.5973 19.0191 17.4968 19.0172C20.3963 19.0154 22.7482 21.4091 22.75 24.3635C22.7502 24.7636 22.7064 25.1626 22.6193 25.5528C22.6164 25.5629 22.6106 25.5718 22.6082 25.5819C22.5463 25.8549 22.4634 26.1226 22.3603 26.3825C22.3522 26.4033 22.3428 26.4241 22.3341 26.442C22.2409 26.6675 22.1321 26.886 22.0086 27.0958C21.9893 27.1291 21.9718 27.1642 21.9503 27.1974C21.8172 27.4146 21.6689 27.6216 21.5063 27.8168C21.4626 27.8691 21.413 27.9167 21.3669 27.9678C21.2474 28.1003 21.1214 28.2267 20.9895 28.3464C20.8787 28.4469 20.7684 28.5485 20.6477 28.64C20.5269 28.7316 20.419 28.8088 20.3012 28.8855L20.2942 28.8897C20.1886 28.958 20.0807 29.021 19.971 29.0805C19.9494 29.0924 19.9284 29.1048 19.9068 29.1161C19.8187 29.1631 19.7318 29.2053 19.6391 29.2463C19.5924 29.2677 19.5463 29.2897 19.4991 29.3093C19.4337 29.3373 19.3673 29.3616 19.3008 29.386C19.2343 29.4104 19.152 29.4419 19.0762 29.4656C19.0359 29.4787 18.9951 29.49 18.9542 29.5019C18.851 29.5316 18.7472 29.5613 18.6422 29.5839L18.5955 29.5935ZM25.5016 29.4633L22.6141 30.1665C22.4355 30.21 22.2875 30.3366 22.2145 30.5083L21.0332 33.2859L18.9385 30.7425H18.9437C19.1729 30.6891 19.3988 30.6225 19.6204 30.5428C19.6642 30.5273 19.7062 30.5089 19.7499 30.4928C19.9127 30.4298 20.0731 30.3609 20.2306 30.2842C20.2948 30.2539 20.3589 30.2248 20.4219 30.1915C20.5969 30.0987 20.7719 29.9983 20.9399 29.8883C21.021 29.836 21.0986 29.7772 21.1773 29.7207C21.2357 29.6797 21.294 29.6423 21.3523 29.5989C21.3832 29.5751 21.4107 29.5471 21.441 29.5228C21.4993 29.474 21.567 29.433 21.6265 29.3819C21.686 29.3308 21.7467 29.263 21.8085 29.2072C21.8855 29.1358 21.9613 29.0639 22.0348 28.9896C22.1309 28.8918 22.2238 28.7911 22.3137 28.6877C22.3982 28.5902 22.4787 28.4915 22.5575 28.3905C22.6246 28.3031 22.6899 28.2121 22.7523 28.123C22.8422 27.9934 22.9273 27.8603 23.0061 27.7247C23.0469 27.6558 23.0866 27.5863 23.1227 27.5155C23.2134 27.3479 23.296 27.1765 23.3707 27.0014C23.3812 26.9711 23.3963 26.9467 23.4074 26.9199L25.5016 29.4633ZM33.8333 23.7756H23.8869C23.5704 20.181 20.4539 17.5285 16.9262 17.8511C13.8372 18.1336 11.3891 20.628 11.1119 23.7756H1.16667V1.18878H33.8333V23.7756Z"
-                          fill="currentcolor" />
-                        <path
-                          d="M2.91667 2.37756C2.59452 2.37756 2.33333 2.6437 2.33333 2.97195V5.34951H3.5V3.56634H5.25V2.37756H2.91667Z"
-                          fill="currentcolor" />
-                        <path
-                          d="M32.0833 2.37756H29.75V3.56634H31.5V5.34951H32.6667V2.97195C32.6667 2.64363 32.4055 2.37756 32.0833 2.37756Z"
-                          fill="currentcolor" />
-                        <path
-                          d="M31.5 19.6149V21.3981H29.75V22.5868H32.0833C32.4055 22.5868 32.6667 22.3207 32.6667 21.9924V19.6149H31.5Z"
-                          fill="currentcolor" />
-                        <path
-                          d="M3.5 21.3981V19.6149H2.33333V21.9924C2.33333 22.3207 2.59452 22.5868 2.91667 22.5868H5.25V21.3981H3.5Z"
-                          fill="currentcolor" />
-                        <path d="M24.5 6.5383H10.5V7.72708H24.5V6.5383Z" fill="currentcolor" />
-                        <path d="M28 10.1046H7V11.2934H28V10.1046Z" fill="currentcolor" />
-                        <path
-                          d="M17.5 20.2093C15.2448 20.2093 13.4167 22.0721 13.4167 24.37C13.4192 26.6668 15.2459 28.5281 17.5 28.5307C19.7552 28.5307 21.5833 26.6679 21.5833 24.37C21.5833 22.0721 19.7552 20.2093 17.5 20.2093ZM17.5 27.342C15.8892 27.342 14.5833 26.0113 14.5833 24.37C14.5852 22.7295 15.89 21.4 17.5 21.3981C19.1108 21.3981 20.4167 22.7287 20.4167 24.37C20.4167 26.0113 19.1108 27.342 17.5 27.342Z"
-                          fill="currentcolor" />
-                      </svg>
-                    </div>
-                    <h2 class="title">Get Certified</h2>
-                  </div>
+                  <h2 class="title">Get Certified</h2>
                   <p class="achievw-card">
                     Validate skills with industry-standard certifications.
                   </p>
@@ -1478,11 +1959,103 @@
     </section>
     <!-- features-area-end -->
 
-    <!--sss section-->
+
+
+
+    <!-- Previous Webinars Section Copy -->
+    <section class="webinar__marquee webinar__marquee-copy">
+      <div class="webinar-bg-motion" aria-hidden="true"></div>
+
+      <div class="webinar-container">
+
+        <!-- Heading -->
+        <div class="webinar-header">
+          <h2>Our Previous Webinars</h2>
+          <p class="webinar-intro">Explore highlights and practical insights from our past webinars, where we learn and grow together.</p>
+        </div>
+
+        <!-- Webinar Images -->
+        <div class="webinar-marquee-wrapper">
+
+          <div class="webinar-marquee-track">
+
+            <!-- First Set -->
+            <div class="webinar-marquee-group">
+
+              <div class="webinar-card">
+                <img src="assets/img/banner/online-scam.png" alt="Online Scam Awareness" loading="eager">
+              </div>
+
+              <div class="webinar-card">
+                <img src="assets/img/banner/smart_device.png" alt="Smart Devices" loading="eager">
+              </div>
+
+              <div class="webinar-card">
+                <img src="assets/img/banner/worksuit.png" alt="Google Workspace" loading="eager">
+              </div>
+
+              <div class="webinar-card">
+                <img src="assets/img/banner/job%20search%20guid.png" alt="Job Search Guide" loading="eager">
+              </div>
+
+              <div class="webinar-card">
+                <img src="assets/img/banner/RRR.png" alt="Resume Roadmap Result" loading="eager">
+              </div>
+
+              <div class="webinar-card">
+                <img src="assets/img/banner/prepair%20(1).png" alt="Preparation Tips" loading="eager">
+              </div>
+
+            </div>
+
+            <!-- Duplicate Set -->
+            <div class="webinar-marquee-group" aria-hidden="true">
+
+              <div class="webinar-card">
+                <img src="assets/img/banner/online-scam.png" alt="">
+              </div>
+
+              <div class="webinar-card">
+                <img src="assets/img/banner/smart_device.png" alt="">
+              </div>
+
+              <div class="webinar-card">
+                <img src="assets/img/banner/worksuit.png" alt="">
+              </div>
+
+              <div class="webinar-card">
+                <img src="assets/img/banner/job%20search%20guid.png" alt="">
+              </div>
+
+              <div class="webinar-card">
+                <img src="assets/img/banner/RRR.png" alt="">
+              </div>
+
+              <div class="webinar-card">
+                <img src="assets/img/banner/prepair%20(1).png" alt="">
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="webinar-cta">
+          <a href="contact.html" class="btn arrow-btn">Join Our Next Webinar</a>
+        </div>
+
+      </div>
+
+    </section>
+    <!-- Previous Webinars Section Copy End -->
+
+
+
+    <!-- sss section-->
     <section id="sss" class="work__area py-5">
       <div class="container">
         <div class="row align-items-center justify-content-center">
-          <div class="col-lg-7">
+          <div class="col-lg-7" style="padding-left: 71px;">
             <div class="work__content">
               <div class="section__title mb-20">
                 <span class="sub-title">Skilledu Saturday Learning</span>
@@ -1511,11 +2084,11 @@
                 </div>
               </div>
               <div class="tg-button-wrap">
-                <a href="https://sss.skilledu.in/" class="btn arrow-btn"> Explore Our SSL Journey </a>
+                <a href="ssl.html" class="btn arrow-btn" target="_blank"> Explore Our SSL Journey </a>
               </div>
             </div>
           </div>
-          <div class="col-lg-5 col-md-7 text-center">
+          <div class="col-lg-5 col-md-7 text-center" style="margin-left: -50px;">
             <div class="about_images work_images">
               <img src="assets/img/ai courses/ssl.png" width="78%" alt="img" class="main-img">
 
@@ -1524,68 +2097,81 @@
         </div>
       </div>
     </section>
-    <!--sss section-->
+    <!--sss section -->
 
-    <!-- about-area -->
-    <section class="about-area tg-motion-effects section-py-120">
+
+
+
+    <!-- choose-area -->
+    <section class="choose__area-four tg-motion-effects section-py-140" style="background-color: #F0F7FF;">
       <div class="container">
         <div class="row align-items-center justify-content-center">
-          <div class="col-lg-6 col-md-9">
-            <div class="about__images">
-              <img src="assets/img/others/index-about.png" alt="img" class="main-img" />
-              <img src="assets/img/others/OFFLINE_CLASSES.png" alt="img" class="shape alltuchtopdown" />
 
-              <div class="about__enrolled" data-aos="fade-right" data-aos-delay="200">
-                <p class="title"><span>150+</span> Enrolled Students</p>
-                <!-- <img src="assets/img/others/student_grp.png" alt="img" /> -->
+          <div class="col-lg-7 col-md-10">
+            <!-- <div class="choose__img-four">
+              <div class="left__side">
+                <img src="assets/img/others/h7_choose_img01.jpg" alt="Skilled.u Technical Skills Training"
+                  data-aos="fade-down" data-aos-delay="200">
+
+                <img src="assets/img/others/h7_choose_img02.jpg" alt="Skilled.u Classroom Learning" data-aos="fade-up"
+                  data-aos-delay="200">
               </div>
-            </div>
+
+              <div class="right__side" data-aos="fade-left" data-aos-delay="400">
+                <img src="assets/img/others/h7_choose_img03.jpg" alt="Skilled.u Students Learning">
+
+
+              </div>
+
+              <img src="assets/img/ai courses/h7_choose_shape01.svg" alt="shape"
+                class="shape shape-one tg-motion-effects4">
+
+              <img src="assets/img/ai courses/h7_choose_shape02.svg" alt="shape" class="shape shape-two alltuchtopdown">
+
+              <img src="assets/img/ai courses/h7_choose_shape03.svg" alt="shape"
+                class="shape shape-three tg-motion-effects7">
+            </div> -->
+
+
+            <div><img src="assets/img/ai courses/Learn, Grow and Build Your Future.png" alt=""></div>
           </div>
-          <div class="col-lg-6" id="about">
-            <div class="about__content" id="about">
-              <div class="section__title">
+
+          <div class="col-lg-5">
+            <div class="choose__content-four">
+
+              <div class="section__title mb-20">
                 <span class="sub-title">Get More About Us</span>
-                <h2 class="title">
-                  Master Essential
-                  <span class="position-relative">
-                    <svg x="0px" y="0px" preserveAspectRatio="none" viewBox="0 0 209 59" fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M4.74438 7.70565C69.7006 -1.18799 136.097 -2.38304 203.934 4.1205C207.178 4.48495 209.422 7.14626 208.933 10.0534C206.793 23.6481 205.415 36.5704 204.801 48.8204C204.756 51.3291 202.246 53.5582 199.213 53.7955C136.093 59.7623 74.1922 60.5985 13.5091 56.3043C10.5653 56.0924 7.84371 53.7277 7.42158 51.0325C5.20725 38.2627 2.76333 25.6511 0.0898448 13.1978C-0.465589 10.5873 1.61173 8.1379 4.73327 7.70565"
-                        fill="currentcolor" />
-                    </svg>
-                    Technical
-                  </span>
-                  Skills at Skilled.u
+
+                <h2 class="title bold">
+                  Master Essential Technical Skills at Skilled.u
                 </h2>
               </div>
-              <p class="desc">
+
+              <p>
                 Welcome to Skilled.U, your premier destination for mastering
                 essential technical skills. We educate students across India
-                in frontend development, backend development, machine learning
-                , and more. Our goal is to bridge the gap between education
+                in frontend development, backend development, machine learning,
+                and more. Our goal is to bridge the gap between education
                 and industry demands with high-quality, expert-crafted
                 learning experiences.
               </p>
+
               <ul class="about__info-list list-wrap">
                 <li class="about__info-list-item">
                   <i class="flaticon-angle-right"></i>
                   <p class="content">Comprehensive Courses</p>
                 </li>
+
                 <li class="about__info-list-item">
                   <i class="flaticon-angle-right"></i>
                   <p class="content">Flexible Learning</p>
                 </li>
+
                 <li class="about__info-list-item">
                   <i class="flaticon-angle-right"></i>
                   <p class="content">Expert Instructors</p>
                 </li>
               </ul>
-<<<<<<< HEAD
-              <div class="tg-button-wrap">
-                <a href="#our_courses" class="btn arrow-btn">Join Us<img src="assets/img/icons/right_arrow.svg"
-                    alt="img" class="injectable" /></a>
-=======
 
 
               <a href="#our_courses" class="btn arrow-btn btn-four" style="    padding: 10px;
@@ -1635,67 +2221,14 @@
                     <p>Best Instructors</p>
                   </div>
                 </div>
->>>>>>> 384b37a (Update website design and content)
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <!-- about-area-end -->
-
-    <!-- second perk -->
-    <section class="fact__area-two">
-      <div class="container">
-
-
-
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="fact__inner-wrap-two">
-              <div class="section__title white-title mb-30">
-                <h2 class="title">
-                  Weekly
-                  <span class="position-relative">
-                    <svg x="0px" y="0px" preserveAspectRatio="none" viewBox="0 0 209 59" fill="none"
-                      xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M4.74438 7.70565C69.7006 -1.18799 136.097 -2.38304 203.934 4.1205C207.178 4.48495 209.422 7.14626 208.933 10.0534C206.793 23.6481 205.415 36.5704 204.801 48.8204C204.756 51.3291 202.246 53.5582 199.213 53.7955C136.093 59.7623 74.1922 60.5985 13.5091 56.3043C10.5653 56.0924 7.84371 53.7277 7.42158 51.0325C5.20725 38.2627 2.76333 25.6511 0.0898448 13.1978C-0.465589 10.5873 1.61173 8.1379 4.73327 7.70565"
-                        fill="currentcolor" />
-                    </svg>
-                    Personality
-                  </span>
-                  Development Classes
-                </h2>
-                <a nohref class="text-white">(Leadership, Professional Guest Lectures, Interview
-                  Preparation, Group Discussion, Mock Interviews ...etc)</a>
-              </div>
-              <div class="fact__item-wrap">
-                <div class="fact__item">
-                  <h2 class="count">
-                    <span class="odometer" data-count="150"></span>+
-                  </h2>
-                  <p>Active Students</p>
-                </div>
-                <div class="fact__item">
-                  <h2 class="count">
-                    <span class="odometer" data-count="15"></span>+
-                  </h2>
-                  <p>Best Instructors</p>
-                </div>
-              </div>
-              <div class="fact__img-wrap tg-svg">
-                <img src="assets/img/changed/PD_classes11.png" alt="img" />
-                <div class="shape-one">
-                  <img src="assets/img/others/fact_shape01.svg" alt="img" class="injectable" />
-                </div>
-                <div class="shape-two">
-                  <span class="svg-icon" id="fact-btn" data-svg-icon="assets/img/others/fact_shape02.svg"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="fact__shape-wrap">
+        <img src="assets/img/others/h3_fact_shape01.svg" alt="shape" class="alltuchtopdown">
+        <img src="assets/img/others/h3_fact_shape02.svg" alt="shape" class="rotateme">
       </div>
     </section> -->
     <!-- second perk end  -->
@@ -1745,11 +2278,19 @@
                       type="button" role="tab" aria-controls="AI-tab-pane" aria-selected="false">
                       Artificial Intelligence
                     </button>
-                  </li>                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="App_Development-tab" data-bs-toggle="tab"
-                      data-bs-target="#Mobile_App-tab-pane" type="button" role="tab"
-                      aria-controls="Mobile_App-tab-pane" aria-selected="false">
-                      App Development
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="Mobile_App-tab" data-bs-toggle="tab"
+                      data-bs-target="#Mobile_App-tab-pane" type="button" role="tab" aria-controls="Mobile_App-tab-pane"
+                      aria-selected="false">
+                      Mobile App
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="Hybrid_App-tab" data-bs-toggle="tab"
+                      data-bs-target="#Hybrid_App-tab-pane" type="button" role="tab" aria-controls="Hybrid_App-tab-pane"
+                      aria-selected="false">
+                      Hybrid App
                     </button>
                   </li>
                   <li class="nav-item" role="presentation">
@@ -1775,7 +2316,7 @@
                   <div class="courses__item shine__animate-item">
                     <div class="courses__item-thumb">
                       <a href="Programming-with-C++.html" class="shine__animate-link">
-                        <img src="assets/img/course-details/c++ image.png" alt="img" />
+                        <img src="assets/img/new-course-img/c & c++.jpg" alt="img" />
                       </a>
                     </div>
                     <div class="courses__item-content">
@@ -1808,7 +2349,7 @@
                   <div class="courses__item shine__animate-item">
                     <div class="courses__item-thumb">
                       <a href="Cordova.html" class="shine__animate-link">
-                        <img src="assets/img/course-details/cordava img.png" alt="img" />
+                        <img src="assets/img/new-course-img/cordova.jpg" alt="img" />
                       </a>
                     </div>
                     <div class="courses__item-content">
@@ -1840,9 +2381,7 @@
                   <div class="courses__item shine__animate-item">
                     <div class="courses__item-thumb">
                       <a href="Frontend-Basic.html" class="shine__animate-link">
-                        <img src="assets/img/course-details/frontend baisc.png" alt="img" />
-                      
-
+                        <img src="assets/img/new-course-img/frontend basic.jpg" alt="img" />
                       </a>
                     </div>
                     <div class="courses__item-content">
@@ -1874,8 +2413,7 @@
                   <div class="courses__item shine__animate-item">
                     <div class="courses__item-thumb">
                       <a href="Frontend-Advance.html" class="shine__animate-link">
-                        <img src="assets/img/new-course-img/updated-frontend advance.jpg" alt="img" />
-
+                        <img src="assets/img/new-course-img/frontend advance.jpg" alt="img" />
                       </a>
                     </div>
                     <div class="courses__item-content">
@@ -1907,8 +2445,7 @@
                   <div class="courses__item shine__animate-item">
                     <div class="courses__item-thumb">
                       <a href="Electron.html" class="shine__animate-link">
-                        <img src="assets/img/new-course-img/updated-electron.jpg" alt="img" />
-
+                        <img src="assets/img/new-course-img/electron.jpg" alt="img" />
                       </a>
                     </div>
                     <div class="courses__item-content">
@@ -1940,7 +2477,7 @@
                   <div class="courses__item shine__animate-item">
                     <div class="courses__item-thumb">
                       <a href="python-django.html" class="shine__animate-link">
-                        <img src="assets/img/course-details/basic python and django.png" alt="img" />
+                        <img src="assets/img/new-course-img/python with django.jpg" alt="img" />
                       </a>
                     </div>
                     <div class="courses__item-content">
@@ -1973,7 +2510,7 @@
                   <div class="courses__item shine__animate-item">
                     <div class="courses__item-thumb">
                       <a href="node-js.html" class="shine__animate-link">
-                        <img src="assets/img/new-course-img/updated-nodejs.jpg" alt="img" />
+                        <img src="assets/img/new-course-img/nodejs.jpg" alt="img" />
                       </a>
                     </div>
                     <div class="courses__item-content">
@@ -2005,7 +2542,7 @@
                   <div class="courses__item shine__animate-item">
                     <div class="courses__item-thumb">
                       <a href="IOT.html" class="shine__animate-link">
-                        <img src="assets/img/new-course-img/updated-iot.jpg" alt="img" />
+                        <img src="assets/img/new-course-img/iot.jpg" alt="img" />
                       </a>
                     </div>
                     <div class="courses__item-content">
@@ -2035,7 +2572,7 @@
                   <div class="courses__item shine__animate-item">
                     <div class="courses__item-thumb">
                       <a href="python-ml.html" class="shine__animate-link">
-                        <img src="assets/img/new-course-img/updated-python with ml.jpg" alt="img" />
+                        <img src="assets/img/new-course-img/python with ml.jpg" alt="img" />
                       </a>
                     </div>
                     <div class="courses__item-content">
@@ -2067,7 +2604,7 @@
                   <div class="courses__item shine__animate-item">
                     <div class="courses__item-thumb">
                       <a href="php-without-framework.html" class="shine__animate-link">
-                        <img src="assets/img/course-details/php without framework image.png" alt="img" />
+                        <img src="assets/img/new-course-img/php without fm.jpg" alt="img" />
                       </a>
                     </div>
                     <div class="courses__item-content">
@@ -2100,7 +2637,7 @@
                   <div class="courses__item shine__animate-item">
                     <div class="courses__item-thumb">
                       <a href="php-with-laravel.html" class="shine__animate-link">
-                        <img src="assets/img/course-details/PHP LARAVEL IMAGE.png" alt="img" />
+                        <img src="assets/img/new-course-img/php with laravel.jpg" alt="img" />
                       </a>
                     </div>
                     <div class="courses__item-content">
@@ -2132,7 +2669,7 @@
                   <div class="courses__item shine__animate-item">
                     <div class="courses__item-thumb">
                       <a href="Java.html" class="shine__animate-link">
-                        <img src="assets/img/course-details/java and spring img.png" alt="img" />
+                        <img src="assets/img/new-course-img/java with sb.jpg" alt="img" />
                       </a>
                     </div>
                     <div class="courses__item-content">
@@ -2162,7 +2699,7 @@
                   <div class="courses__item shine__animate-item">
                     <div class="courses__item-thumb">
                       <a href="generative-AI-builder.html" class="shine__animate-link">
-                        <img src="assets/img/course-details/ai and genrative.png" alt="img" />
+                        <img src="assets/img/new-course-img/genai.webp" alt="img" />
                       </a>
                     </div>
                     <div class="courses__item-content">
@@ -2195,7 +2732,7 @@
                   <div class="courses__item shine__animate-item">
                     <div class="courses__item-thumb">
                       <a href="Next-Gen AI.html" class="shine__animate-link">
-                        <img src="assets/img/course-details/ai and next-gen ai.png" alt="img" />
+                        <img src="assets/img/new-course-img/next-gen.webp" alt="img" />
 
                       </a>
                     </div>
@@ -2229,7 +2766,7 @@
                   <div class="courses__item shine__animate-item">
                     <div class="courses__item-thumb">
                       <a href="Advanced AI Engineering.html" class="shine__animate-link">
-                        <img src="assets/img/course-details/ai and advance ai image.png" alt="img" />
+                        <img src="assets/img/new-course-img/advanceai.webp" alt="img" />
                       </a>
                     </div>
                     <div class="courses__item-content">
@@ -2276,7 +2813,7 @@
                 <div class="courses__item shine__animate-item">
                   <div class="courses__item-thumb">
                     <a href="Frontend-Basic.html" class="shine__animate-link">
-                      <img src="assets/img/course-details/frontend baisc.png" alt="img" />
+                      <img src="assets/img/new-course-img/frontend basic.jpg" alt="img" />
                     </a>
                   </div>
                   <div class="courses__item-content">
@@ -2308,7 +2845,7 @@
                 <div class="courses__item shine__animate-item">
                   <div class="courses__item-thumb">
                     <a href="Frontend-Advance.html" class="shine__animate-link">
-                      <img src="assets/img/new-course-img/updated-frontend advance.jpg" alt="img" />
+                      <img src="assets/img/new-course-img/frontend advance.jpg" alt="img" />
                     </a>
                   </div>
                   <div class="courses__item-content">
@@ -2345,7 +2882,7 @@
                 <div class="courses__item shine__animate-item">
                   <div class="courses__item-thumb">
                     <a href="php-with-laravel.html" class="shine__animate-link">
-                      <img src="assets/img/course-details/PHP LARAVEL IMAGE.png" alt="img" />
+                      <img src="assets/img/new-course-img/php with laravel.jpg" alt="img" />
                     </a>
                   </div>
                   <div class="courses__item-content">
@@ -2377,7 +2914,7 @@
                 <div class="courses__item shine__animate-item">
                   <div class="courses__item-thumb">
                     <a href="node-js.html" class="shine__animate-link">
-                      <img src="assets/img/new-course-img/updated-nodejs.jpg" alt="img" />
+                      <img src="assets/img/new-course-img/nodejs.jpg" alt="img" />
                     </a>
                   </div>
                   <div class="courses__item-content">
@@ -2409,7 +2946,7 @@
                 <div class="courses__item shine__animate-item">
                   <div class="courses__item-thumb">
                     <a href="php-without-framework.html" class="shine__animate-link">
-                      <img src="assets/img/course-details/php without framework image.png" alt="img" />
+                      <img src="assets/img/new-course-img/php without fm.jpg" alt="img" />
                     </a>
                   </div>
                   <div class="courses__item-content">
@@ -2451,7 +2988,7 @@
                 <div class="courses__item shine__animate-item">
                   <div class="courses__item-thumb">
                     <a href="php-with-laravel.html" class="shine__animate-link">
-                      <img src="assets/img/course-details/PHP LARAVEL IMAGE.png" alt="img" />
+                      <img src="assets/img/new-course-img/php with laravel.jpg" alt="img" />
                     </a>
                   </div>
                   <div class="courses__item-content">
@@ -2483,7 +3020,7 @@
                 <div class="courses__item shine__animate-item">
                   <div class="courses__item-thumb">
                     <a href="node-js.html" class="shine__animate-link">
-                      <img src="assets/img/new-course-img/updated-nodejs.jpg" alt="img" />
+                      <img src="assets/img/new-course-img/nodejs.jpg" alt="img" />
                     </a>
                   </div>
                   <div class="courses__item-content">
@@ -2515,7 +3052,7 @@
                 <div class="courses__item shine__animate-item">
                   <div class="courses__item-thumb">
                     <a href="php-without-framework.html" class="shine__animate-link">
-                      <img src="assets/img/course-details/basic python and django.png" alt="img" />
+                      <img src="assets/img/new-course-img/python with django.jpg" alt="img" />
                     </a>
                   </div>
                   <div class="courses__item-content">
@@ -2557,7 +3094,7 @@
                 <div class="courses__item shine__animate-item">
                   <div class="courses__item-thumb">
                     <a href="Cordova.html" class="shine__animate-link">
-                      <img src="assets/img/new-course-img/updated-cordova.jpg" alt="img" />
+                      <img src="assets/img/new-course-img/cordova.jpg" alt="img" />
                     </a>
                   </div>
                   <div class="courses__item-content">
@@ -2597,7 +3134,7 @@
                 <div class="courses__item shine__animate-item">
                   <div class="courses__item-thumb">
                     <a href="Cordova.html" class="shine__animate-link">
-                      <img src="assets/img/new-course-img/updated-cordova.jpg" alt="img" />
+                      <img src="assets/img/new-course-img/cordova.jpg" alt="img" />
                     </a>
                   </div>
                   <div class="courses__item-content">
@@ -2637,7 +3174,7 @@
                 <div class="courses__item shine__animate-item">
                   <div class="courses__item-thumb">
                     <a href="python-ml.html" class="shine__animate-link">
-                      <img src="assets/img/new-course-img/updated-python with ml.jpg" alt="img" />
+                      <img src="assets/img/new-course-img/python with ml.jpg" alt="img" />
                     </a>
                   </div>
                   <div class="courses__item-content">
@@ -2681,7 +3218,7 @@
                 <div class="courses__item shine__animate-item">
                   <div class="courses__item-thumb">
                     <a href="generative-AI-builder.html" class="shine__animate-link">
-                      <img src="assets/img/course-details/ai and genrative.png" alt="img" />
+                      <img src="assets/img/new-course-img/genai.webp" alt="img" />
                     </a>
                   </div>
                   <div class="courses__item-content">
@@ -2714,7 +3251,7 @@
                 <div class="courses__item shine__animate-item">
                   <div class="courses__item-thumb">
                     <a href="Next-Gen AI.html" class="shine__animate-link">
-                      <img src="assets/img/course-details/ai and next-gen ai.png" alt="img" />
+                      <img src="assets/img/new-course-img/next-gen.webp" alt="img" />
 
                     </a>
                   </div>
@@ -2747,7 +3284,7 @@
                 <div class="courses__item shine__animate-item">
                   <div class="courses__item-thumb">
                     <a href="Advanced AI Engineering.html" class="shine__animate-link">
-                      <img src="assets/img/course-details/ai and advance ai image.png" alt="img" />
+                      <img src="assets/img/new-course-img/advanceai.webp" alt="img" />
                     </a>
                   </div>
                   <div class="courses__item-content">
@@ -2789,45 +3326,6 @@
     </section>
     <!-- course-area-end -->
 
-<<<<<<< HEAD
-    <!-- newsletter-area  first perks  -->
-    <section class="newsletter__area">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-4">
-            <div class="newsletter__img-wrap">
-              <img src="assets/img/changed/placement11.png" alt="img" />
-              <img src="assets/img/others/newsletter_shape01.png" alt="img" data-aos="fade-up" data-aos-delay="400" />
-              <img src="assets/img/others/docker-img-png.png" alt="img" class="alltuchtopdown rounded" />
-            </div>
-          </div>
-          <div class="col-lg-8">
-            <div class="newsletter__content section__title">
-              <h2 class="title"><span class="position-relative">
-                  <svg x="0px" y="0px" preserveAspectRatio="none" viewBox="0 0 209 59" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M4.74438 7.70565C69.7006 -1.18799 136.097 -2.38304 203.934 4.1205C207.178 4.48495 209.422 7.14626 208.933 10.0534C206.793 23.6481 205.415 36.5704 204.801 48.8204C204.756 51.3291 202.246 53.5582 199.213 53.7955C136.093 59.7623 74.1922 60.5985 13.5091 56.3043C10.5653 56.0924 7.84371 53.7277 7.42158 51.0325C5.20725 38.2627 2.76333 25.6511 0.0898448 13.1978C-0.465589 10.5873 1.61173 8.1379 4.73327 7.70565"
-                      fill="currentcolor" />
-                  </svg>
-                  Learn Docker
-                </span> — Free Tutorial for All </h2>
-
-              <p class="text-light">Ready to dive into Docker and level up your development skills? We’ve made our full
-                Docker tutorial freely available so everyone can start building faster, smarter, and more efficiently.
-              </p>
-              <div class="tg-button-wrap mt-4 mb-4">
-                <a href="https://docker.skilledu.in/" target="_blank" class="btn btn-two arrow-btn">Start the Docker
-                  Tutorial</a>
-
-              </div>
-              <!-- <div class="newsletter__form">
-                                <form action="#">
-                                    <input type="email" placeholder="Type your e-mail">
-                                    <button type="submit" class="btn">Subscribe Now</button>
-                                </form>
-                            </div> -->
-=======
 
 
     <!-- blog-area -->
@@ -2836,7 +3334,7 @@
         <div class="row justify-content-center">
           <div class="col-xl-6">
             <div class="section__title text-center mb-50">
-              <span class="sub-title" style="    margin: 20px;">Free Learning Tutorial For skilledu</span>
+              <span class="sub-title" style="    margin: 20px;">Learning Tutorial For skilledu</span>
               <h2 class="title bold">Explore Our Tech Tutorials</h2>
               <p>Learn new technologies, build practical skills, and grow your development journey.</p>
             </div>
@@ -2851,18 +3349,16 @@
               </div>
               <div class="blog__post-content-five">
                 <li class="courses__item-tag hide-git">
-                  <a href="">Docker Tutorial</a>
-
+                  <a href="">DevOps Learning</a>
                 </li>
-                <h5 class="title" style="    margin: 5px;">Master Docker</h5>
-
-                <ul>
-                  <li>Explore Docker with our complete free tutorial.</li>
-
-                  <li>Build and deploy applications faster and more efficiently.</li>
-                  <li>Enhance your development skills with practical Docker concepts.</li>
+                <h5 style="    margin-left: 5px;
+    margin-top: 15px;">Master Docker</h5>
+                <ul class="ssl-points">
+                  <li>Learn Docker with our complete free tutorial.</li>
+                  <li>Practice containerization with hands-on examples.</li>
+                  <li>Build and deploy applications more efficiently.</li>
+                  <li>Improve your development workflow with Docker.</li>
                 </ul>
-
 
                 <div class="class=docker__features-wrap">
                   <div class="docker__feature-pill">
@@ -2911,22 +3407,20 @@
             <div class="blog__post-item-five shine__animate-item">
               <div class="blog__post-thumb-five">
                 <a href="https://skillgro.websolutionus.com/blog/latest-research-in-educational-technology"
-                  class="shine__animate-link"><img src="assets/img/ai courses/skilleduai.png" alt="img"></a>
+                  class="shine__animate-link"><img src="assets/img/ai courses/github1.png" alt=" img"></a>
               </div>
               <div class="blog__post-content-five">
                 <li class="courses__item-tag hide-git">
-                  <a href="">API Toolkit</a>
+                  <a href="">AI Tools & SDKs</a>
                 </li>
-                <h5 class="title" style="    margin: 5px;">Skilled.U AI SDK</h5>
-
-                <ul>
-
-
-                  <li>Integrate AI capabilities into your projects with ease.</li>
-                  <li>Build AI-powered applications with minimal setup.</li>
-                  <li>Accelerate prototyping and simplify development workflows.</li>
+                <h5 style="    margin-left: 5px;
+    margin-top: 15px;">SkilledU AI SDK</h5>
+                <ul class="ssl-points">
+                  <li>Access Skilled AI APIs without an API key.</li>
+                  <li>Use Browser, PHP, Node.js, and Python SDKs.</li>
+                  <li>Integrate AI into your projects with ease.</li>
+                  <li>Build and prototype AI-powered applications faster.</li>
                 </ul>
-
 
 
                 <div class="docker__features-wrap">
@@ -2968,12 +3462,11 @@
 
 
                 <div class="tg-button-wrap">
-                  <a href="https://github.com/skilledu/Skilled.U-Ai-SDK" target="_blank" class="btn arrow-btn"
+                  <a href="https://github.com/skilledu/" target="_blank" class="btn arrow-btn"
                     style="border-radius: 21px;">
-                    Skilled.U AI SDK
+                    SkilledU AI SDK
                     <!-- <img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable"> -->
                   </a>
-
                 </div>
                 <div class="blog__post-meta">
 
@@ -2992,13 +3485,12 @@
                 <li class="courses__item-tag hide-git">
                   <a href="">Version Control</a>
                 </li>
-                <h5 class="title" style="    margin: 5px;">Git Master</h5>
-
-                <ul>
-                  <li>Learn Git fundamentals and essential commands.</li>
-                  <li>Track code changes and manage project history.</li>
-
-
+                <h5 style="    margin-left: 5px;
+    margin-top: 15px;">GitMaster</h5>
+                <ul class="ssl-points">
+                  <li>Learn Git from basic to advanced workflows.</li>
+                  <li>Track code changes and manage projects efficiently.</li>
+                  <li>Create branches and resolve merge conflicts.</li>
                   <li>Collaborate with developers using Git and GitHub.</li>
                 </ul>
 
@@ -3042,7 +3534,7 @@
 
                 <div class="tg-button-wrap">
                   <a href="https://skilledu.in/git/" target="_blank" class="btn arrow-btn" style="border-radius: 21px;">
-                    Git Master
+                    GitMaster
                     <!-- <img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable"> -->
                   </a>
                 </div>
@@ -3050,13 +3542,9 @@
 
                 </div>
               </div>
->>>>>>> 384b37a (Update website design and content)
             </div>
           </div>
         </div>
-      </div>
-      <div class="newsletter__shape">
-        <img src="assets/img/others/newsletter_shape03.png" alt="img" data-aos="fade-left" data-aos-delay="400" />
       </div>
     </section>
     <!-- blog-area-end -->
@@ -3501,96 +3989,75 @@
           </div>
         </div>
         <!-- ============= -->
-<<<<<<< HEAD
-        <div class="row align-items-center mt-5 py-5">
-          <div class="col-xl-6">
-            <div class="instructor__content-wrap">
-              <div class="section__title mb-15">
-                <span class="sub-title">Feedback</span>
-                <h2 class="title">Scan QR and give your feedback</h2>
-=======
-
-
-
-
-        <!-- Review CTA Area -->
-        <section class="feedback-cta-area">
-          <div class="cta__bg" data-background="assets/img/bg/review_cta_bg.png">
-          </div>
-
-          <div class="container">
-            <div class="row align-items-center feedback-cta-row">
-
-              <!-- Left Content -->
-              <div class="col-xl-6 col-lg-6">
-                <div class="feedback-cta-left">
-
-                  <div class="section__title mb-15">
-                    <span class="sub-title">Review</span>
-                    <h2 class="title feedback-cta-title">Scan QR And Give Your
-                      <span class="highlight">Review</span>
-                    </h2>
-                  </div>
-
-                  <p class="feedback-cta-desc">
-                    Your opinion counts — help us improve.
-                    <br />
-                    We would love to hear your thoughts.
-                  </p>
-
-                  <div class="banner__btn-wrap tg-button-wrap">
-                    <a href="https://skilledu.in/reviews/" target="_blank" rel="noopener noreferrer"
-                      class="btn arrow-btn">
-                      Click here if you don't want to scan
-                      <img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable">
-                    </a>
-                  </div>
-
-                </div>
->>>>>>> 384b37a (Update website design and content)
-              </div>
-
-              <!-- Right QR Code -->
-              <div class="col-xl-6 col-lg-6">
-                <div class="feedback-cta-qr-wrap">
-                  <div class="feedback-cta-qr-card">
-                    <img src="assets/img/ai courses/Review-skilled.U.png" alt="Scan QR code to give review" />
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-<<<<<<< HEAD
-          <div class="col-xl-6">
-            <div class="instructor__item-wrap QR_parent_my d-flex justify-content-center">
-              <img src="assets/img//banner/SkilledU_QR.png" alt="" />
-            </div>
-          </div>
-        </div>
-=======
-        </section>
-        <!-- Review CTA Area End -->
-
-
-
-
->>>>>>> 384b37a (Update website design and content)
-        <!-- ================= -->
       </div>
     </section>
     <!-- Google reviews-area-end -->
 
-<<<<<<< HEAD
-=======
+
+    <!-- cta-area -->
+    <section class="cta__area" style="background-color: #212529;">
+      <div class="cta__bg" data-background="assets/img/banner/parallex.png"
+        style="background-image: url('assets/img/banner/parallex.png');">
+      </div>
+
+      <div class="container">
+        <div class="row align-items-center feedback-row">
+
+          <!-- LEFT CONTENT -->
+          <div class="col-xl-6 col-lg-6" data-aos="fade-right" data-aos-delay="200" style="padding-left: 71px;">
+
+            <div class="instructor__content-wrap feedback-content">
+
+              <div class="section__title mb-15">
+                <span class="sub-title">Google Reviews</span>
+
+                <h2 class="title">
+                  Share Your Skilledu Experience
+                </h2>
+              </div>
+
+              <p>
+                Your feedback inspires us to do better! Share your
+                learning experience at Skilledu and help other students
+                discover the right path for their tech journey.
+              </p>
+
+              <ul class="feedback-points">
+                <li>Share your learning experience.</li>
+                <li>Tell us what you enjoyed about your course.</li>
+                <li>Help future students choose with confidence.</li>
+              </ul>
+
+              <div class="tg-button-wrap">
+                <a href="https://skilledu.in/reviews/" target="_blank" rel="noopener noreferrer" class="btn arrow-btn">
+
+                  Google Review
 
 
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- RIGHT IMAGE -->
+          <div class="col-xl-6 col-lg-6" data-aos="fade-left" data-aos-delay="300">
+
+            <div class="instructor__item-wrap QR_parent_my d-flex justify-content-center">
+              <img src="assets/img/ai courses/Review-skilled.U.png"
+                alt="Scan the QR code to share your Skilledu review" />
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- cta-area-end -->
 
 
-
->>>>>>> 384b37a (Update website design and content)
     <!-- fact-area -->
-    <section class="fact__area">
+    <section class="fact__area" style="    margin-top: 100px;">
       <div class="container">
         <div class="fact__inner-wrap">
           <div class="row">
@@ -3613,7 +4080,7 @@
             <div class="col-lg-3 col-sm-6">
               <div class="fact__item">
                 <h2 class="count">
-                  <span class="odometer" data-count="150"></span>+
+                  <span class="odometer" data-count="250"></span>+
                 </h2>
                 <p>Students</p>
               </div>
@@ -3643,10 +4110,10 @@
                   * Education * System * can * Make * Change *
                 </div>
               </div>
-              <div class="faq__img">
-                <img src="assets/img/changed/faq1.png" alt="img" />
+              <div class="faq__img" data-background="assets/img/bg/fact_bg.jpg">
+                <img src="assets/img/ai courses/Modern FAQ Help Desk Illustration.png" alt="img" />
                 <div class="shape-one">
-                  <img src="assets/img/others/faq_shape01.svg" class="injectable tg-motion-effects4" alt="img" />
+                  <!-- <img src="assets/img/others/faq_shape01.svg" class="injectable tg-motion-effects4" alt="img" /> -->
                 </div>
                 <div class="shape-two">
                   <span class="svg-icon" id="faq-svg" data-svg-icon="assets/img/others/faq_shape02.svg"></span>
@@ -3806,7 +4273,7 @@
     </section>
 
     <!-- perks third -->
-    <section class="features__area">
+    <!-- <section class="features__area">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-xl-6">
@@ -3828,9 +4295,9 @@
                 <img src="assets/img/icons/features_icon01.svg" class="" alt="img" height="92px" />
               </div>
               <div class="features__content">
-                <h4 class="title">Communication Skills</h4>
-                <!-- <p>Curate anding area share Pluralsight content to reach your</p> -->
-              </div>
+                <h4 class="title">Communication Skills</h4> -->
+    <!-- <p>Curate anding area share Pluralsight content to reach your</p> -->
+    <!-- </div>
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-6">
@@ -3839,9 +4306,9 @@
                 <img src="assets/img/icons/features_icon02.svg" class="" alt="img" height="92px" />
               </div>
               <div class="features__content">
-                <h4 class="title">Interpersonal Skill</h4>
-                <!-- <p>Curate anding area share Pluralsight content to reach your</p> -->
-              </div>
+                <h4 class="title">Interpersonal Skill</h4> -->
+    <!-- <p>Curate anding area share Pluralsight content to reach your</p> -->
+    <!-- </div>
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-6">
@@ -3850,9 +4317,9 @@
                 <img src="assets/img/icons/features_icon04.svg" class="" alt="img" height="92px" />
               </div>
               <div class="features__content">
-                <h4 class="title">Self-Management Skills</h4>
-                <!-- <p>Curate anding area share Pluralsight content to reach your</p> -->
-              </div>
+                <h4 class="title">Self-Management Skills</h4> -->
+    <!-- <p>Curate anding area share Pluralsight content to reach your</p> -->
+    <!-- </div>
             </div>
           </div>
           <div class="col-xl-3 col-lg-4 col-md-6">
@@ -3861,14 +4328,14 @@
                 <img src="assets/img/icons/features_icon03.svg" class="" alt="img" height="92px" />
               </div>
               <div class="features__content">
-                <h4 class="title">And Many More</h4>
-                <!-- <p>Curate anding area share Pluralsight content to reach your</p> -->
-              </div>
+                <h4 class="title">And Many More</h4> -->
+    <!-- <p>Curate anding area share Pluralsight content to reach your</p> -->
+    <!-- </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     <!-- third perk end  -->
 
     <!-- QR feedback -area -->
@@ -3898,22 +4365,17 @@
         </section> -->
     <!-- QR feedback -area-end -->
   </main>
-  <!-- main-area-end -->
-
   <!-- footer-area -->
   <footer class="footer__area">
     <div class="footer__top">
       <div class="container">
         <div class="row">
-          <div class="col-xl-3 col-lg-4 col-md-6">
+          <!-- Col 1: About Skilled.u -->
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
             <div class="footer__widget">
               <div class="logo logo_footer">
-<<<<<<< HEAD
-                <a href="index.html"><img src="assets/img/logo/Skilledu_Logo_White2.png" alt="img" /></a>
-=======
                 <a href="index.html"><img src="assets/img/logo/Skilledu_Logo_White2.png" alt="Skilled.u Logo"
                     style="height: 120px;" /></a>
->>>>>>> 384b37a (Update website design and content)
               </div>
               <div class="footer__content">
                 <p>
@@ -3923,7 +4385,9 @@
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+
+          <!-- Col 2: Quick Links -->
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
             <div class="footer__widget">
               <h4 class="footer__widget-title">Quick Links</h4>
               <div class="footer__link">
@@ -3933,24 +4397,25 @@
                   <li><a href="#testimonial">Testimonials</a></li>
                   <li><a href="#faq">FAQ</a></li>
                   <li><a href="certificate-detail.php">Verify Certificate</a></li>
+                  <li><a href="https://sss.skilledu.in">SSS</a></li>
                 </ul>
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-lg-4 col-md-6">
+
+          <!-- Col 3: Get In Touch -->
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
             <div class="footer__widget">
               <h4 class="footer__widget-title">Get In Touch</h4>
               <div class="footer__contact-content">
-                <!-- <p>Reach out to us for inquiries, <br> assistance, or collaborations. </p> -->
                 <div class="footer__content">
                   <ul class="list-wrap">
                     <li>
-                      <a class="f_contact" href="https://maps.app.goo.gl/TMc6gjPbDTMm1KPX7" target="_blank">201 , Navkar
-                        Complex ,Teen Batti Chauraha , Ujjain MP 456010</a>
+                      <a class="f_contact" href="https://maps.app.goo.gl/TMc6gjPbDTMm1KPX7" target="_blank">201, Navkar
+                        Complex, Teen Batti Chauraha, Ujjain MP 456010</a>
                     </li>
                     <li>
-                      <a class="f_contact" href="tel:+918989099962">+91 89890 99962
-                      </a>
+                      <a class="f_contact" href="tel:+918989099962">+91 89890 99962</a>
                     </li>
                     <li>
                       <a class="f_contact" href="mailto:info@skilledu.in">info@skilledu.in</a>
@@ -3960,94 +4425,65 @@
 
                 <ul class="list-wrap footer__social">
                   <li>
-                    <a href="https://www.linkedin.com/company/skilled-u/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.linkedin.com/company/skilled-u/" target="_blank" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin-in"></i></a>
                   </li>
                   <li>
-                    <a href="https://www.facebook.com/profile.php?id=61556212776038&sfnsn=wa" target="_blank">
+                    <a href="https://www.facebook.com/profile.php?id=61556212776038&sfnsn=wa" target="_blank"
+                      aria-label="Facebook">
                       <svg width="8" height="17" viewBox="0 0 8 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                           d="M5 5.65773V3.60037C5 3.03254 5.448 2.5717 6 2.5717H7V0H5C3.343 0 2 1.38152 2 3.08603V5.65773H0V8.22943H2V16.4589H5V8.22943H7L8 5.65773H5Z"
-                          fill="currentcolor" />
+                          fill="currentColor" />
                       </svg>
                     </a>
                   </li>
-                  <!--<li>-->
-                  <!--    <a href="#" target="_blank">-->
-                  <!--        <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-                  <!--            <path d="M16 1.68868C15.405 1.97506 14.771 2.16489 14.11 2.25706C14.79 1.81157 15.309 1.11152 15.553 0.267731C14.919 0.682494 14.219 0.975461 13.473 1.13895C12.871 0.435611 12.013 0 11.077 0C9.261 0 7.799 1.61736 7.799 3.6001C7.799 3.88539 7.821 4.1597 7.875 4.42085C5.148 4.27491 2.735 2.8408 1.114 0.65616C0.831 1.19491 0.665 1.81157 0.665 2.47541C0.665 3.7219 1.25 4.82683 2.122 5.46653C1.595 5.45556 1.078 5.28768 0.64 5.02324C0.64 5.03421 0.64 5.04848 0.64 5.06274C0.64 6.81177 1.777 8.26454 3.268 8.5992C3.001 8.6793 2.71 8.71771 2.408 8.71771C2.198 8.71771 1.986 8.70454 1.787 8.65626C2.212 10.0816 3.418 11.1295 4.852 11.1635C3.736 12.1214 2.319 12.6986 0.785 12.6986C0.516 12.6986 0.258 12.6854 0 12.6492C1.453 13.6773 3.175 14.2643 5.032 14.2643C11.068 14.2643 14.368 8.77806 14.368 4.02254C14.368 3.86344 14.363 3.70983 14.356 3.55731C15.007 3.05037 15.554 2.41726 16 1.68868Z" fill="currentcolor"/>-->
-                  <!--            </svg>-->
-
-                  <!--    </a>-->
-                  <!--</li>-->
                   <li>
-                    <a href="https://wa.me/+918989099962?text=I%20want%20to%20code" target="_blank" target="_blank">
+                    <a href="https://wa.me/+918989099962?text=I%20want%20to%20code" target="_blank"
+                      aria-label="WhatsApp">
                       <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                           d="M7.50187 0H7.49813C3.36281 0 0 3.36375 0 7.5C0 9.14062 0.52875 10.6613 1.42781 11.8959L0.493125 14.6822L3.37594 13.7606C4.56187 14.5463 5.97656 15 7.50187 15C11.6372 15 15 11.6353 15 7.5C15 3.36469 11.6372 0 7.50187 0ZM11.8659 10.5909C11.685 11.1019 10.9669 11.5256 10.3941 11.6494C10.0022 11.7328 9.49031 11.7994 7.76719 11.085C5.56312 10.1719 4.14375 7.93219 4.03312 7.78687C3.92719 7.64156 3.1425 6.60094 3.1425 5.52469C3.1425 4.44844 3.68906 3.92438 3.90938 3.69938C4.09031 3.51469 4.38937 3.43031 4.67625 3.43031C4.76906 3.43031 4.8525 3.435 4.9275 3.43875C5.14781 3.44812 5.25844 3.46125 5.40375 3.80906C5.58469 4.245 6.02531 5.32125 6.07781 5.43188C6.13125 5.5425 6.18469 5.6925 6.10969 5.83781C6.03938 5.98781 5.9775 6.05437 5.86687 6.18187C5.75625 6.30937 5.65125 6.40688 5.54062 6.54375C5.43937 6.66281 5.325 6.79031 5.4525 7.01063C5.58 7.22625 6.02063 7.94531 6.66937 8.52281C7.50656 9.26812 8.18531 9.50625 8.42812 9.6075C8.60906 9.6825 8.82469 9.66469 8.95687 9.52406C9.12469 9.34313 9.33187 9.04313 9.54281 8.74781C9.69281 8.53594 9.88219 8.50969 10.0809 8.58469C10.2834 8.655 11.355 9.18469 11.5753 9.29437C11.7956 9.405 11.9409 9.4575 11.9944 9.55031C12.0469 9.64313 12.0469 10.0791 11.8659 10.5909Z"
-                          fill="currentcolor" />
+                          fill="currentColor" />
                       </svg>
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.instagram.com/skilled.u_"><i class="fab fa-instagram"></i></a>
-                    <!-- <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"> -->
-                    <path
-                      d="M10.3125 0H4.6875C2.09906 0 0 2.09906 0 4.6875V10.3125C0 12.9009 2.09906 15 4.6875 15H10.3125C12.9009 15 15 12.9009 15 10.3125V4.6875C15 2.09906 12.9009 0 10.3125 0ZM13.5938 10.3125C13.5938 12.1219 12.1219 13.5938 10.3125 13.5938H4.6875C2.87813 13.5938 1.40625 12.1219 1.40625 10.3125V4.6875C1.40625 2.87813 2.87813 1.40625 4.6875 1.40625H10.3125C12.1219 1.40625 13.5938 2.87813 13.5938 4.6875V10.3125Z"
-                      fill="currentcolor" />
-                    <path
-                      d="M7.5 3.75C5.42906 3.75 3.75 5.42906 3.75 7.5C3.75 9.57094 5.42906 11.25 7.5 11.25C9.57094 11.25 11.25 9.57094 11.25 7.5C11.25 5.42906 9.57094 3.75 7.5 3.75ZM7.5 9.84375C6.20813 9.84375 5.15625 8.79187 5.15625 7.5C5.15625 6.20719 6.20813 5.15625 7.5 5.15625C8.79187 5.15625 9.84375 6.20719 9.84375 7.5C9.84375 8.79187 8.79187 9.84375 7.5 9.84375Z"
-                      fill="currentcolor" />
-                    <path
-                      d="M11.5313 3.96844C11.8072 3.96844 12.031 3.74472 12.031 3.46875C12.031 3.19278 11.8072 2.96906 11.5313 2.96906C11.2553 2.96906 11.0316 3.19278 11.0316 3.46875C11.0316 3.74472 11.2553 3.96844 11.5313 3.96844Z"
-                      fill="currentcolor" />
-                    </svg>
-                    </a>
+                    <a href="https://www.instagram.com/skilled.u_/" target="_blank" aria-label="Instagram"><i
+                        class="fab fa-instagram"></i></a>
                   </li>
-                  <!--<li>-->
-                  <!--    <a href="#" target="_blank">-->
-                  <!--        <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">-->
-                  <!--            <path d="M20.1075 1.58603C19.5379 0.430923 18.9197 0.218454 17.661 0.137656C16.4036 0.040399 13.2418 0 10.5026 0C7.75819 0 4.59506 0.0403991 3.339 0.13616C2.08294 0.218454 1.46344 0.429426 0.888563 1.58603C0.301875 2.73965 0 4.72668 0 8.22494C0 8.22793 0 8.22943 0 8.22943C0 8.23242 0 8.23392 0 8.23392V8.23691C0 11.7202 0.301875 13.7222 0.888563 14.8638C1.46344 16.019 2.08162 16.2284 3.33769 16.3257C4.59506 16.4095 7.75819 16.4589 10.5026 16.4589C13.2418 16.4589 16.4036 16.4095 17.6623 16.3272C18.921 16.2299 19.5392 16.0204 20.1088 14.8653C20.7008 13.7237 21 11.7217 21 8.2384C21 8.2384 21 8.23392 21 8.23092C21 8.23092 21 8.22793 21 8.22643C21 4.72668 20.7008 2.73965 20.1075 1.58603ZM7.875 12.7182V3.74065L14.4375 8.22943L7.875 12.7182Z" fill="currentcolor"/>-->
-                  <!--            </svg>-->
-                  <!--                                                    </a>-->
-                  <!--</li>-->
                 </ul>
               </div>
-              <!-- <div class="app-download">
-                                <a href="#"><img src="assets/img/others/google-play.svg" alt="img"></a>
-                                <a href="#"><img src="assets/img/others/apple-store.svg" alt="img"></a>
-                            </div> -->
             </div>
           </div>
-          <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+
+          <!-- Col 4: Our Location & Map -->
+          <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
             <div class="footer__widget">
               <h4 class="footer__widget-title">Our Location</h4>
-              <div class="footer__link">
-                <ul class="list-wrap">
-                  <div class="contact-map contact-map-my2 mt-0">
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.8126686437645!2d75.78882589999999!3d23.177036299999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xde22d6ed4c1dceb%3A0x386b788349ba3f7b!2sSkilled.u!5e0!3m2!1sen!2sin!4v1733901595669!5m2!1sen!2sin"
-                      width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                      referrerpolicy="no-referrer-when-downgrade"></iframe>
-                  </div>
-                </ul>
+              <div class="footer__map-wrapper">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.8126686437645!2d75.78882589999999!3d23.177036299999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xde22d6ed4c1dceb%3A0x386b788349ba3f7b!2sSkilled.u!5e0!3m2!1sen!2sin!4v1733901595669!5m2!1sen!2sin"
+                  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Footer Bottom -->
     <div class="footer__bottom">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-md-7">
+          <div class="col-md-7 col-12 text-center text-md-start mb-2 mb-md-0">
             <div class="copy-right-text">
               <p>
-                © 2026 <a href="index.html">Skilled.u</a> All rights
-                reserved.
+                © 2026 <a href="index.html">Skilled.u</a> All rights reserved.
               </p>
             </div>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-5 col-12 text-center text-md-end">
             <div class="footer__bottom-menu">
               <ul class="list-wrap">
                 <li><a href="Term-of-Use.html">Term of Use</a></li>
@@ -4058,7 +4494,6 @@
         </div>
       </div>
     </div>
-
   </footer>
   <!-- footer-area-end -->
 
