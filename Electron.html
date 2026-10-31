@@ -202,6 +202,7 @@
 <style>
   @import url("assets/css/course-sections.css");
 </style>
+    <link rel="stylesheet" href="assets/css/course-info-card.css">
 </head>
 
 <body>
@@ -398,7 +399,7 @@
                 <div class="row">
                     <div class="col-xl-9 col-lg-8">
                         <div class="courses__details-thumb">
-                            <img src="assets/img/course-details/full electron image.png" alt="img">
+                            <img src="assets/img/course-details/electron new img.png" alt="img">
                         </div>
                         <div class="courses__details-content">
                             <ul class="courses__item-meta list-wrap">
@@ -593,53 +594,34 @@
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4">
-                        <div class="courses__details-sidebar">
-                        
-                            <div class="courses__information-wrap">
-                                <h5 class="title">Course includes:</h5>
-                                <ul class="list-wrap">
-                                    <li>
-                                        <img src="assets/img/icons/course_icon01.svg" alt="img" class="injectable">
-                                        Level
-                                        <span>Expert</span>
-                                    </li>
-                                    <li>
-                                        <img src="assets/img/icons/course_icon02.svg" alt="img" class="injectable">
-                                        Duration
-                                        <span>60 Days</span>
-                                    </li>
-                                    <li>
-                                        <img src="assets/img/icons/course_icon03.svg" alt="img" class="injectable">
-                                        Project
-                                        <span>3</span>
-                                    </li>
-                                    <li>
-                                        <img src="assets/img/icons/course_icon04.svg" alt="img" class="injectable">
-                                        Quizzes
-                                        <span>Weekly</span>
-                                    </li>
-                                    <li>
-                                        <img src="assets/img/icons/course_icon05.svg" alt="img" class="injectable">
-                                        Certifications
-                                        <span>Yes</span>
-                                    </li>
-                                    
-                                </ul>
-                            </div>
-                            <div class="courses__details-enroll">
-                                <div class="tg-button-wrap"style="margin-left:30px;margin: 25px;">
-                                            <a href="https://wa.me/+918989099962?text=I%20want%20to%20Learn%20Electron" target="_blank"  class="btn btn-two arrow-btn"><i class="fa fa-whatsapp px-2"></i>WhatsApp Us</a>
-                                    
-                                </div>
-                                <div class="tg-button-wrap">
-                                    <a href="tel:+918989099962" class="btn btn-two arrow-btn">
-                                       Contact Us
-                                        <img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable">
-                                    </a>
-                                </div>
-                                
-                            </div>
+                        <div class="courses__details-sidebar course-info-card" aria-label="Course information">
+                        <div class="course-info-card__image">
+                            <img src="assets/img/mini-img/electron.png" alt="Electron course" />
                         </div>
+                        <div class="course-info-card__project-count">Project 3</div>
+                        <div class="courses__information-wrap course-info-card__includes">
+                            <h5 class="title">Course includes:</h5>
+                            <ul class="list-wrap">
+                                <li><img src="assets/img/icons/course_icon01.svg" alt="" aria-hidden="true" class="injectable" /><span class="course-info-card__label">Level</span><span>Beginner</span></li>
+                                <li><img src="assets/img/icons/course_icon03.svg" alt="" aria-hidden="true" class="injectable" /><span class="course-info-card__label">Projects</span><span>3</span></li>
+                                <li><img src="assets/img/icons/course_icon04.svg" alt="" aria-hidden="true" class="injectable" /><span class="course-info-card__label">Quizzes</span><span>Weekly</span></li>
+                                <li><img src="assets/img/icons/course_icon05.svg" alt="" aria-hidden="true" class="injectable" /><span class="course-info-card__label">Certifications</span><span>Yes</span></li>
+                            </ul>
+                        </div>
+                        <div class="course-info-card__share">
+                            <h5 class="title">Share this course:</h5>
+                            <ul class="course-info-card__share-list">
+                                <li><a href="https://www.facebook.com/profile.php?id=61556212776038" target="_blank" rel="noopener noreferrer" aria-label="Skilled.U on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+                                <li><a href="https://wa.me/918989099962" target="_blank" rel="noopener noreferrer" aria-label="Skilled.U on WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.instagram.com/skilled.u_/" target="_blank" rel="noopener noreferrer" aria-label="Skilled.U on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="Skilled.U on YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="courses__details-enroll course-info-card__actions">
+                            <a href="https://wa.me/+918989099962?text=I%20want%20to%20Learn%20Electron" target="_blank" rel="noopener noreferrer" class="btn btn-two arrow-btn course-info-card__action"><i class="fab fa-whatsapp" aria-hidden="true"></i>WhatsApp Us</a>
+                            <a href="tel:+918989099962" class="btn btn-two arrow-btn course-info-card__action">Contact Us<i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>

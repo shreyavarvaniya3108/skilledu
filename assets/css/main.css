@@ -4234,6 +4234,14 @@ textarea {
   box-shadow: none;
 }
 
+<<<<<<< HEAD
+=======
+.courses__item-tag a{
+
+  background-color: #E0f2fe;
+  color: #0b66c3;
+}
+>>>>>>> 33ec9c2 (update skilled.U wesbite)
 .courses__item-bottom .price {
   font-size: 20px;
   line-height: 1;

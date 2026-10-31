@@ -224,86 +224,9 @@
         }
         /* ============================ END CURRICULUM CSS ==================== */
 
-        /* =====================================================================
-           SIDEBAR (UPDATED) - scoped to the course sidebar only
-           Layout: image -> blue box -> Course includes -> share -> buttons
-           ===================================================================== */
-
-        /* Top image */
-        .courses__details-sidebar .courses__side-thumb {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 14px;
-            line-height: 0;
-        }
-
-        .courses__details-sidebar .courses__side-thumb svg,
-        .courses__details-sidebar .courses__side-thumb img {
-            display: block;
-            width: 100%;
-            height: auto;
-        }
-
-        /* Blue-purple box (no text) */
-        .courses__details-sidebar .courses__fee-box {
-            background-color: #5751e1;
-            border-radius: 8px;
-            height: 64px;
-            margin-bottom: 22px;
-        }
-
-        /* Share this course */
-        .courses__details-sidebar .courses__share {
-            margin-top: 0;
-            padding: 18px 0;
-            border-bottom: 1px solid #e9e9ef;   /* separator below icons, above buttons */
-        }
-
-        .courses__details-sidebar .courses__share .title {
-            margin-bottom: 14px;
-        }
-
-        .courses__details-sidebar .courses__share-list {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 10px;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .courses__details-sidebar .courses__share-list li {
-            margin: 0;
-            padding: 0;
-            border: 0;
-        }
-
-        .courses__details-sidebar .courses__share-list a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            background-color: #e9eaf1;
-            color: #5f5f73;
-            font-size: 14px;
-            line-height: 1;
-            text-decoration: none;
-            transition: background-color .25s ease, color .25s ease;
-        }
-
-        .courses__details-sidebar .courses__share-list a:hover,
-        .courses__details-sidebar .courses__share-list a:focus-visible {
-            background-color: #ffc224;
-            color: #222222;
-            outline: 0;
-        }
-        /* ============================ END SIDEBAR CSS ======================= */
     </style>
 
+    <link rel="stylesheet" href="assets/css/course-info-card.css">
 </head>
 
 <body>
@@ -790,49 +713,14 @@
                     <div class="col-xl-3 col-lg-4">
                         <div class="courses__details-sidebar">
 
-                            <!-- SIDEBAR TOP IMAGE (NEW): young man & woman illustration with play button -->
+                            <!-- SIDEBAR TOP IMAGE -->
                             <div class="courses__side-thumb">
-                                <svg viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg" role="img"
-                                    aria-label="Young learners studying programming">
-                                    <defs>
-                                        <linearGradient id="sideThumbBg" x1="0" y1="0" x2="1" y2="1">
-                                            <stop offset="0" stop-color="#9be3b5" />
-                                            <stop offset="1" stop-color="#2f9c78" />
-                                        </linearGradient>
-                                    </defs>
-                                    <rect width="300" height="170" fill="url(#sideThumbBg)" />
-                                    <!-- decorative dots -->
-                                    <g fill="#ffffff" opacity=".55">
-                                        <circle cx="30" cy="24" r="2.5" />
-                                        <circle cx="48" cy="40" r="2" />
-                                        <circle cx="262" cy="22" r="2.5" />
-                                        <circle cx="244" cy="36" r="2" />
-                                        <circle cx="272" cy="52" r="2" />
-                                        <circle cx="20" cy="58" r="2" />
-                                    </g>
-                                    <!-- young man -->
-                                    <path d="M45 170 C45 130 62 118 85 118 C108 118 125 130 125 170 Z" fill="#3b6fd8" />
-                                    <rect x="78" y="104" width="14" height="16" fill="#c68a5f" />
-                                    <circle cx="85" cy="88" r="20" fill="#d9a06f" />
-                                    <path d="M65 86 C64 66 80 62 90 64 C104 66 107 78 105 88 C100 78 92 76 85 76 C76 76 69 80 65 86Z"
-                                        fill="#2b1d16" />
-                                    <!-- young woman -->
-                                    <path d="M190 90 C186 58 206 52 216 52 C236 52 244 70 240 104 C240 118 236 124 230 126 L200 126 C194 120 190 108 190 90Z"
-                                        fill="#4a2c1d" />
-                                    <path d="M175 170 C175 132 192 120 215 120 C238 120 255 132 255 170 Z" fill="#f4b41a" />
-                                    <rect x="208" y="106" width="14" height="16" fill="#e0a77f" />
-                                    <circle cx="215" cy="88" r="19" fill="#efbb92" />
-                                    <path d="M196 84 C198 68 212 64 220 66 C230 68 234 78 234 86 C226 78 216 76 210 78 C204 80 199 82 196 84Z"
-                                        fill="#4a2c1d" />
-                                    <!-- play button -->
-                                    <circle cx="150" cy="92" r="22" fill="#ffffff" />
-                                    <path d="M143 80 L143 104 L163 92Z" fill="#5751e1" />
-                                </svg>
+                                <img src="assets/img/mini-img/c++.png" alt="C++ course" />
                             </div>
                             <!-- END SIDEBAR TOP IMAGE -->
 
-                            <!-- BLUE-PURPLE BOX (NEW): colour only, no text -->
-                            <div class="courses__fee-box" aria-hidden="true"></div>
+                            <!-- BLUE-PURPLE PROJECT COUNT -->
+                            <div class="courses__fee-box">Project 2</div>
                             <!-- END BLUE-PURPLE BOX -->
 
                             <!-- <div class="courses__cost-wrap">
